@@ -158,7 +158,7 @@
     /* Labels + segmented bar */
     .labels{
       display:grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 10px;
       font-size: 12px;
       opacity: 0.78;
@@ -185,7 +185,7 @@
 
     .bar{
       display:grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 10px;
       align-items: center;
     }
@@ -218,17 +218,16 @@
       .labels{
         grid-template-columns: repeat(2, 1fr);
       }
-      .bar{
-        grid-template-columns: repeat(5, 1fr);
-      }
+      .bar{grid-template-columns: repeat(6, 1fr); }
     }
 
     @media (max-width: 420px){
-      .icon{ width: 46px; height: 46px; border-radius: 12px; }
-      .titles h1{ font-size: 20px; }
-      .labels{ grid-template-columns: 1fr; }
-      .labels span{ white-space: normal; }
-    }
+  .icon{ width: 46px; height: 46px; border-radius: 12px; }
+  .titles h1{ font-size: 20px; }
+  .labels{ grid-template-columns: 1fr; }
+  .labels span{ white-space: normal; }
+}
+
   </style>
 </head>
 
@@ -255,7 +254,7 @@
 
     <!-- Intro -->
     <div class="intro">
-      Stages: <strong>Not Started</strong> → <strong>Recorded</strong> → <strong>Voice Over Complete</strong> → <strong>Editing Done</strong> → <strong>Published</strong>.
+     Stages: <strong>Not Started</strong> → <strong>Recorded</strong> → <strong>Voice Over Complete</strong> → <strong>Editing Done</strong> → <strong>Published to Patreon</strong> → <strong>Published to YouTube</strong>.
       <div class="metaRow">
         <div id="updated"></div>
         <div>Tip: Bookmark this page.</div>
@@ -268,7 +267,15 @@
 
   <script>
     // ES5-safe
-    var STAGES = ["Not Started", "Recorded", "Voice Over Complete", "Editing Done", "Published"];
+   var STAGES = [
+  "Not Started",
+  "Recorded",
+  "Voice Over Complete",
+  "Editing Done",
+  "Published to Patreon",
+  "Published to YouTube"
+];
+
 
     // ✅ EDIT THESE
     var VNS = [
@@ -340,6 +347,7 @@
   </script>
 </body>
 </html>
+
 
 
 
