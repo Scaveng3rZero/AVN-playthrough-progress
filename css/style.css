@@ -244,6 +244,38 @@ a{ color: #9be8b2; }
   display:inline-block;
 }
 
+/* ===== Simple Site Nav ===== */
+.siteNav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+
+.siteNav__link{
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255,255,255,.9);
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  transition: transform .08s ease, background .12s ease, border-color .12s ease;
+}
+
+.siteNav__link:hover{
+  transform: translateY(-1px);
+  border-color: rgba(155,232,178,.35);
+  background: rgba(155,232,178,.08);
+}
+
+.siteNav__link.is-active{
+  border-color: rgba(155,232,178,.45);
+  background: rgba(155,232,178,.12);
+}
+
+
 
 /* ===== Responsive tweaks ===== */
 @media (max-width: 720px){
