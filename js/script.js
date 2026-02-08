@@ -124,4 +124,56 @@
     search.addEventListener("input", filter);
   })();
 
+  // ===== 4) Game Links render (links.html) =====
+(function linksRender(){
+  var list = byId("allLinks");
+  if (!list) return;
+
+  if (typeof GAME_LINKS === "undefined" || !GAME_LINKS || !GAME_LINKS.length) return;
+
+  function badgeInfo(platform){
+    if (platform === "steam") return { cls: "badge--steam", text: "Steam" };
+    if (platform === "itch") return { cls: "badge--itch", text: "itch.io" };
+    if (platform === "patreon") return { cls: "badge--patreon", text: "Dev Patreon" };
+    return { cls: "", text: "Link" };
+  }
+
+  // Sort A→Z by title
+  var items = GAME_LINKS.slice().sort(function(a, b){
+    var at = (a.title || "").toLowerCase();
+    var bt = (b.title || "").toLowerCase();
+    if (at < bt) return -1;
+    if (at > bt) return 1;
+    return 0;
+  });
+
+  list.innerHTML = "";
+
+  for (var i=0; i<items.length; i++){
+    var item = items[i];
+
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = item.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+
+    var b = badgeInfo(item.platform);
+
+    var badge = document.createElement("span");
+    badge.className = "badge " + b.cls;
+    badge.textContent = b.text;
+
+    var text = document.createElement("span");
+    text.className = "linkText";
+    text.textContent = item.title;
+
+    a.appendChild(badge);
+    a.appendChild(text);
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+
+
 })();
