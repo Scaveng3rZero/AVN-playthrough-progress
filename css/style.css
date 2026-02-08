@@ -13,8 +13,9 @@ body{
     #0b0c0f;
 
   background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-
 
 a{ color: #9be8b2; }
 
