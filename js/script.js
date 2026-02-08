@@ -104,6 +104,45 @@
     }
   })();
 
+  // ===== 5) Recommend page: public "confirmed" list =====
+(function receivedPublicRender(){
+  var list = byId("receivedPublic");
+  if (!list) return;
+
+  if (typeof RECEIVED_RECS === "undefined" || !RECEIVED_RECS || !RECEIVED_RECS.length){
+    // Optional empty state
+    list.innerHTML = "<li style='opacity:.75;'>No confirmed recommendations posted yet.</li>";
+    return;
+  }
+
+  // Newest first (you add to top), but we’ll still clean/sort by date if you want later.
+  list.innerHTML = "";
+
+  for (var i=0; i<RECEIVED_RECS.length; i++){
+    var item = RECEIVED_RECS[i];
+    if (!item || !item.title) continue;
+
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = "javascript:void(0)";
+    a.style.cursor = "default";
+
+    var badge = document.createElement("span");
+    badge.className = "badge";
+    badge.textContent = "Confirmed";
+
+    var text = document.createElement("span");
+    text.className = "linkText";
+    text.textContent = item.title + (item.when ? (" — " + item.when) : "");
+
+    a.appendChild(badge);
+    a.appendChild(text);
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+
+  
   // ===== 3) Game Links render (links.html) =====
   (function linksRender(){
     var list = byId("allLinks");
