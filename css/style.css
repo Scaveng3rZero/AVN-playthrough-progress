@@ -1,29 +1,50 @@
 /* ===== Base ===== */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-
 body{
-  margin:0;
+  margin: 0;
   font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  color:#fff;
+  color: #fff;
+
+  /* Important: remove background from body */
+  background: none;
+
+  /* Helps prevent weird horizontal scroll on some devices */
+  overflow-x: hidden;
+
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Fixed background layer (does NOT scroll) */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  /* Safer layering than z-index:-1 */
+  z-index: 0;
+
+  pointer-events: none;
 
   background:
     radial-gradient(1200px 800px at 20% 0%, rgba(120,255,180,0.10), rgba(0,0,0,0)),
     radial-gradient(900px 600px at 90% 10%, rgba(120,180,255,0.10), rgba(0,0,0,0)),
     #0b0c0f;
-
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
+
 
 a{ color: #9be8b2; }
 
 .container{
+  position: relative;
+  z-index: 1;
+
   max-width: 1050px;
   margin: 0 auto;
   padding: 18px 14px 40px;
 }
+
 
 /* ===== Header / Branding ===== */
 .header{
