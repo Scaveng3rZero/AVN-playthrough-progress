@@ -1,1 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Game Links | VN Playthrough Progress</title>
 
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="External links to adult visual novels and games on Steam, itch.io, and developer pages." />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label="Go to Progress Page">
+        <span class="brand__dot" aria-hidden="true"></span>
+        <span class="brand__text">VN Progress</span>
+      </a>
+
+      <button class="navToggle" type="button" aria-expanded="false" aria-controls="siteNav">
+        Menu
+      </button>
+
+      <nav class="nav" id="siteNav">
+        <a href="index.html">Progress</a>
+        <a href="recommend.html">Recommend</a>
+        <a href="links.html" aria-current="page">Game Links</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <div class="page__head">
+      <h1 class="page__title">Game Links</h1>
+      <p class="page__sub">
+        A public library of <strong>external links</strong> to adult VNs and games (Steam / itch.io / developer pages).
+        These are <strong>not</strong> links to my personal accounts.
+      </p>
+    </div>
+
+    <!-- Disclaimer / Safety -->
+    <section class="card notice">
+      <h2 class="card__title">Before you click</h2>
+      <ul class="notice__list">
+        <li><strong>18+</strong> — many links lead to adult content.</li>
+        <li>All links are <strong>external</strong> (Steam, itch.io, or developer Patreon/pages).</li>
+        <li>I’m not affiliated with the developers unless explicitly stated.</li>
+      </ul>
+    </section>
+
+    <!-- Search -->
+    <section class="card">
+      <h2 class="card__title">Search</h2>
+      <p class="card__sub">Filter the library by game title, platform, or dev.</p>
+
+      <div class="searchRow">
+        <label class="srOnly" for="linkSearch">Search game links</label>
+        <input id="linkSearch" class="input" type="search" placeholder="Search… (e.g., ‘Steam’, ‘itch’, ‘Patreon’, game title)" />
+      </div>
+
+      <!-- Library List -->
+      <ul class="linkList linkList--all" id="allLinks">
+        <!-- Example entries (replace with your real ones) -->
+        <li>
+          <a href="STEAM_LINK_HERE" target="_blank" rel="noopener">
+            <span class="badge badge--steam" aria-hidden="true">Steam</span>
+            <span class="linkText">Fresh Women Season 2</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="ITCH_LINK_HERE" target="_blank" rel="noopener">
+            <span class="badge badge--itch" aria-hidden="true">itch.io</span>
+            <span class="linkText">Game Title on itch.io</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="DEV_PATREON_LINK_HERE" target="_blank" rel="noopener">
+            <span class="badge badge--patreon" aria-hidden="true">Dev Patreon</span>
+            <span class="linkText">Developer Patreon — Game/Studio Name</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Scaveng3r — link library for games & developers.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
