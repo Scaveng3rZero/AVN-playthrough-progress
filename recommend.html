@@ -1,1 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Recommend | VN Playthrough Progress</title>
+
+  <meta name="description" content="Submit VN and adult game recommendations for Scaveng3r to consider for future playthroughs." />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="brand">
+        <img class="icon" src="img/ScavIcon.png" alt="YouTube icon">
+        <div class="titles">
+          <h1>Recommend</h1>
+          <p>Send me VNs / adult games you want to see on the channel.</p>
+        </div>
+      </div>
+
+      <div class="coverWrap" aria-label="Channel cover">
+        <img src="img/ScavBanner.jpg" alt="Channel cover">
+        <div class="coverOverlay"></div>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="siteNav" aria-label="Primary">
+      <a class="siteNav__link" href="index.html">Progress</a>
+      <a class="siteNav__link" href="links.html">Game Links</a>
+      <a class="siteNav__link is-active" href="recommend.html">Recommend</a>
+      <a class="siteNav__link" href="about.html">About</a>
+    </nav>
+
+    <!-- Intro -->
+    <div class="intro">
+      Drop a recommendation below. If you include a link, please use Steam / itch.io / dev Patreon when possible.
+    </div>
+
+    <!-- Form -->
+    <div class="intro">
+      <form id="recForm">
+        <p style="margin:0 0 10px; opacity:.9;">
+          <strong>Recommendation form</strong>
+        </p>
+
+        <label class="srOnly" for="recTitle">Game title</label>
+        <input class="input" id="recTitle" name="title" type="text" placeholder="Game title (required)" required>
+
+        <div style="height:10px;"></div>
+
+        <label class="srOnly" for="recLink">Link</label>
+        <input class="input" id="recLink" name="link" type="url" placeholder="Store/dev link (Steam, itch.io, Patreon)">
+
+        <div style="height:10px;"></div>
+
+        <label class="srOnly" for="recWhy">Why recommend?</label>
+        <textarea class="input" id="recWhy" name="why" rows="5"
+          placeholder="Why should I play it? (What makes it good / wild / unique?)"></textarea>
+
+        <div style="height:12px;"></div>
+
+        <button class="siteNav__link" type="submit" style="cursor:pointer;">
+          Generate Email
+        </button>
+
+        <p style="margin:10px 0 0; opacity:.75; font-size:12px;">
+          Clicking “Generate Email” opens your email client with everything pre-filled.
+        </p>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Scaveng3r</p>
+    </footer>
+
+  </div>
+
+  <script src="js/script.js"></script>
+
+  <!-- Page-only logic -->
+  <script>
+    // Simple mailto submit (no backend needed)
+    (function(){
+      var form = document.getElementById("recForm");
+      if(!form) return;
+
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+
+        var title = document.getElementById("recTitle").value || "";
+        var link  = document.getElementById("recLink").value || "";
+        var why   = document.getElementById("recWhy").value || "";
+
+        var subject = "VN/Game Recommendation: " + title;
+        var body =
+          "Title: " + title + "\n" +
+          "Link: " + link + "\n\n" +
+          "Notes:\n" + why + "\n\n" +
+          "Submitted from: VN Playthrough Progress site";
+
+        // TODO: replace with your actual email address
+        var to = "YOUR_EMAIL_HERE";
+
+        var mailto = "mailto:" + encodeURIComponent(to) +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+
+        window.location.href = mailto;
+      });
+    })();
+  </script>
+</body>
+</html>
 
