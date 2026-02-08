@@ -202,6 +202,49 @@ a{ color: #9be8b2; }
   margin-top: 14px;
 }
 
+/* ===== Game Links page helpers ===== */
+
+.notice{
+  border-color: rgba(255,140,140,.25);
+  background: rgba(255,80,80,.06);
+}
+
+.notice__list{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.78);
+  display: grid;
+  gap: 8px;
+}
+
+.linkList a{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
+/* Platform badges */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.85);
+  flex: 0 0 auto;
+}
+
+.badge--steam{ border-color: rgba(120,180,255,.35); background: rgba(120,180,255,.10); }
+.badge--itch{ border-color: rgba(255,140,180,.35); background: rgba(255,140,180,.10); }
+.badge--patreon{ border-color: rgba(255,170,110,.35); background: rgba(255,170,110,.10); }
+
+.linkText{
+  display:inline-block;
+}
+
+
 /* ===== Responsive tweaks ===== */
 @media (max-width: 720px){
   .header{ flex-direction: column; align-items: stretch; }
