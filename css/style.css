@@ -202,54 +202,12 @@ a{ color: #9be8b2; }
   margin-top: 14px;
 }
 
-/* ===== Game Links page helpers ===== */
-
-.notice{
-  border-color: rgba(255,140,140,.25);
-  background: rgba(255,80,80,.06);
-}
-
-.notice__list{
-  margin: 10px 0 0;
-  padding-left: 18px;
-  color: rgba(255,255,255,.78);
-  display: grid;
-  gap: 8px;
-}
-
-.linkList a{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-
-/* Platform badges */
-.badge{
-  display:inline-flex;
-  align-items:center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  color: rgba(255,255,255,.85);
-  flex: 0 0 auto;
-}
-
-.badge--steam{ border-color: rgba(120,180,255,.35); background: rgba(120,180,255,.10); }
-.badge--itch{ border-color: rgba(255,140,180,.35); background: rgba(255,140,180,.10); }
-.badge--patreon{ border-color: rgba(255,170,110,.35); background: rgba(255,170,110,.10); }
-
-.linkText{
-  display:inline-block;
-}
-
 /* ===== Simple Site Nav ===== */
 .siteNav{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 14px 0 10px;
+  margin: 14px 0 14px;
 }
 
 .siteNav__link{
@@ -275,7 +233,92 @@ a{ color: #9be8b2; }
   background: rgba(155,232,178,.12);
 }
 
+/* ===== Accessibility helper ===== */
+.srOnly{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
 
+/* ===== Shared input style (used on links.html search) ===== */
+.input{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  outline: none;
+}
+
+.input::placeholder{
+  color: rgba(255,255,255,.55);
+}
+
+.input:focus{
+  border-color: rgba(155,232,178,.45);
+  box-shadow: 0 0 0 3px rgba(155,232,178,.12);
+}
+
+/* ===== Game Links page (list + badges) ===== */
+.linkList{
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.linkList li{
+  margin: 0;
+}
+
+.linkList a{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.92);
+  text-decoration: none;
+}
+
+.linkList a:hover{
+  border-color: rgba(155,232,178,.35);
+  background: rgba(155,232,178,.08);
+}
+
+/* Platform badges */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.85);
+  flex: 0 0 auto;
+}
+
+.badge--steam{ border-color: rgba(120,180,255,.35); background: rgba(120,180,255,.10); }
+.badge--itch{ border-color: rgba(255,140,180,.35); background: rgba(255,140,180,.10); }
+.badge--patreon{ border-color: rgba(255,170,110,.35); background: rgba(255,170,110,.10); }
+
+.linkText{
+  display:inline-block;
+}
 
 /* ===== Responsive tweaks ===== */
 @media (max-width: 720px){
@@ -295,4 +338,3 @@ a{ color: #9be8b2; }
   .labels{ grid-template-columns: 1fr; }
   .labels span{ white-space: normal; }
 }
-
