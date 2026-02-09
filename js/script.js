@@ -41,7 +41,7 @@
     { title: "Race of Life", episode: 11, stage: 1 },
     { title: "Ripples", episode: 14, stage: 4 },
     { title: "Chasing Sunsets: Chapter 10", episode: 2, stage: 1 },
-    { title: "Being a DIK: Season 3", episode: 6, stage: 5 }
+    { title: "Being a DIK: Season 3", episode: 7, stage: 1 }
   ];
 
   function clampStage(stage){
