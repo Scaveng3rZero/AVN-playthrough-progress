@@ -293,6 +293,35 @@ a{ color: #9be8b2; }
   box-shadow: 0 0 0 3px rgba(155,232,178,.12);
 }
 
+/* Links: title + tags stack nicely */
+.linkMeta{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Tag chips row */
+.tagRow{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  opacity: .95;
+}
+
+/* Tag chip */
+.tag{
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: .2px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.78);
+}
+
+
 /* ===== Game Links page (list + badges) ===== */
 .linkList{
   list-style: none;
