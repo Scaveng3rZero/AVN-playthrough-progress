@@ -145,55 +145,83 @@
   
   // ===== 3) Game Links render (links.html) =====
   (function linksRender(){
-    var list = byId("allLinks");
-    if (!list) return;
+  var list = byId("allLinks");
+  if (!list) return;
 
-    if (typeof GAME_LINKS === "undefined" || !GAME_LINKS || !GAME_LINKS.length) return;
+  if (typeof GAME_LINKS === "undefined" || !GAME_LINKS || !GAME_LINKS.length) return;
 
-    function badgeInfo(platform){
-      if (platform === "steam") return { cls: "badge--steam", text: "Steam" };
-      if (platform === "itch") return { cls: "badge--itch", text: "itch.io" };
-      if (platform === "patreon") return { cls: "badge--patreon", text: "Dev Patreon" };
-      return { cls: "", text: "Link" };
+  function badgeInfo(platform){
+    if (platform === "steam") return { cls: "badge--steam", text: "Steam" };
+    if (platform === "itch") return { cls: "badge--itch", text: "itch.io" };
+    if (platform === "patreon") return { cls: "badge--patreon", text: "Dev Patreon" };
+    return { cls: "", text: "Link" };
+  }
+
+  // Sort A→Z by title
+  var items = GAME_LINKS.slice().sort(function(a, b){
+    var at = (a.title || "").toLowerCase();
+    var bt = (b.title || "").toLowerCase();
+    if (at < bt) return -1;
+    if (at > bt) return 1;
+    return 0;
+  });
+
+  list.innerHTML = "";
+
+  for (var i=0; i<items.length; i++){
+    var item = items[i];
+    if (!item || !item.title || !item.url) continue;
+
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = item.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+
+    // Top row: platform badge + title
+    var b = badgeInfo(item.platform);
+
+    var badge = document.createElement("span");
+    badge.className = "badge" + (b.cls ? " " + b.cls : "");
+    badge.textContent = b.text;
+
+    var title = document.createElement("span");
+    title.className = "linkText";
+    title.textContent = item.title;
+
+    // Wrap title + tags so tags can sit underneath on their own line
+    var meta = document.createElement("span");
+    meta.className = "linkMeta";
+
+    meta.appendChild(title);
+
+    // Tags row
+    if (item.tags && item.tags.length){
+      var tagsWrap = document.createElement("span");
+      tagsWrap.className = "tagRow";
+
+      for (var t=0; t<item.tags.length; t++){
+        var tag = (item.tags[t] || "").toString().trim();
+        if (!tag) continue;
+
+        var chip = document.createElement("span");
+        chip.className = "tag";
+        chip.textContent = tag;
+
+        tagsWrap.appendChild(chip);
+      }
+
+      meta.appendChild(tagsWrap);
     }
 
-    // Sort A→Z by title
-    var items = GAME_LINKS.slice().sort(function(a, b){
-      var at = (a.title || "").toLowerCase();
-      var bt = (b.title || "").toLowerCase();
-      if (at < bt) return -1;
-      if (at > bt) return 1;
-      return 0;
-    });
+    a.appendChild(badge);
+    a.appendChild(meta);
 
-    list.innerHTML = "";
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
 
-    for (var i=0; i<items.length; i++){
-      var item = items[i];
-      if (!item || !item.title || !item.url) continue;
-
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.href = item.url;
-      a.target = "_blank";
-      a.rel = "noopener";
-
-      var b = badgeInfo(item.platform);
-
-      var badge = document.createElement("span");
-      badge.className = "badge" + (b.cls ? " " + b.cls : "");
-      badge.textContent = b.text;
-
-      var text = document.createElement("span");
-      text.className = "linkText";
-      text.textContent = item.title;
-
-      a.appendChild(badge);
-      a.appendChild(text);
-      li.appendChild(a);
-      list.appendChild(li);
-    }
-  })();
 
   // ===== 4) Game Links page search (links.html) =====
   (function linksSearch(){
