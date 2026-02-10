@@ -2,7 +2,7 @@
 // Add new entries here. The Links page can sort/render these automatically.
 
 var GAME_LINKS = [
-  { title: "Acting Lessons", platform: "steam", url: "https://store.steampowered.com/app/1045520/Acting_Lessons/" },
+  { title: "Acting Lessons", platform: "steam", url: "https://store.steampowered.com/app/1045520/Acting_Lessons/", tags: ["visual novel"] },
   { title: "After the Inferno", platform: "steam", url: "https://store.steampowered.com/app/2027360/After_the_Inferno/" },
   { title: "Ark Re:Code", platform: "steam", url: "https://store.steampowered.com/app/3587140/Ark_ReCode/" },
   { title: "Being a DIK", platform: "steam", url: "https://store.steampowered.com/app/1126320/Being_a_DIK__Season_1/" },
