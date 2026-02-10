@@ -2,8 +2,8 @@
 // Add new entries here. The Links page can sort/render these automatically.
 
 var GAME_LINKS = [
-  { title: "Acting Lessons", platform: "steam", url: "https://store.steampowered.com/app/1045520/Acting_Lessons/", tags: ["visual novel"] },
-  { title: "After the Inferno", platform: "steam", url: "https://store.steampowered.com/app/2027360/After_the_Inferno/" },
+  { title: "Acting Lessons", platform: "steam", url: "https://store.steampowered.com/app/1045520/Acting_Lessons/", tags: ["vn"] },
+  { title: "After the Inferno", platform: "steam", url: "https://store.steampowered.com/app/2027360/After_the_Inferno/", tags: ["vn"] },
   { title: "Ark Re:Code", platform: "steam", url: "https://store.steampowered.com/app/3587140/Ark_ReCode/" },
   { title: "Being a DIK", platform: "steam", url: "https://store.steampowered.com/app/1126320/Being_a_DIK__Season_1/" },
   { title: "B.E.S.T.", platform: "steam", url: "https://store.steampowered.com/app/2404390/BEST/" },
@@ -24,7 +24,7 @@ var GAME_LINKS = [
   { title: "Fetish Locator", platform: "steam", url: "https://store.steampowered.com/app/1360980/Fetish_Locator_Week_One/" },
   { title: "Fresh Women", platform: "steam", url: "https://store.steampowered.com/app/1350650/FreshWomen__Season_1/" },
   { title: "Futanari di Funghi", platform: "steam", url: "https://store.steampowered.com/app/2496640/Futanari_di_Funghi/" },
-  { title: "Gray", platform: "steam", url: "https://store.steampowered.com/app/1034700/GRAY/" },
+  { title: "Gray", platform: "steam", url: "https://store.steampowered.com/app/1034700/GRAY/", tags: ["pixel"] },
   { title: "Handyman Legend", platform: "steam", url: "https://store.steampowered.com/app/2127010/Handyman_Legend/" },
   { title: "Hentai Hack-Her", platform: "steam", url: "https://store.steampowered.com/app/1596980/Hentai_HackHer/" },
   { title: "Her New Memory", platform: "steam", url: "https://store.steampowered.com/app/1296770/Her_New_Memory__Hentai_Simulator/" },
