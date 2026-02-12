@@ -8,7 +8,7 @@ var GAME_LINKS = [
   { title: "Being a DIK", platform: "steam", url: "https://store.steampowered.com/app/1126320/Being_a_DIK__Season_1/", tags: ["visual novel"] },
   { title: "B.E.S.T.", platform: "steam", url: "https://store.steampowered.com/app/2404390/BEST/", tags: ["visual novel"] },
   { title: "Chasing Sunsets", platform: "steam", url: "https://store.steampowered.com/app/1783110/Chasing_Sunsets/", tags: ["visual novel"] },
-  { title: "Summertime Saga", platform: "Dev", url: "https://summertimesaga.com/download", tags: ["visual novel"] },
+  { title: "Summertime Saga", platform: "dev", url: "https://summertimesaga.com/download", tags: ["visual novel"] },
   { title: "Cozy Cafe", platform: "itch", url: "https://cosy-creator.itch.io/cosy-cafe", tags: ["visual novel"] },
   { title: "Eternum", platform: "itch", url: "https://caribdis.itch.io/eternum", tags: ["visual novel"] },
   { title: "Fresh Women Season 2", platform: "steam", url: "https://store.steampowered.com/app/3478650/FreshWomen__Season_2/", tags: ["visual novel"] },
