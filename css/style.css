@@ -371,6 +371,8 @@ a{ color: #9be8b2; }
 .badge--steam{ border-color: rgba(120,180,255,.35); background: rgba(120,180,255,.10); }
 .badge--itch{ border-color: rgba(255,140,180,.35); background: rgba(255,140,180,.10); }
 .badge--patreon{ border-color: rgba(255,170,110,.35); background: rgba(255,170,110,.10); }
+.badge--dev{border-color: rgba(120,255,180,.35); background: rgba(120,255,180,.10); }
+
 
 .linkText{
   display:inline-block;
