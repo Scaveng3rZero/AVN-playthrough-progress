@@ -154,6 +154,7 @@
     if (platform === "steam") return { cls: "badge--steam", text: "Steam" };
     if (platform === "itch") return { cls: "badge--itch", text: "itch.io" };
     if (platform === "patreon") return { cls: "badge--patreon", text: "Dev Patreon" };
+    if (platform === "dev") return { cls: "badge--dev", text: "Dev Site" };
     return { cls: "", text: "Link" };
   }
 
