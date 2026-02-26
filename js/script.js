@@ -35,10 +35,9 @@
 
   // ✅ EDIT THESE
   var VNS = [
-    { title: "Fresh Women Season 2", episode: 17, stage: 5 },
     { title: "Fresh Women Season 2", episode: 18, stage: 2 },
     { title: "Eternum", episode: 70, stage: 1 },
-    { title: "Race of Life", episode: 11, stage: 1 },
+    { title: "Race of Life", episode: 11, stage: 4 },
     { title: "Ripples", episode: 15, stage: 0 },
     { title: "Chasing Sunsets: Chapter 10", episode: 3, stage: 0 },
     { title: "Being a DIK: Season 3", episode: 7, stage: 1 }
