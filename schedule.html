@@ -12,13 +12,13 @@
 .schedule-container{
 max-width:1000px;
 margin:auto;
-padding:40px 20px;
+padding:26px 20px 40px;
 }
 
 .schedule-title{
 text-align:center;
 font-size:2.5rem;
-margin-bottom:10px;
+margin:10px 0 10px;
 }
 
 .schedule-subtitle{
@@ -28,32 +28,21 @@ margin-bottom:16px;
 line-height:1.4;
 }
 
-.back-link{
-display:inline-block;
-margin-top:10px;
-color:#78ffb4;
-text-decoration:none;
-font-weight:bold;
-}
-
-.back-link:hover{
-text-decoration:underline;
-}
-
 .next-stream{
 text-align:center;
-margin:0 0 32px;
+margin:0 0 26px;
 font-size:1.05rem;
 }
 
 .patreon-notice{
 text-align:center;
-margin-bottom:30px;
+margin:0 auto 26px;
 background:#181818;
 border:1px solid #333;
-border-radius:8px;
-padding:15px;
+border-radius:12px;
+padding:14px 14px;
 font-size:.95rem;
+max-width:860px;
 }
 
 .schedule-grid{
@@ -97,14 +86,14 @@ box-shadow:0 0 18px rgba(120,255,180,.15);
 
 .button{
 display:block;
-margin:20px auto;
+margin:18px auto 0;
 text-align:center;
 padding:15px 30px;
-border-radius:8px;
+border-radius:10px;
 color:white;
 text-decoration:none;
 font-weight:bold;
-width:240px;
+width:260px;
 transition:.15s ease;
 }
 
@@ -119,6 +108,7 @@ background:#FF424D;
 
 .discord-button{
 background:#5865F2;
+margin-top:12px;
 }
 
 .footnote{
@@ -133,79 +123,92 @@ opacity:.7;
 
 <body>
 
-<div class="schedule-container">
+  <!-- Use your site's standard container so nav styling works consistently -->
+  <div class="container">
 
-<h1 class="schedule-title">Live Stream Schedule</h1>
+    <!-- NAV (Schedule is active on this page) -->
+    <nav class="siteNav" aria-label="Primary">
+      <a class="siteNav__link" href="index.html">Progress</a>
+      <a class="siteNav__link" href="links.html">Game Links</a>
+      <a class="siteNav__link is-active" href="schedule.html">Schedule</a>
+      <a class="siteNav__link" href="recommend.html">Recommend</a>
+      <a class="siteNav__link" href="about.html">About</a>
+    </nav>
 
-<p class="schedule-subtitle">
-Join the Scaveng3r community live on Discord. All times Eastern.<br>
-<a class="back-link" href="index.html">← Back to Progress Tracker</a>
-</p>
+    <!-- Page content -->
+    <div class="schedule-container">
 
-<p class="next-stream">
-Next stream: <strong>Thursday @ 7:00 PM EST</strong>
-</p>
+      <h1 class="schedule-title">Live Stream Schedule</h1>
 
-<div class="patreon-notice">
-⚡ <strong>Patreon Exclusive Streams</strong><br>
-These live streams are available to Patreon members only.<br>
-Join Patreon to access the private Discord where the streams take place.
-</div>
+      <p class="schedule-subtitle">
+        Streams take place in the private Patreon Discord. All times Eastern.
+      </p>
 
-<div class="schedule-grid">
+      <p class="next-stream">
+        Next stream: <strong>Thursday @ 7:00 PM EST</strong>
+      </p>
 
-<div class="day-card off-day">
-<h3>Monday</h3>
-<p>No Stream</p>
-</div>
+      <div class="patreon-notice">
+        ⚡ <strong>Patreon Exclusive Streams</strong><br>
+        These live streams are available to Patreon members only.<br>
+        Join Patreon to access the private Discord where the streams take place.
+      </div>
 
-<div class="day-card off-day">
-<h3>Tuesday</h3>
-<p>No Stream</p>
-</div>
+      <div class="schedule-grid">
 
-<div class="day-card off-day">
-<h3>Wednesday</h3>
-<p>No Stream</p>
-</div>
+        <div class="day-card off-day">
+          <h3>Monday</h3>
+          <p>No Stream</p>
+        </div>
 
-<div class="day-card live-night">
-<h3>Thursday</h3>
-<p class="stream-game">After the Inferno</p>
-<p class="stream-time">7:00 PM EST</p>
-</div>
+        <div class="day-card off-day">
+          <h3>Tuesday</h3>
+          <p>No Stream</p>
+        </div>
 
-<div class="day-card live-night">
-<h3>Friday</h3>
-<p class="stream-game">After the Inferno</p>
-<p class="stream-time">7:00 PM EST</p>
-</div>
+        <div class="day-card off-day">
+          <h3>Wednesday</h3>
+          <p>No Stream</p>
+        </div>
 
-<div class="day-card off-day">
-<h3>Saturday</h3>
-<p>No Stream</p>
-</div>
+        <div class="day-card live-night">
+          <h3>Thursday</h3>
+          <p class="stream-game">After the Inferno</p>
+          <p class="stream-time">7:00 PM EST</p>
+        </div>
 
-<div class="day-card off-day">
-<h3>Sunday</h3>
-<p>No Stream</p>
-</div>
+        <div class="day-card live-night">
+          <h3>Friday</h3>
+          <p class="stream-game">After the Inferno</p>
+          <p class="stream-time">7:00 PM EST</p>
+        </div>
 
-</div>
+        <div class="day-card off-day">
+          <h3>Saturday</h3>
+          <p>No Stream</p>
+        </div>
 
-<a class="button patreon-button" href="YOUR_PATREON_LINK" target="_blank" rel="noopener">
-Join Patreon
-</a>
+        <div class="day-card off-day">
+          <h3>Sunday</h3>
+          <p>No Stream</p>
+        </div>
 
-<a class="button discord-button" href="https://discord.gg/XzeJR492qN" target="_blank" rel="noopener">
-Patreon Members Join Discord
-</a>
+      </div>
 
-<p class="footnote">
-Schedule subject to change. Discord announcements will always have the latest updates.
-</p>
+      <a class="button patreon-button" href="https://www.patreon.com/scaveng3r" target="_blank" rel="noopener">
+        Join Patreon
+      </a>
 
-</div>
+      <a class="button discord-button" href="https://discord.gg/XzeJR492qN" target="_blank" rel="noopener">
+        Patreon Members Join Discord
+      </a>
+
+      <p class="footnote">
+        Schedule subject to change. Discord announcements will always have the latest updates.
+      </p>
+
+    </div>
+  </div>
 
 </body>
 </html>
