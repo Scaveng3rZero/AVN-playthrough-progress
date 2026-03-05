@@ -2,139 +2,180 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scaveng3r Live Stream Schedule</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scaveng3r Live Stream Schedule</title>
+  <link rel="stylesheet" href="css/style.css">
 
-<style>
+  <style>
+    .schedule-container{
+      max-width:1000px;
+      margin:auto;
+      padding:40px 20px;
+    }
 
-.schedule-container{
-max-width:1000px;
-margin:auto;
-padding:40px 20px;
-}
+    .schedule-title{
+      text-align:center;
+      font-size:2.5rem;
+      margin-bottom:10px;
+    }
 
-.schedule-title{
-text-align:center;
-font-size:2.5rem;
-margin-bottom:10px;
-}
+    .schedule-subtitle{
+      text-align:center;
+      opacity:.85;
+      margin-bottom:16px;
+      line-height:1.4;
+    }
 
-.schedule-subtitle{
-text-align:center;
-opacity:.8;
-margin-bottom:40px;
-}
+    .back-link{
+      display:inline-block;
+      margin-top:10px;
+      color:#78ffb4; /* tweak to match your site accent */
+      text-decoration:none;
+      font-weight:bold;
+      opacity:.95;
+    }
+    .back-link:hover{ text-decoration:underline; }
 
-.schedule-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
+    .next-stream{
+      text-align:center;
+      margin:0 0 32px;
+      font-size:1.05rem;
+      opacity:.95;
+    }
 
-.day-card{
-background:#111;
-border:1px solid #333;
-border-radius:10px;
-padding:20px;
-text-align:center;
-}
+    .schedule-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+    }
 
-.day-card h3{
-margin-top:0;
-font-size:1.4rem;
-}
+    .day-card{
+      background:#111;
+      border:1px solid #333;
+      border-radius:10px;
+      padding:20px;
+      text-align:center;
+    }
 
-.stream-game{
-font-size:1.1rem;
-margin-top:10px;
-}
+    .day-card h3{
+      margin:0 0 8px;
+      font-size:1.4rem;
+      letter-spacing:.3px;
+    }
 
-.stream-time{
-opacity:.8;
-font-size:.9rem;
-margin-top:5px;
-}
+    .stream-game{
+      font-size:1.1rem;
+      margin-top:10px;
+    }
 
-.off-day{
-opacity:.5;
-}
+    .stream-time{
+      opacity:.8;
+      font-size:.95rem;
+      margin-top:6px;
+    }
 
-.discord-button{
-display:block;
-margin:40px auto;
-text-align:center;
-background:#5865F2;
-padding:15px 30px;
-border-radius:8px;
-color:white;
-text-decoration:none;
-font-weight:bold;
-width:220px;
-}
+    .off-day{
+      opacity:.55;
+    }
 
-</style>
+    .live-night{
+      border:1px solid rgba(120,255,180,.55);
+      box-shadow:0 0 18px rgba(120,255,180,.15);
+    }
 
+    .discord-button{
+      display:block;
+      margin:40px auto 0;
+      text-align:center;
+      background:#5865F2;
+      padding:15px 30px;
+      border-radius:8px;
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      width:220px;
+      transition:.15s ease;
+    }
+    .discord-button:hover{
+      filter:brightness(1.08);
+      transform:translateY(-1px);
+    }
+
+    .footnote{
+      text-align:center;
+      margin-top:18px;
+      font-size:.9rem;
+      opacity:.7;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="schedule-container">
+  <div class="schedule-container">
 
-<h1 class="schedule-title">Live Stream Schedule</h1>
+    <h1 class="schedule-title">Live Stream Schedule</h1>
 
-<p class="schedule-subtitle">
-Join the Scaveng3r community live on Discord.
-All times Eastern.
-</p>
+    <p class="schedule-subtitle">
+      Join the Scaveng3r community live on Discord. All times Eastern.<br>
+      <a class="back-link" href="index.html">← Back to Progress Tracker</a>
+    </p>
 
-<div class="schedule-grid">
+    <p class="next-stream">
+      Next stream: <strong>Thursday @ 7:00 PM EST</strong>
+    </p>
 
-<div class="day-card off-day">
-<h3>Monday</h3>
-<p>No Stream</p>
-</div>
+    <div class="schedule-grid">
 
-<div class="day-card off-day">
-<h3>Tuesday</h3>
-<p>No Stream</p>
-</div>
+      <div class="day-card off-day">
+        <h3>Monday</h3>
+        <p>No Stream</p>
+      </div>
 
-<div class="day-card off-day">
-<h3>Wednesday</h3>
-<p>No Stream</p>
-</div>
+      <div class="day-card off-day">
+        <h3>Tuesday</h3>
+        <p>No Stream</p>
+      </div>
 
-<div class="day-card">
-<h3>Thursday</h3>
-<p class="stream-game">After the Inferno</p>
-<p class="stream-time">7:00 PM EST</p>
-</div>  
+      <div class="day-card off-day">
+        <h3>Wednesday</h3>
+        <p>No Stream</p>
+      </div>
 
-<div class="day-card">
-<h3>Friday</h3>
-<p class="stream-game">After the Inferno</p>
-<p class="stream-time">7:00 PM EST</p>
-</div>
+      <div class="day-card live-night">
+        <h3>Thursday</h3>
+        <p class="stream-game">After the Inferno</p>
+        <p class="stream-time">7:00 PM EST</p>
+      </div>
 
-<div class="day-card off-day">
-<h3>Saturday</h3>
-<p>No Stream</p>
-</div>
+      <div class="day-card live-night">
+        <h3>Friday</h3>
+        <p class="stream-game">After the Inferno</p>
+        <p class="stream-time">7:00 PM EST</p>
+      </div>
 
-<div class="day-card off-day">
-<h3>Sunday</h3>
-<p>No Stream</p>
-</div>
+      <div class="day-card off-day">
+        <h3>Saturday</h3>
+        <p>No Stream</p>
+      </div>
 
-</div>
+      <div class="day-card off-day">
+        <h3>Sunday</h3>
+        <p>No Stream</p>
+      </div>
 
-<a class="discord-button" href="https://discord.gg/XzeJR492qN">
-Join the Discord
-</a>
+    </div>
 
-</div>
+    <a class="discord-button" href="https://discord.gg/XzeJR492qN" target="_blank" rel="noopener">
+      Join the Discord
+    </a>
+
+    <p class="footnote">
+      Schedule subject to change — Discord will always have the latest updates.
+    </p>
+
+  </div>
 
 </body>
 </html>
