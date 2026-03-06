@@ -123,10 +123,25 @@ opacity:.7;
 
 <body>
 
-  <!-- Use your site's standard container so nav styling works consistently -->
   <div class="container">
 
-    <!-- NAV (Schedule is active on this page) -->
+    <!-- Header -->
+    <div class="header">
+      <div class="brand">
+        <img class="icon" src="img/ScavIcon.png" alt="Scaveng3r channel logo">
+        <div class="titles">
+          <h1>Live Stream Schedule</h1>
+          <p>Private Patreon Discord stream calendar and upcoming live nights.</p>
+        </div>
+      </div>
+
+      <div class="coverWrap" aria-label="Channel cover">
+        <img src="img/ScavBanner.jpg" alt="Scaveng3r channel cover">
+        <div class="coverOverlay"></div>
+      </div>
+    </div>
+
+    <!-- NAV -->
     <nav class="siteNav" aria-label="Primary">
       <a class="siteNav__link" href="index.html">Progress</a>
       <a class="siteNav__link" href="links.html">Game Links</a>
@@ -138,7 +153,7 @@ opacity:.7;
     <!-- Page content -->
     <div class="schedule-container">
 
-      <h1 class="schedule-title">Live Stream Schedule</h1>
+      <h2 class="schedule-title">Live Stream Schedule</h2>
 
       <p class="schedule-subtitle">
         Streams take place in the private Patreon Discord. All times Eastern.
