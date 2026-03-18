@@ -62,6 +62,7 @@ var GAME_LINKS = [
   { title: "Goodbye Eternity", platform: "itch", url: "https://the-end-of-time.itch.io/goodbye-eternity-demo", tags: ["visual novel"] },
   { title: "Welcum to the City", platform: "itch", url: "https://quiquersson.itch.io/w2c-free", tags: ["visual novel"] },
   { title: "Lusty Buccaneers", platform: "itch", url: "https://nika-dev.itch.io/lusty-buccaneers", tags: ["visual novel"] },
+  { title: "Queen's Brothel", platform: "steam", url: "https://store.steampowered.com/app/1350250/Queens_Brothel/", tags: ["rpg"] },
   { title: "Ripples", platform: "itch", url: "https://jestur.itch.io/ripples", tags: ["visual novel"] }
 ];
 
