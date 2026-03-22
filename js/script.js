@@ -35,7 +35,7 @@
 
   // ✅ EDIT THESE
   var VNS = [
-    { title: "Fresh Women Season 2", episode: 20, stage: 2 },
+    { title: "Fresh Women Season 2", episode: 20, stage: 4 },
     { title: "Eternum", episode: 70, stage: 1 },
     { title: "Race of Life", episode: 13, stage: 0 },
     { title: "Ripples", episode: 15, stage: 0 },
