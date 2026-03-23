@@ -178,6 +178,10 @@
     img.className = "linkCard__image";
     img.src = item.image || "img/default.jpg"; // fallback
     img.alt = item.title;
+    img.onerror = function () {
+     this.onerror = null;
+     this.src = "img/default.jpg";
+    };
 
     // BODY
     var body = document.createElement("div");
