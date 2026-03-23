@@ -176,11 +176,11 @@
     // IMAGE (NEW)
     var img = document.createElement("img");
     img.className = "linkCard__image";
-    img.src = item.image || "img/default.jpg"; // fallback
+    img.src = item.image || "img/default.png"; // fallback
     img.alt = item.title;
     img.onerror = function () {
      this.onerror = null;
-     this.src = "img/default.jpg";
+     this.src = "img/default.png";
     };
 
     // BODY
