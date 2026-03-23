@@ -1,5 +1,5 @@
 // js/links-data.js
-// Add new entries here. The Links page can sort/render these automatically.
+// Add new entries here. Images are auto-filled below.
 
 var GAME_LINKS = [
   { title: "Acting Lessons", platform: "steam", url: "https://store.steampowered.com/app/1045520/Acting_Lessons/", tags: ["visual novel"] },
@@ -7,7 +7,7 @@ var GAME_LINKS = [
   { title: "Ark Re:Code", platform: "steam", url: "https://store.steampowered.com/app/3587140/Ark_ReCode/", tags: ["visual novel", "rpg"] },
   { title: "Being a DIK", platform: "steam", url: "https://store.steampowered.com/app/1126320/Being_a_DIK__Season_1/", tags: ["visual novel"] },
   { title: "B.E.S.T.", platform: "steam", url: "https://store.steampowered.com/app/2404390/BEST/", tags: ["visual novel"] },
-  { title: "Breeders of the Nephelym", platform: "steam", url: "https://store.steampowered.com/app/1161770/Breeders_of_the_Nephelym/", tags: ["rpg, 3D"] },
+  { title: "Breeders of the Nephelym", platform: "steam", url: "https://store.steampowered.com/app/1161770/Breeders_of_the_Nephelym/", tags: ["rpg", "3D"] },
   { title: "Catmorphosis", platform: "itch", url: "https://katwhorm.itch.io/catmorphosis", tags: ["visual novel"] },
   { title: "Chasing Sunsets", platform: "steam", url: "https://store.steampowered.com/app/1783110/Chasing_Sunsets/", tags: ["visual novel"] },
   { title: "City of Broken Dreamers", platform: "steam", url: "https://store.steampowered.com/app/1358250/City_of_Broken_Dreamers_Book_One/", tags: ["visual novel"] },
@@ -15,15 +15,13 @@ var GAME_LINKS = [
   { title: "Eternum", platform: "itch", url: "https://caribdis.itch.io/eternum", tags: ["visual novel"] },
   { title: "Fresh Women Season 2", platform: "steam", url: "https://store.steampowered.com/app/3478650/FreshWomen__Season_2/", tags: ["visual novel"] },
   { title: "Chasing Tails", platform: "steam", url: "https://store.steampowered.com/app/1555110/Chasing_Tails_A_Promise_in_the_Snow/", tags: ["visual novel"] },
-  { title: "City of Broken Dreamers", platform: "steam", url: "https://store.steampowered.com/app/1358250/City_of_Broken_Dreamers_Book_One/", tags: ["visual novel"] },
   { title: "Cockwork Industries Complete", platform: "steam", url: "https://store.steampowered.com/app/1172940/Cockwork_Industries_Complete/", tags: ["adventure"] },
   { title: "College Kings", platform: "steam", url: "https://store.steampowered.com/app/1463120/College_Kings__The_Complete_Season/", tags: ["visual novel"] },
   { title: "College Kings 2", platform: "steam", url: "https://store.steampowered.com/app/1924480/College_Kings_2__Episode_1/", tags: ["visual novel"] },
-  { title: "Crytid Park", platform: "itch", url: "https://hotpink.itch.io/cryptid-park", tags: ["pixel graphics"] },
+  { title: "Cryptid Park", platform: "itch", url: "https://hotpink.itch.io/cryptid-park", tags: ["pixel graphics"] },
   { title: "Deluded", platform: "itch", url: "https://deludedgame.itch.io/deluded", tags: ["adventure", "open world", "rpg"] },
   { title: "Devious Demigods", platform: "itch", url: "https://kraytstudios.itch.io/devious-demigods", tags: ["visual novel"] },
   { title: "Dreamland", platform: "steam", url: "https://store.steampowered.com/app/2176560/Dreamland/", tags: ["visual novel"] },
-  { title: "Eternum", platform: "itch", url: "https://caribdis.itch.io/eternum", tags: ["visual novel"] },
   { title: "Femboy Futa House", platform: "steam", url: "https://store.steampowered.com/app/3602290/FEMBOY_FUTA_HOUSE/", tags: ["visual novel", "rpg"] },
   { title: "Fetish Locator", platform: "steam", url: "https://store.steampowered.com/app/1360980/Fetish_Locator_Week_One/", tags: ["visual novel"] },
   { title: "Find Love or Die Trying", platform: "steam", url: "https://store.steampowered.com/app/1714320/Find_Love_or_Die_Trying/", tags: ["visual novel"] },
@@ -34,7 +32,7 @@ var GAME_LINKS = [
   { title: "Handyman Legend", platform: "steam", url: "https://store.steampowered.com/app/2127010/Handyman_Legend/", tags: ["pixel graphics"] },
   { title: "Hentai Hack-Her", platform: "steam", url: "https://store.steampowered.com/app/1596980/Hentai_HackHer/", tags: ["shooter"] },
   { title: "Hero by Chance", platform: "steam", url: "https://store.steampowered.com/app/1433420/Love_n_War_Hero_by_Chance/", tags: ["rpg"] },
-  { title: "Her New Memory", platform: "steam", url: "https://store.steampowered.com/app/1296770/Her_New_Memory__Hentai_Simulator/" },
+  { title: "Her New Memory", platform: "steam", url: "https://store.steampowered.com/app/1296770/Her_New_Memory__Hentai_Simulator/", tags: ["simulation"] },
   { title: "HunieCam Studio", platform: "steam", url: "https://store.steampowered.com/app/426000/HunieCam_Studio/", tags: ["management", "simulation"] },
   { title: "Innocence or Money", platform: "steam", url: "https://store.steampowered.com/app/1722270/Innocence_Or_Money__Prelude/", tags: ["visual novel"] },
   { title: "Kiara and My Ara Ara Adventure", platform: "steam", url: "https://store.steampowered.com/app/1343090/Kiara_And_My_Ara_Ara_Adventure/", tags: ["visual novel"] },
@@ -52,11 +50,11 @@ var GAME_LINKS = [
   { title: "Lust Goddess", platform: "steam", url: "https://store.steampowered.com/app/2808930/Lust_Goddess/", tags: ["card collection"] },
   { title: "Lusty Buccaneers", platform: "itch", url: "https://nika-dev.itch.io/lusty-buccaneers", tags: ["visual novel"] },
   { title: "Midnight Ride", platform: "steam", url: "https://store.steampowered.com/app/1210110/Midnight_Ride/", tags: ["visual novel"] },
-  { title: "MILF's Plaza", platform: "steam", url: "https://store.steampowered.com/app/2706300/MILFs_Plaza/" },
+  { title: "MILF's Plaza", platform: "steam", url: "https://store.steampowered.com/app/2706300/MILFs_Plaza/", tags: ["visual novel"] },
   { title: "Milfy City", platform: "steam", url: "https://store.steampowered.com/app/2544090/Milfy_City__Final_Edition/", tags: ["visual novel"] },
   { title: "Mist", platform: "itch", url: "https://395games.itch.io/mist-free", tags: ["horror", "survival", "mystery"] },
   { title: "My Pig Princess", platform: "itch", url: "https://cyancapsule.itch.io/my-pig-princess", tags: ["visual novel"] },
-  { title: "Overlewd", platform: "steam", url: "https://store.steampowered.com/app/2308870/Overlewd/" },
+  { title: "Overlewd", platform: "steam", url: "https://store.steampowered.com/app/2308870/Overlewd/", tags: ["visual novel"] },
   { title: "Parasite Echo", platform: "itch", url: "https://theaesthetik.itch.io/parasite-echo", tags: ["survival horror"] },
   { title: "Phantom Thief Effie", platform: "steam", url: "https://store.steampowered.com/app/2407550/Phantom_Thief_Effie/", tags: ["rpg"] },
   { title: "Private Dorm Manager", platform: "steam", url: "https://store.steampowered.com/app/2273420/Private_Dorm_Manager/", tags: ["pixel graphics"] },
@@ -74,3 +72,39 @@ var GAME_LINKS = [
   { title: "Welcum to the City", platform: "itch", url: "https://quiquersson.itch.io/w2c-free", tags: ["visual novel"] }
 ];
 
+/* ===== Auto-fill images ===== */
+
+var GAME_IMAGE_OVERRIDES = {
+  "Eternum": "img/games/eternum.jpg",
+  "Ripples": "img/games/ripples.jpg",
+  "Parasite Echo": "img/games/parasite-echo.jpg",
+  "Lovely Craft Piston Trap": "img/games/lovely-craft-piston-trap.jpg",
+  "Summertime Saga": "img/games/summertime-saga.jpg"
+};
+
+function getSteamAppId(url) {
+  var match = url && url.match(/\/app\/(\d+)\//i);
+  return match ? match[1] : null;
+}
+
+function getAutoImage(item) {
+  if (!item) return "img/default.jpg";
+
+  if (GAME_IMAGE_OVERRIDES[item.title]) {
+    return GAME_IMAGE_OVERRIDES[item.title];
+  }
+
+  if (item.platform === "steam") {
+    var appId = getSteamAppId(item.url);
+    if (appId) {
+      return "https://cdn.cloudflare.steamstatic.com/steam/apps/" + appId + "/header.jpg";
+    }
+  }
+
+  return "img/default.jpg";
+}
+
+GAME_LINKS = GAME_LINKS.map(function(item) {
+  item.image = item.image || getAutoImage(item);
+  return item;
+});
