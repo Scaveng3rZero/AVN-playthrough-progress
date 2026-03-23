@@ -144,10 +144,10 @@
   
   // ===== 3) Game Links render (links.html) =====
   (function linksRender(){
-  var list = byId("allLinks");
-  if (!list) return;
+  var grid = byId("allLinks");
+  if (!grid) return;
 
-  if (typeof GAME_LINKS === "undefined" || !GAME_LINKS || !GAME_LINKS.length) return;
+  if (typeof GAME_LINKS === "undefined" || !GAME_LINKS.length) return;
 
   function badgeInfo(platform){
     if (platform === "steam") return { cls: "badge--steam", text: "Steam" };
@@ -157,68 +157,68 @@
     return { cls: "", text: "Link" };
   }
 
-  // Sort A→Z by title
   var items = GAME_LINKS.slice().sort(function(a, b){
-    var at = (a.title || "").toLowerCase();
-    var bt = (b.title || "").toLowerCase();
-    if (at < bt) return -1;
-    if (at > bt) return 1;
-    return 0;
+    return (a.title || "").localeCompare(b.title || "");
   });
 
-  list.innerHTML = "";
+  grid.innerHTML = "";
 
-  for (var i=0; i<items.length; i++){
+  for (var i = 0; i < items.length; i++){
     var item = items[i];
-    if (!item || !item.title || !item.url) continue;
+    if (!item.title || !item.url) continue;
 
-    var li = document.createElement("li");
-    var a = document.createElement("a");
-    a.href = item.url;
-    a.target = "_blank";
-    a.rel = "noopener";
+    var card = document.createElement("a");
+    card.className = "linkCard";
+    card.href = item.url;
+    card.target = "_blank";
+    card.rel = "noopener";
 
-    // Top row: platform badge + title
+    // IMAGE (NEW)
+    var img = document.createElement("img");
+    img.className = "linkCard__image";
+    img.src = item.image || "img/default.jpg"; // fallback
+    img.alt = item.title;
+
+    // BODY
+    var body = document.createElement("div");
+    body.className = "linkCard__body";
+
+    var top = document.createElement("div");
+    top.className = "linkCard__top";
+
     var b = badgeInfo(item.platform);
 
     var badge = document.createElement("span");
     badge.className = "badge" + (b.cls ? " " + b.cls : "");
     badge.textContent = b.text;
 
-    var title = document.createElement("span");
-    title.className = "linkText";
+    var title = document.createElement("div");
+    title.className = "linkCard__title";
     title.textContent = item.title;
 
-    // Wrap title + tags so tags can sit underneath on their own line
-    var meta = document.createElement("span");
-    meta.className = "linkMeta";
+    top.appendChild(badge);
 
-    meta.appendChild(title);
+    body.appendChild(top);
+    body.appendChild(title);
 
-    // Tags row
+    // TAGS
     if (item.tags && item.tags.length){
-      var tagsWrap = document.createElement("span");
+      var tagsWrap = document.createElement("div");
       tagsWrap.className = "tagRow";
 
-      for (var t=0; t<item.tags.length; t++){
-        var tag = (item.tags[t] || "").toString().trim();
-        if (!tag) continue;
-
+      for (var t = 0; t < item.tags.length; t++){
         var chip = document.createElement("span");
         chip.className = "tag";
-        chip.textContent = tag;
-
+        chip.textContent = item.tags[t];
         tagsWrap.appendChild(chip);
       }
 
-      meta.appendChild(tagsWrap);
+      body.appendChild(tagsWrap);
     }
 
-    a.appendChild(badge);
-    a.appendChild(meta);
-
-    li.appendChild(a);
-    list.appendChild(li);
+    card.appendChild(img);
+    card.appendChild(body);
+    grid.appendChild(card);
   }
 })();
 
