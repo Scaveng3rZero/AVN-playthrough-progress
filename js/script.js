@@ -242,4 +242,27 @@
     search.addEventListener("input", filter);
   })();
 
+  // ===== 6) Nav Active State =====
+(function setActiveNav(){
+  var current = window.location.pathname.split("/").pop();
+
+  // Default to index.html if empty
+  if (!current) current = "index.html";
+
+  var links = document.querySelectorAll(".siteNav__link");
+
+  for (var i = 0; i < links.length; i++){
+    var href = links[i].getAttribute("href");
+    if (!href) continue;
+
+    var linkPage = href.split("/").pop();
+
+    if (linkPage === current){
+      links[i].classList.add("is-active");
+    } else {
+      links[i].classList.remove("is-active");
+    }
+  }
+})();
+
 })();
