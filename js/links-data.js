@@ -76,6 +76,7 @@ var GAME_LINKS = [
 
 var GAME_IMAGE_OVERRIDES = {
   "Eternum": "img/games/eternum.jpg",
+  "Ark Re:Code": "img/games/ark.jpg",
   "Ripples": "img/games/ripples.jpg",
   "Parasite Echo": "img/games/parasite-echo.jpg",
   "Lovely Craft Piston Trap": "img/games/lovely-craft-piston-trap.jpg",
