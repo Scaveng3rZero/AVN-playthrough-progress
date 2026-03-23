@@ -4,7 +4,7 @@
 var GAME_LINKS = [
   { title: "Acting Lessons", platform: "steam", url: "https://store.steampowered.com/app/1045520/Acting_Lessons/", tags: ["visual novel"] },
   { title: "After the Inferno", platform: "steam", url: "https://store.steampowered.com/app/2027360/After_the_Inferno/", tags: ["visual novel"] },
-  { title: "Ark Re:Code", platform: "steam", url: "https://store.steampowered.com/app/3587140/Ark_ReCode/", tags: ["visual novel", "rpg"] },
+  { title: "Ark Re:Code", platform: "steam", url: "https://store.steampowered.com/app/3587140/Ark_ReCode/", image: "img/games/ark.jpg", tags: ["visual novel", "rpg"] },
   { title: "Being a DIK", platform: "steam", url: "https://store.steampowered.com/app/1126320/Being_a_DIK__Season_1/", tags: ["visual novel"] },
   { title: "B.E.S.T.", platform: "steam", url: "https://store.steampowered.com/app/2404390/BEST/", tags: ["visual novel"] },
   { title: "Breeders of the Nephelym", platform: "steam", url: "https://store.steampowered.com/app/1161770/Breeders_of_the_Nephelym/", tags: ["rpg", "3D"] },
