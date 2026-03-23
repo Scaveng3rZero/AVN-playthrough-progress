@@ -76,6 +76,9 @@ var GAME_LINKS = [
 
 var GAME_IMAGE_OVERRIDES = {
   "Eternum": "img/games/eternum.jpg",
+  "Catmorphosis": "img/games/catmorph.png",
+  "Cozy Cafe": "img/games/cozy.jpg",
+  "Cryptid Park": "img/games/crypid.gif",
   "Ark Re:Code": "img/games/ark.jpg",
   "Ripples": "img/games/ripples.jpg",
   "Parasite Echo": "img/games/parasite-echo.jpg",
