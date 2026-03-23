@@ -88,7 +88,7 @@ function getSteamAppId(url) {
 }
 
 function getAutoImage(item) {
-  if (!item) return "img/default.jpg";
+  if (!item) return "img/default.png";
 
   if (GAME_IMAGE_OVERRIDES[item.title]) {
     return GAME_IMAGE_OVERRIDES[item.title];
