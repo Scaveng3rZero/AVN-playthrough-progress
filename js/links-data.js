@@ -79,6 +79,7 @@ var GAME_IMAGE_OVERRIDES = {
   "Catmorphosis": "img/games/catmorph.png",
   "Cozy Cafe": "img/games/cozy.jpg",
   "Cryptid Park": "img/games/crypid.gif",
+  "Deluded": "img/games/deluded.jpg",
   "Ark Re:Code": "img/games/ark.jpg",
   "Ripples": "img/games/ripples.jpg",
   "Parasite Echo": "img/games/parasite-echo.jpg",
