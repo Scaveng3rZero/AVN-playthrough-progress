@@ -313,7 +313,7 @@ a {
 }
 
 .miniCard {
-  padding: 18px;
+  padding: 16px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.10);
   background: rgba(255,255,255,0.05);
@@ -336,6 +336,11 @@ a {
   opacity: 0.86;
   line-height: 1.5;
   font-size: 14px;
+}
+
+.miniCard:first-child {
+  border-color: rgba(155,232,178,0.35);
+  background: rgba(155,232,178,0.08);
 }
 
 /* Quick links */
@@ -657,6 +662,7 @@ a {
   margin: 12px 0;
   border-radius: 10px;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .videoEmbed iframe {
@@ -669,6 +675,24 @@ a {
 
 .miniCard:hover .videoEmbed iframe {
   transform: scale(1.02);
+}
+
+.videoEmbed::after {
+  content: "▶";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  color: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.miniCard:hover .videoEmbed::after {
+  opacity: 1;
 }
 
 /* ===== Accessibility ===== */
