@@ -21,9 +21,8 @@
     if (year) year.textContent = new Date().getFullYear();
   })();
 
-  // ===== 2) Progress Page (index.html) =====
+  // ===== 2) Progress Page render =====
 
-  // Stages (0..5)
   var STAGES = [
     "Not Started",
     "Recorded",
@@ -33,7 +32,7 @@
     "Published to YouTube"
   ];
 
-  // ✅ EDIT THESE
+  // Edit these
   var VNS = [
     { title: "Fresh Women Season 2", episode: 20, stage: 4 },
     { title: "Eternum", episode: 70, stage: 1 },
@@ -61,7 +60,7 @@
     top.appendChild(stageText);
 
     var labels = makeEl("div", "labels");
-    for (var i=0; i<STAGES.length; i++){
+    for (var i = 0; i < STAGES.length; i++){
       var label = makeEl("span", "", STAGES[i]);
 
       if (i < safeStage) {
@@ -74,7 +73,7 @@
     }
 
     var bar = makeEl("div", "bar");
-    for (var j=0; j<STAGES.length; j++){
+    for (var j = 0; j < STAGES.length; j++){
       var seg = makeEl("div", "seg");
       if (j <= safeStage) seg.className += " filled";
       if (j === safeStage) seg.className += " current";
@@ -88,156 +87,149 @@
     if (!isLast){
       wrapper.appendChild(makeEl("div", "rule"));
     }
+
     return wrapper;
   }
 
-  // Render VNs only if this page has #root
   (function renderProgress(){
     var root = byId("root");
     if (!root) return;
 
     root.innerHTML = "";
 
-    for (var k=0; k<VNS.length; k++){
+    for (var k = 0; k < VNS.length; k++){
       root.appendChild(makeVNRow(VNS[k], k === VNS.length - 1));
     }
   })();
 
-  // ===== 5) Recommend page: public "confirmed" list =====
-(function receivedPublicRender(){
-  var list = byId("receivedPublic");
-  if (!list) return;
+  // ===== 3) Recommend page: public confirmed list =====
+  (function receivedPublicRender(){
+    var list = byId("receivedPublic");
+    if (!list) return;
 
-  if (typeof RECEIVED_RECS === "undefined" || !RECEIVED_RECS || !RECEIVED_RECS.length){
-    // Optional empty state
-    list.innerHTML = "<li style='opacity:.75;'>No confirmed recommendations posted yet.</li>";
-    return;
-  }
-
-  // Newest first (you add to top), but we’ll still clean/sort by date if you want later.
-  list.innerHTML = "";
-
-  for (var i=0; i<RECEIVED_RECS.length; i++){
-    var item = RECEIVED_RECS[i];
-    if (!item || !item.title) continue;
-
-    var li = document.createElement("li");
-    var a = document.createElement("a");
-    a.href = "javascript:void(0)";
-    a.style.cursor = "default";
-
-    var badge = document.createElement("span");
-    badge.className = "badge";
-    badge.textContent = "Confirmed";
-
-    var text = document.createElement("span");
-    text.className = "linkText";
-    text.textContent = item.title + (item.when ? (" — " + item.when) : "");
-
-    a.appendChild(badge);
-    a.appendChild(text);
-    li.appendChild(a);
-    list.appendChild(li);
-  }
-})();
-
-  
-  // ===== 3) Game Links render (links.html) =====
-  (function linksRender(){
-  var grid = byId("allLinks");
-  if (!grid) return;
-
-  if (typeof GAME_LINKS === "undefined" || !GAME_LINKS.length) return;
-
-  function badgeInfo(platform){
-    if (platform === "steam") return { cls: "badge--steam", text: "Steam" };
-    if (platform === "itch") return { cls: "badge--itch", text: "itch.io" };
-    if (platform === "patreon") return { cls: "badge--patreon", text: "Dev Patreon" };
-    if (platform === "dev") return { cls: "badge--dev", text: "Dev Site" };
-    return { cls: "", text: "Link" };
-  }
-
-  var items = GAME_LINKS.slice().sort(function(a, b){
-    return (a.title || "").localeCompare(b.title || "");
-  });
-
-  grid.innerHTML = "";
-
-  for (var i = 0; i < items.length; i++){
-    var item = items[i];
-    if (!item.title || !item.url) continue;
-
-    var card = document.createElement("a");
-    card.className = "linkCard";
-    card.href = item.url;
-    card.target = "_blank";
-    card.rel = "noopener";
-
-    // IMAGE (NEW)
-    var img = document.createElement("img");
-    img.className = "linkCard__image";
-    img.src = item.image || "img/default.png"; // fallback
-    img.alt = item.title;
-    img.onerror = function () {
-     this.onerror = null;
-     this.src = "img/default.png";
-    };
-
-    // BODY
-    var body = document.createElement("div");
-    body.className = "linkCard__body";
-
-    var top = document.createElement("div");
-    top.className = "linkCard__top";
-
-    var b = badgeInfo(item.platform);
-
-    var badge = document.createElement("span");
-    badge.className = "badge" + (b.cls ? " " + b.cls : "");
-    badge.textContent = b.text;
-
-    var title = document.createElement("div");
-    title.className = "linkCard__title";
-    title.textContent = item.title;
-
-    top.appendChild(badge);
-
-    body.appendChild(top);
-    body.appendChild(title);
-
-    // TAGS
-    if (item.tags && item.tags.length){
-      var tagsWrap = document.createElement("div");
-      tagsWrap.className = "tagRow";
-
-      for (var t = 0; t < item.tags.length; t++){
-        var chip = document.createElement("span");
-        chip.className = "tag";
-        chip.textContent = item.tags[t];
-        tagsWrap.appendChild(chip);
-      }
-
-      body.appendChild(tagsWrap);
+    if (typeof RECEIVED_RECS === "undefined" || !RECEIVED_RECS || !RECEIVED_RECS.length){
+      list.innerHTML = "<li style='opacity:.75;'>No confirmed recommendations posted yet.</li>";
+      return;
     }
 
-    card.appendChild(img);
-    card.appendChild(body);
-    grid.appendChild(card);
-  }
-})();
+    list.innerHTML = "";
 
+    for (var i = 0; i < RECEIVED_RECS.length; i++){
+      var item = RECEIVED_RECS[i];
+      if (!item || !item.title) continue;
 
-  // ===== 4) Game Links page search (links.html) =====
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "javascript:void(0)";
+      a.style.cursor = "default";
+
+      var badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = "Confirmed";
+
+      var text = document.createElement("span");
+      text.className = "linkText";
+      text.textContent = item.title + (item.when ? (" — " + item.when) : "");
+
+      a.appendChild(badge);
+      a.appendChild(text);
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+  })();
+
+  // ===== 4) Game Links render (links.html) =====
+  (function linksRender(){
+    var grid = byId("allLinks");
+    if (!grid) return;
+
+    if (typeof GAME_LINKS === "undefined" || !GAME_LINKS.length) return;
+
+    function badgeInfo(platform){
+      if (platform === "steam") return { cls: "badge--steam", text: "Steam" };
+      if (platform === "itch") return { cls: "badge--itch", text: "itch.io" };
+      if (platform === "patreon") return { cls: "badge--patreon", text: "Dev Patreon" };
+      if (platform === "dev") return { cls: "badge--dev", text: "Dev Site" };
+      return { cls: "", text: "Link" };
+    }
+
+    var items = GAME_LINKS.slice().sort(function(a, b){
+      return (a.title || "").localeCompare(b.title || "");
+    });
+
+    grid.innerHTML = "";
+
+    for (var i = 0; i < items.length; i++){
+      var item = items[i];
+      if (!item.title || !item.url) continue;
+
+      var card = document.createElement("a");
+      card.className = "linkCard";
+      card.href = item.url;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+
+      var img = document.createElement("img");
+      img.className = "linkCard__image";
+      img.src = item.image || "img/default.jpg";
+      img.alt = item.title;
+      img.onerror = function () {
+        this.onerror = null;
+        this.src = "img/default.jpg";
+      };
+
+      var body = document.createElement("div");
+      body.className = "linkCard__body";
+
+      var top = document.createElement("div");
+      top.className = "linkCard__top";
+
+      var b = badgeInfo(item.platform);
+
+      var badge = document.createElement("span");
+      badge.className = "badge" + (b.cls ? " " + b.cls : "");
+      badge.textContent = b.text;
+
+      var title = document.createElement("div");
+      title.className = "linkCard__title";
+      title.textContent = item.title;
+
+      top.appendChild(badge);
+      top.appendChild(title);
+
+      body.appendChild(top);
+
+      if (item.tags && item.tags.length){
+        var tagsWrap = document.createElement("div");
+        tagsWrap.className = "tagRow";
+
+        for (var t = 0; t < item.tags.length; t++){
+          var chip = document.createElement("span");
+          chip.className = "tag";
+          chip.textContent = item.tags[t];
+          tagsWrap.appendChild(chip);
+        }
+
+        body.appendChild(tagsWrap);
+      }
+
+      card.appendChild(img);
+      card.appendChild(body);
+      grid.appendChild(card);
+    }
+  })();
+
+  // ===== 5) Game Links page search (links.html) =====
   (function linksSearch(){
     var search = byId("linkSearch");
     var list = byId("allLinks");
     if (!search || !list) return;
 
-    var items = list.getElementsByTagName("li");
-
     function filter(){
       var q = (search.value || "").toLowerCase();
-      for (var i=0; i<items.length; i++){
+      var items = list.getElementsByClassName("linkCard");
+
+      for (var i = 0; i < items.length; i++){
         var txt = (items[i].textContent || "").toLowerCase();
         items[i].style.display = txt.indexOf(q) !== -1 ? "" : "none";
       }
@@ -247,26 +239,25 @@
   })();
 
   // ===== 6) Nav Active State =====
-(function setActiveNav(){
-  var current = window.location.pathname.split("/").pop();
+  (function setActiveNav(){
+    var current = window.location.pathname.split("/").pop();
 
-  // Default to index.html if empty
-  if (!current) current = "index.html";
+    if (!current) current = "index.html";
 
-  var links = document.querySelectorAll(".siteNav__link");
+    var links = document.querySelectorAll(".siteNav__link");
 
-  for (var i = 0; i < links.length; i++){
-    var href = links[i].getAttribute("href");
-    if (!href) continue;
+    for (var i = 0; i < links.length; i++){
+      var href = links[i].getAttribute("href");
+      if (!href) continue;
 
-    var linkPage = href.split("/").pop();
+      var linkPage = href.split("/").pop();
 
-    if (linkPage === current){
-      links[i].classList.add("is-active");
-    } else {
-      links[i].classList.remove("is-active");
+      if (linkPage === current){
+        links[i].classList.add("is-active");
+      } else {
+        links[i].classList.remove("is-active");
+      }
     }
-  }
-})();
+  })();
 
 })();
