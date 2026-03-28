@@ -115,6 +115,9 @@ var GAME_LINKS = [
     platform: "itch",
     url: "https://caribdis.itch.io/eternum",
     tags: ["visual novel"],
+    featured: true,
+    priority: 3,
+    description: "Fan-favorite visual novel with memorable characters and strong channel demand.",
     watchUrl: "https://www.youtube.com/results?search_query=scaveng3r+eternum"
   },
   {
@@ -147,6 +150,7 @@ var GAME_LINKS = [
     url: "https://store.steampowered.com/app/3478650/FreshWomen__Season_2/",
     tags: ["visual novel"],
     featured: true,
+    priority: 1,
     description: "Story-heavy campus visual novel and one of the main ongoing channel series.",
     watchUrl: "https://www.youtube.com/results?search_query=scaveng3r+fresh+women+season+2"
   },
@@ -239,6 +243,9 @@ var GAME_LINKS = [
     platform: "itch",
     url: "https://hellocrime.itch.io/lovelycraft",
     tags: ["simulator"],
+    featured: true,
+    priority: 5,
+    description: "Adult Minecraft parody with a weird, memorable hook and strong novelty factor.",
     watchUrl: "https://www.youtube.com/results?search_query=scaveng3r+lovely+craft+piston+trap"
   },
   {
@@ -330,6 +337,9 @@ var GAME_LINKS = [
     platform: "itch",
     url: "https://theaesthetik.itch.io/parasite-echo",
     tags: ["survival horror"],
+    featured: true,
+    priority: 4,
+    description: "Stylish survival horror project with a darker tone than the usual channel lineup.",
     watchUrl: "https://www.youtube.com/results?search_query=scaveng3r+parasite+echo"
   },
   {
@@ -362,6 +372,7 @@ var GAME_LINKS = [
     url: "https://store.steampowered.com/app/2454570/Race_of_Life__Act_1/",
     tags: ["visual novel"],
     featured: true,
+    priority: 2,
     description: "High-stakes visual novel featured on the channel with strong story momentum.",
     watchUrl: "https://www.youtube.com/results?search_query=scaveng3r+race+of+life"
   },
@@ -399,7 +410,11 @@ var GAME_LINKS = [
     title: "Summertime Saga",
     platform: "dev",
     url: "https://summertimesaga.com/download",
-    tags: ["visual novel"]
+    tags: ["visual novel"],
+    featured: true,
+    priority: 6,
+    description: "Long-running visual novel project with its own standalone download site.",
+    watchUrl: "https://www.youtube.com/results?search_query=scaveng3r+summertime+saga"
   },
   {
     title: "Treasure of Nadia",
@@ -510,6 +525,7 @@ GAME_LINKS = GAME_LINKS.map(function(item) {
     image: item.image || getAutoImage(item),
     description: item.description || "",
     watchUrl: item.watchUrl || "",
-    featured: Boolean(item.featured)
+    featured: Boolean(item.featured),
+    priority: Number.isFinite(item.priority) ? item.priority : 999
   };
 });
