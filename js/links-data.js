@@ -468,9 +468,9 @@ var GAME_IMAGE_OVERRIDES = {
   "Cozy Cafe": "img/games/cozy.jpg",
   "Cryptid Park": "img/games/cryptid.gif",
   "Deluded": "img/games/deluded.jpg",
-  "Eternum": "img/games/eternum.jpg",
-  "Lovely Craft Piston Trap": "img/games/lovely-craft-piston-trap.jpg",
-  "Parasite Echo": "img/games/parasite-echo.jpg",
+  "Eternum": "img/games/eternum.png",
+  "Lovely Craft Piston Trap": "img/games/lovely-craft.jpg",
+  "Parasite Echo": "img/games/parasite-echo.png",
   "Ripples": "img/games/ripples.jpg",
   "Summertime Saga": "img/games/summertime-saga.jpg"
 };
