@@ -12,8 +12,6 @@ var GAME_LINKS = [
   { title: "Chasing Sunsets", platform: "steam", url: "https://store.steampowered.com/app/1783110/Chasing_Sunsets/", tags: ["visual novel"] },
   { title: "City of Broken Dreamers", platform: "steam", url: "https://store.steampowered.com/app/1358250/City_of_Broken_Dreamers_Book_One/", tags: ["visual novel"] },
   { title: "Cozy Cafe", platform: "itch", url: "https://cosy-creator.itch.io/cosy-cafe", tags: ["visual novel"] },
-  { title: "Eternum", platform: "itch", url: "https://caribdis.itch.io/eternum", tags: ["visual novel"] },
-  { title: "Fresh Women Season 2", platform: "steam", url: "https://store.steampowered.com/app/3478650/FreshWomen__Season_2/", tags: ["visual novel"] },
   { title: "Chasing Tails", platform: "steam", url: "https://store.steampowered.com/app/1555110/Chasing_Tails_A_Promise_in_the_Snow/", tags: ["visual novel"] },
   { title: "Cockwork Industries Complete", platform: "steam", url: "https://store.steampowered.com/app/1172940/Cockwork_Industries_Complete/", tags: ["adventure"] },
   { title: "College Kings", platform: "steam", url: "https://store.steampowered.com/app/1463120/College_Kings__The_Complete_Season/", tags: ["visual novel"] },
@@ -22,10 +20,12 @@ var GAME_LINKS = [
   { title: "Deluded", platform: "itch", url: "https://deludedgame.itch.io/deluded", tags: ["adventure", "open world", "rpg"] },
   { title: "Devious Demigods", platform: "itch", url: "https://kraytstudios.itch.io/devious-demigods", tags: ["visual novel"] },
   { title: "Dreamland", platform: "steam", url: "https://store.steampowered.com/app/2176560/Dreamland/", tags: ["visual novel"] },
+  { title: "Eternum", platform: "itch", url: "https://caribdis.itch.io/eternum", tags: ["visual novel"] },
   { title: "Femboy Futa House", platform: "steam", url: "https://store.steampowered.com/app/3602290/FEMBOY_FUTA_HOUSE/", tags: ["visual novel", "rpg"] },
   { title: "Fetish Locator", platform: "steam", url: "https://store.steampowered.com/app/1360980/Fetish_Locator_Week_One/", tags: ["visual novel"] },
   { title: "Find Love or Die Trying", platform: "steam", url: "https://store.steampowered.com/app/1714320/Find_Love_or_Die_Trying/", tags: ["visual novel"] },
   { title: "Fresh Women", platform: "steam", url: "https://store.steampowered.com/app/1350650/FreshWomen__Season_1/", tags: ["visual novel"] },
+  { title: "Fresh Women Season 2", platform: "steam", url: "https://store.steampowered.com/app/3478650/FreshWomen__Season_2/", tags: ["visual novel"] },
   { title: "Futanari di Funghi", platform: "steam", url: "https://store.steampowered.com/app/2496640/Futanari_di_Funghi/", tags: ["pixel graphics"] },
   { title: "Goodbye Eternity", platform: "itch", url: "https://the-end-of-time.itch.io/goodbye-eternity-demo", tags: ["visual novel"] },
   { title: "Gray", platform: "steam", url: "https://store.steampowered.com/app/1034700/GRAY/", tags: ["visual novel", "adventure"] },
@@ -69,7 +69,11 @@ var GAME_LINKS = [
   { title: "Summertime Saga", platform: "dev", url: "https://summertimesaga.com/download", tags: ["visual novel"] },
   { title: "Treasure of Nadia", platform: "steam", url: "https://store.steampowered.com/app/1737100/Treasure_of_Nadia/", tags: ["adventure"] },
   { title: "U4iA", platform: "steam", url: "https://store.steampowered.com/app/2890150/U4iA__Season_1/", tags: ["visual novel"] },
-  { title: "Welcum to the City", platform: "itch", url: "https://quiquersson.itch.io/w2c-free", tags: ["visual novel"] }
+  { title: "Village Rhapsody", platform: "steam", url: "https://store.steampowered.com/app/2109460/VillageRhapsody/", tags: ["farming sim, rpg"] },
+  { title: "Welcum to the City", platform: "itch", url: "https://quiquersson.itch.io/w2c-free", tags: ["visual novel"] },
+  { title: "Wicked Island", platform: "steam", url: "https://store.steampowered.com/app/1943730/Wicked_Island/", tags: ["visual novel"] },
+  { title: "Women's Prison", platform: "steam", url: "https://store.steampowered.com/app/1527980/Womans_Prison/", tags: ["visual novel"] },
+  { title: "Yes, Master!", platform: "steam", url: "https://store.steampowered.com/app/1090900/Yes_Master/", tags: ["visual novel"] }
 ];
 
 /* ===== Auto-fill images ===== */
