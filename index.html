@@ -5,6 +5,209 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Scaveng3r VN Hub</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-specific polish for redesigned featured section -->
+  <style>
+    .sectionHeader--split {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .sectionHeader__text {
+      max-width: 760px;
+    }
+
+    .sectionKicker {
+      margin: 0 0 6px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(155,232,178,0.88);
+    }
+
+    .sectionAction {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .sectionAction:hover {
+      transform: translateY(-1px);
+      border-color: rgba(155,232,178,0.35);
+      background: rgba(155,232,178,0.08);
+    }
+
+    .featuredShelf {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .storeCard {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .storeCard:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155,232,178,0.35);
+      background: rgba(155,232,178,0.08);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.24);
+    }
+
+    .storeCard__media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .storeCard__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .storeCard:hover .storeCard__media img {
+      transform: scale(1.03);
+    }
+
+    .storeCard__badgeBar {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .storeCard__badgeBar .badge {
+      backdrop-filter: blur(6px);
+      background: rgba(11,12,15,0.62);
+      color: rgba(255,255,255,0.92);
+    }
+
+    .storeCard__body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 16px;
+      flex: 1 1 auto;
+    }
+
+    .storeCard__title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .storeCard__desc {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.86;
+    }
+
+    .storeCard__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .storeCard__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .storeBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .storeBtn:hover {
+      transform: translateY(-1px);
+    }
+
+    .storeBtn--primary {
+      color: #fff;
+      border: 1px solid rgba(120,180,255,0.35);
+      background: rgba(120,180,255,0.14);
+    }
+
+    .storeBtn--primary:hover {
+      border-color: rgba(120,180,255,0.50);
+      background: rgba(120,180,255,0.20);
+    }
+
+    .storeBtn--ghost {
+      color: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .storeBtn--ghost:hover {
+      border-color: rgba(155,232,178,0.35);
+      background: rgba(155,232,178,0.08);
+    }
+
+    .featuredEmpty {
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 720px) {
+      .sectionHeader--split {
+        align-items: stretch;
+      }
+
+      .sectionAction {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -51,39 +254,23 @@
       </div>
     </section>
 
-    <!-- Featured -->
-    <section class="homeSection">
-      <div class="sectionHeader">
-        <h2>Featured Games & Visual Novels</h2>
+    <!-- Featured storefront shelf -->
+    <section class="homeSection" aria-labelledby="featured-store-title">
+      <div class="sectionHeader sectionHeader--split">
+        <div class="sectionHeader__text">
+          <p class="sectionKicker">Discover on Steam</p>
+          <h2 id="featured-store-title">Featured Games &amp; Visual Novels</h2>
+          <p>
+            Browse a rotating shelf of Steam games featured on the channel.
+            These cards auto-fill from your game data and link directly to the store pages.
+          </p>
+        </div>
+
+        <a class="sectionAction" href="links.html">Browse all game links</a>
       </div>
 
-      <div class="cardGrid">
-        <article class="featureCard">
-          <img src="img/games/fresh-women.jpg" alt="Fresh Women Season 2 cover art">
-          <div class="featureCard__body">
-            <h3>Fresh Women Season 2</h3>
-            <p>One of the main ongoing series on the channel, with story-heavy episodes and major character moments.</p>
-            <a href="progress.html">Check progress</a>
-          </div>
-        </article>
-
-        <article class="featureCard">
-          <img src="img/games/race-of-life.jpg" alt="Race of Life cover art">
-          <div class="featureCard__body">
-            <h3>Race of Life</h3>
-            <p>A featured playthrough with emotional story beats, high stakes, and ongoing channel interest.</p>
-            <a href="progress.html">Check progress</a>
-          </div>
-        </article>
-
-        <article class="featureCard">
-          <img src="img/games/eternum.jpg" alt="Eternum cover art">
-          <div class="featureCard__body">
-            <h3>Eternum</h3>
-            <p>A fan-favorite series with strong characters, memorable moments, and continued channel demand.</p>
-            <a href="progress.html">Check progress</a>
-          </div>
-        </article>
+      <div id="featuredShelf" class="featuredShelf" aria-live="polite">
+        <div class="featuredEmpty">Loading featured Steam titles...</div>
       </div>
     </section>
 
@@ -95,45 +282,47 @@
       </div>
 
       <div class="miniGrid">
-       <article class="miniCard">
-  <h3>
-  <a href="https://www.youtube.com/watch?v=XtU7BJXCuo4">
-    Newest Upload
-  </a>
-</h3>
+        <article class="miniCard">
+          <h3>
+            <a href="https://www.youtube.com/watch?v=XtU7BJXCuo4" target="_blank" rel="noopener noreferrer">
+              Newest Upload
+            </a>
+          </h3>
 
-  <div class="videoEmbed">
-    <iframe
-  src="https://www.youtube.com/embed/XtU7BJXCuo4"
-  title="Newest Upload"
-  loading="lazy"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen>
-</iframe>
-  </div>
+          <div class="videoEmbed">
+            <iframe
+              src="https://www.youtube.com/embed/XtU7BJXCuo4"
+              title="Newest Upload"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
 
-  <p>Fresh drop — latest episode on the channel.</p>
-</article>
+          <p>Fresh drop — latest episode on the channel.</p>
+        </article>
 
         <article class="miniCard">
-  <h3>
-  <a href="https://www.youtube.com/watch?v=C7WmdP-AuuI&list=PLwtKkIkmXeFzJsqNxgO5HcNE-zOiQiX0t&index=20">
-    Newest Series
-  </a>
-</h3>
+          <h3>
+            <a href="https://www.youtube.com/watch?v=C7WmdP-AuuI&list=PLwtKkIkmXeFzJsqNxgO5HcNE-zOiQiX0t&index=20" target="_blank" rel="noopener noreferrer">
+              Newest Series
+            </a>
+          </h3>
 
-  <div class="videoEmbed">
-    <iframe
-  src="https://www.youtube.com/embed/videoseries?list=PLwtKkIkmXeFzJsqNxgO5HcNE-zOiQiX0t"
-  title="Newest Series Playlist"
-  loading="lazy"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen>
-</iframe>
-  </div>
+          <div class="videoEmbed">
+            <iframe
+              src="https://www.youtube.com/embed/C7WmdP-AuuI"
+              title="Newest Series"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
 
-  <p>New series just hit the channel — jump in from the start.</p>
-</article>
+          <p>New series just hit the channel — jump in from the start.</p>
+        </article>
 
         <article class="miniCard">
           <h3>Latest Site Update</h3>
@@ -183,5 +372,172 @@
     </section>
 
   </div>
+
+  <!-- Your existing game data -->
+  <script src="js/links-data.js"></script>
+
+  <script>
+    /*
+      Expected to work with common GAME_LINKS formats, including:
+      1) { title, url, platform }
+      2) { title, url, platforms: ["steam"] }
+      3) { title, links: { steam: "..." } }
+      4) Optional image overrides via GAME_IMAGE_OVERRIDES
+      5) Optional description fields such as description, blurb, summary
+    */
+
+    const FEATURED_STEAM_TITLES = [
+      "Fresh Women Season 2",
+      "Race of Life",
+      "Eternum",
+      "Parasite Echo",
+      "Lovely Craft Piston Trap",
+      "Summertime Saga"
+    ];
+
+    const DEFAULT_FEATURED_IMAGE = "img/games/default-featured.jpg";
+
+    function getSteamUrl(item) {
+      if (!item || typeof item !== "object") return "";
+
+      if (item.links && typeof item.links.steam === "string") {
+        return item.links.steam;
+      }
+
+      if (typeof item.url === "string" && item.url.includes("store.steampowered.com")) {
+        return item.url;
+      }
+
+      if (Array.isArray(item.urls)) {
+        const match = item.urls.find(u => typeof u === "string" && u.includes("store.steampowered.com"));
+        if (match) return match;
+      }
+
+      return "";
+    }
+
+    function isSteamItem(item) {
+      const steamUrl = getSteamUrl(item);
+      if (steamUrl) return true;
+
+      const platform = (item.platform || "").toString().toLowerCase();
+      if (platform === "steam") return true;
+
+      if (Array.isArray(item.platforms)) {
+        return item.platforms.some(p => String(p).toLowerCase() === "steam");
+      }
+
+      return false;
+    }
+
+    function getImageForItem(item) {
+      const overrides = window.GAME_IMAGE_OVERRIDES || {};
+      const fromOverride = overrides[item.title];
+      if (fromOverride) return fromOverride;
+
+      if (typeof item.image === "string" && item.image.trim()) return item.image;
+      if (typeof item.img === "string" && item.img.trim()) return item.img;
+      if (typeof item.cover === "string" && item.cover.trim()) return item.cover;
+
+      return DEFAULT_FEATURED_IMAGE;
+    }
+
+    function getDescriptionForItem(item) {
+      return (
+        item.description ||
+        item.blurb ||
+        item.summary ||
+        "Featured on the channel — check out the store page and see what this title is about."
+      );
+    }
+
+    function getWatchUrl(item) {
+      return item.watchUrl || item.youtube || item.playlist || "";
+    }
+
+    function sortFeatured(items) {
+      const titleRank = new Map(FEATURED_STEAM_TITLES.map((title, index) => [title.toLowerCase(), index]));
+
+      return [...items].sort((a, b) => {
+        const aRank = titleRank.has(a.title.toLowerCase()) ? titleRank.get(a.title.toLowerCase()) : 999;
+        const bRank = titleRank.has(b.title.toLowerCase()) ? titleRank.get(b.title.toLowerCase()) : 999;
+
+        if (aRank !== bRank) return aRank - bRank;
+        return a.title.localeCompare(b.title);
+      });
+    }
+
+    function buildStoreCard(item) {
+      const steamUrl = getSteamUrl(item);
+      const watchUrl = getWatchUrl(item);
+      const image = getImageForItem(item);
+      const description = getDescriptionForItem(item);
+
+      const card = document.createElement("article");
+      card.className = "storeCard";
+
+      card.innerHTML = `
+        <div class="storeCard__media">
+          <img src="${image}" alt="${item.title} cover art" loading="lazy">
+          <div class="storeCard__badgeBar">
+            <span class="badge badge--steam">Steam</span>
+            <span class="badge">Featured</span>
+          </div>
+        </div>
+
+        <div class="storeCard__body">
+          <h3 class="storeCard__title">${item.title}</h3>
+
+          <div class="storeCard__meta">
+            <span class="badge badge--steam">Store Page</span>
+          </div>
+
+          <p class="storeCard__desc">${description}</p>
+
+          <div class="storeCard__actions">
+            <a class="storeBtn storeBtn--primary" href="${steamUrl}" target="_blank" rel="noopener noreferrer">
+              View on Steam
+            </a>
+            ${
+              watchUrl
+                ? `<a class="storeBtn storeBtn--ghost" href="${watchUrl}" target="_blank" rel="noopener noreferrer">Watch on Channel</a>`
+                : `<a class="storeBtn storeBtn--ghost" href="links.html">More Links</a>`
+            }
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function renderFeaturedSteamShelf() {
+      const shelf = document.getElementById("featuredShelf");
+      if (!shelf) return;
+
+      const gameLinks = Array.isArray(window.GAME_LINKS) ? window.GAME_LINKS : [];
+
+      const steamItems = gameLinks.filter(item => item && item.title && isSteamItem(item));
+      const ordered = sortFeatured(steamItems);
+      const featured = ordered.slice(0, 6);
+
+      shelf.innerHTML = "";
+
+      if (!featured.length) {
+        shelf.innerHTML = `
+          <div class="featuredEmpty">
+            No Steam titles were found in <code>GAME_LINKS</code> yet.
+            Add Steam store URLs in <code>js/links-data.js</code> and this section will auto-fill.
+          </div>
+        `;
+        return;
+      }
+
+      featured.forEach(item => {
+        shelf.appendChild(buildStoreCard(item));
+      });
+    }
+
+    renderFeaturedSteamShelf();
+  </script>
 </body>
 </html>
