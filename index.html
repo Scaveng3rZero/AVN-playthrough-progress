@@ -6,7 +6,6 @@
   <title>Scaveng3r VN Hub</title>
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Page-specific polish for redesigned featured section -->
   <style>
     .sectionHeader--split {
       display: flex;
@@ -25,7 +24,7 @@
       font-size: 12px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(155,232,178,0.88);
+      color: rgba(155, 232, 178, 0.88);
     }
 
     .sectionAction {
@@ -63,9 +62,7 @@
       min-height: 100%;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.10);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      text-decoration: none;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
       color: inherit;
       transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
     }
@@ -213,7 +210,6 @@
 <body>
   <div class="container">
 
-    <!-- Header -->
     <header class="header">
       <div class="brand">
         <img class="icon" src="img/ScavIcon.png" alt="Scaveng3r channel icon">
@@ -229,7 +225,6 @@
       </div>
     </header>
 
-    <!-- Nav -->
     <nav class="siteNav" aria-label="Primary">
       <a class="siteNav__link is-active" href="index.html">Home</a>
       <a class="siteNav__link" href="progress.html">Progress</a>
@@ -239,7 +234,6 @@
       <a class="siteNav__link" href="about.html">About</a>
     </nav>
 
-    <!-- Hero intro -->
     <section class="homeHero">
       <div class="homeHero__text">
         <h2>Welcome to the channel hub</h2>
@@ -254,15 +248,14 @@
       </div>
     </section>
 
-    <!-- Featured storefront shelf -->
     <section class="homeSection" aria-labelledby="featured-store-title">
       <div class="sectionHeader sectionHeader--split">
         <div class="sectionHeader__text">
-          <p class="sectionKicker">Discover on Steam</p>
+          <p class="sectionKicker">Featured Picks</p>
           <h2 id="featured-store-title">Featured Games &amp; Visual Novels</h2>
           <p>
-            Browse a rotating shelf of Steam games featured on the channel.
-            These cards auto-fill from your game data and link directly to the store pages.
+            Browse a rotating shelf of games featured on the channel.
+            These cards auto-fill from your game data and link directly to their store or download pages.
           </p>
         </div>
 
@@ -270,11 +263,10 @@
       </div>
 
       <div id="featuredShelf" class="featuredShelf" aria-live="polite">
-        <div class="featuredEmpty">Loading featured Steam titles...</div>
+        <div class="featuredEmpty">Loading featured titles...</div>
       </div>
     </section>
 
-    <!-- New -->
     <section class="homeSection">
       <div class="sectionHeader">
         <h2>New on the Channel</h2>
@@ -331,7 +323,6 @@
       </div>
     </section>
 
-    <!-- Upcoming -->
     <section class="homeSection">
       <div class="sectionHeader">
         <h2>Upcoming / Coming Soon</h2>
@@ -356,7 +347,6 @@
       </div>
     </section>
 
-    <!-- Quick links -->
     <section class="homeSection">
       <div class="sectionHeader">
         <h2>Quick Links</h2>
@@ -373,105 +363,60 @@
 
   </div>
 
-  <!-- Your existing game data -->
   <script src="js/links-data.js"></script>
 
   <script>
-    /*
-      Expected to work with common GAME_LINKS formats, including:
-      1) { title, url, platform }
-      2) { title, url, platforms: ["steam"] }
-      3) { title, links: { steam: "..." } }
-      4) Optional image overrides via GAME_IMAGE_OVERRIDES
-      5) Optional description fields such as description, blurb, summary
-    */
-
-    const FEATURED_STEAM_TITLES = [
-      "Fresh Women Season 2",
-      "Race of Life",
-      "Eternum",
-      "Parasite Echo",
-      "Lovely Craft Piston Trap",
-      "Summertime Saga"
-    ];
-
-    const DEFAULT_FEATURED_IMAGE = "img/games/default-featured.jpg";
-
-    function getSteamUrl(item) {
-      if (!item || typeof item !== "object") return "";
-
-      if (item.links && typeof item.links.steam === "string") {
-        return item.links.steam;
-      }
-
-      if (typeof item.url === "string" && item.url.includes("store.steampowered.com")) {
-        return item.url;
-      }
-
-      if (Array.isArray(item.urls)) {
-        const match = item.urls.find(u => typeof u === "string" && u.includes("store.steampowered.com"));
-        if (match) return match;
-      }
-
-      return "";
-    }
-
-    function isSteamItem(item) {
-      const steamUrl = getSteamUrl(item);
-      if (steamUrl) return true;
-
-      const platform = (item.platform || "").toString().toLowerCase();
-      if (platform === "steam") return true;
-
-      if (Array.isArray(item.platforms)) {
-        return item.platforms.some(p => String(p).toLowerCase() === "steam");
-      }
-
-      return false;
-    }
+    const DEFAULT_FEATURED_IMAGE = "img/default.jpg";
 
     function getImageForItem(item) {
-      const overrides = window.GAME_IMAGE_OVERRIDES || {};
-      const fromOverride = overrides[item.title];
-      if (fromOverride) return fromOverride;
-
       if (typeof item.image === "string" && item.image.trim()) return item.image;
-      if (typeof item.img === "string" && item.img.trim()) return item.img;
-      if (typeof item.cover === "string" && item.cover.trim()) return item.cover;
-
       return DEFAULT_FEATURED_IMAGE;
     }
 
     function getDescriptionForItem(item) {
       return (
         item.description ||
-        item.blurb ||
-        item.summary ||
-        "Featured on the channel — check out the store page and see what this title is about."
+        "Featured on the channel — check out the game page and see what this title is about."
       );
     }
 
-    function getWatchUrl(item) {
-      return item.watchUrl || item.youtube || item.playlist || "";
+    function getPlatformLabel(platform) {
+      const value = String(platform || "").toLowerCase();
+
+      if (value === "steam") return "Steam";
+      if (value === "itch") return "itch.io";
+      if (value === "dev") return "Dev Site";
+
+      return "Game Page";
     }
 
-    function sortFeatured(items) {
-      const titleRank = new Map(FEATURED_STEAM_TITLES.map((title, index) => [title.toLowerCase(), index]));
+    function getPlatformBadgeClass(platform) {
+      const value = String(platform || "").toLowerCase();
 
-      return [...items].sort((a, b) => {
-        const aRank = titleRank.has(a.title.toLowerCase()) ? titleRank.get(a.title.toLowerCase()) : 999;
-        const bRank = titleRank.has(b.title.toLowerCase()) ? titleRank.get(b.title.toLowerCase()) : 999;
+      if (value === "steam") return "badge badge--steam";
+      if (value === "itch") return "badge badge--itch";
+      if (value === "dev") return "badge badge--dev";
 
-        if (aRank !== bRank) return aRank - bRank;
-        return a.title.localeCompare(b.title);
-      });
+      return "badge";
+    }
+
+    function getPrimaryButtonLabel(platform) {
+      const value = String(platform || "").toLowerCase();
+
+      if (value === "steam") return "View on Steam";
+      if (value === "itch") return "View on itch.io";
+      if (value === "dev") return "Visit Dev Site";
+
+      return "View Game Page";
     }
 
     function buildStoreCard(item) {
-      const steamUrl = getSteamUrl(item);
-      const watchUrl = getWatchUrl(item);
       const image = getImageForItem(item);
       const description = getDescriptionForItem(item);
+      const watchUrl = item.watchUrl || "";
+      const platformLabel = getPlatformLabel(item.platform);
+      const platformBadgeClass = getPlatformBadgeClass(item.platform);
+      const primaryButtonLabel = getPrimaryButtonLabel(item.platform);
 
       const card = document.createElement("article");
       card.className = "storeCard";
@@ -480,7 +425,7 @@
         <div class="storeCard__media">
           <img src="${image}" alt="${item.title} cover art" loading="lazy">
           <div class="storeCard__badgeBar">
-            <span class="badge badge--steam">Steam</span>
+            <span class="${platformBadgeClass}">${platformLabel}</span>
             <span class="badge">Featured</span>
           </div>
         </div>
@@ -489,14 +434,14 @@
           <h3 class="storeCard__title">${item.title}</h3>
 
           <div class="storeCard__meta">
-            <span class="badge badge--steam">Store Page</span>
+            <span class="${platformBadgeClass}">${platformLabel}</span>
           </div>
 
           <p class="storeCard__desc">${description}</p>
 
           <div class="storeCard__actions">
-            <a class="storeBtn storeBtn--primary" href="${steamUrl}" target="_blank" rel="noopener noreferrer">
-              View on Steam
+            <a class="storeBtn storeBtn--primary" href="${item.url}" target="_blank" rel="noopener noreferrer">
+              ${primaryButtonLabel}
             </a>
             ${
               watchUrl
@@ -510,34 +455,44 @@
       return card;
     }
 
-    function renderFeaturedSteamShelf() {
+    function renderFeaturedShelf() {
       const shelf = document.getElementById("featuredShelf");
       if (!shelf) return;
 
       const gameLinks = Array.isArray(window.GAME_LINKS) ? window.GAME_LINKS : [];
 
-      const steamItems = gameLinks.filter(item => item && item.title && isSteamItem(item));
-      const ordered = sortFeatured(steamItems);
-      const featured = ordered.slice(0, 6);
+      const featuredItems = gameLinks.filter(item =>
+        item &&
+        item.title &&
+        item.url &&
+        item.featured === true
+      );
+
+      const fallbackItems = gameLinks.filter(item =>
+        item &&
+        item.title &&
+        item.url
+      );
+
+      const itemsToShow = (featuredItems.length ? featuredItems : fallbackItems).slice(0, 6);
 
       shelf.innerHTML = "";
 
-      if (!featured.length) {
+      if (!itemsToShow.length) {
         shelf.innerHTML = `
           <div class="featuredEmpty">
-            No Steam titles were found in <code>GAME_LINKS</code> yet.
-            Add Steam store URLs in <code>js/links-data.js</code> and this section will auto-fill.
+            No featured titles were found in <code>GAME_LINKS</code> yet.
           </div>
         `;
         return;
       }
 
-      featured.forEach(item => {
+      itemsToShow.forEach(item => {
         shelf.appendChild(buildStoreCard(item));
       });
     }
 
-    renderFeaturedSteamShelf();
+    renderFeaturedShelf();
   </script>
 </body>
 </html>
