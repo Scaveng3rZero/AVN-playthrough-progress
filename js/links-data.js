@@ -382,6 +382,12 @@ var GAME_LINKS = [
     url: "https://jestur.itch.io/ripples",
     tags: ["visual novel"]
   },
+   {
+    title: "Sex, Secrets, and Used Tech",
+    platform: "steam",
+    url: "https://store.steampowered.com/app/3576350/Sex_Secrets__Used_Tech/",
+    tags: ["rpg"]
+  },
   {
     title: "Space Rescue",
     platform: "steam",
