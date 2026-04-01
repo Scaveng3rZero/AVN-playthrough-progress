@@ -478,7 +478,16 @@ var GAME_IMAGE_OVERRIDES = {
   "Femboy Futa House": "img/games/femboy-futa.jpg",
   "Lovely Craft Piston Trap": "img/games/lovely-craft.jpg",
   "Parasite Echo": "img/games/parasite-echo.png",
-  "Ripples": "img/games/ripples.jpg",
+  "Ripples": "img/games/ripples.png",
+  "Devious Demigods": "img/games/devious-demigods.jpg",
+  "Goodbye Eternity": "img/games/goodbye-eternity.png",
+  "Lusty Buccaneers": "img/games/lusty-buck.png",
+  "Mist": "img/games/mi-st.jpg",
+  "My Pig Princess": "img/games/my-pig.jpg",
+  "Quickie: Fantasy Adventure": "img/games/quickie.png",
+  "Sex, Secrets, and Used Tech": "img/games/sex-secrets.jpg",
+  "Succum Brewery": "img/games/succum-brewery.png",
+  "Welcum to the City": "img/games/w2c.png",
   "Summertime Saga": "img/games/summertime-saga.jpg"
 };
 
