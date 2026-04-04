@@ -321,6 +321,12 @@ var GAME_LINKS = [
     tags: ["horror", "survival", "mystery"]
   },
   {
+    title: "Mousetrap: Theft & Bongage",
+    platform: "steam",
+    url: "https://store.steampowered.com/app/4077550/Mousetrap_Theft__Bondage/",
+    tags: ["stealth"]
+  },
+  {
     title: "My Pig Princess",
     platform: "itch",
     url: "https://cyancapsule.itch.io/my-pig-princess",
