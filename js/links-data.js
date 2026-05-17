@@ -93,6 +93,12 @@ var GAME_LINKS = [
     tags: ["pixel graphics"]
   },
   {
+    title: "Darker",
+    platform: "steam",
+    url: "https://store.steampowered.com/app/3344930/Darker_Chapter_1/",
+    tags: ["visual novel"]
+  },
+  {
     title: "Deluded",
     platform: "itch",
     url: "https://deludedgame.itch.io/deluded",
