@@ -239,6 +239,12 @@ var GAME_LINKS = [
     tags: ["visual novel"]
   },
   {
+    title: "Living with Chainsaw",
+    platform: "itch",
+    url: "https://drergenecon.itch.io/livingwithchainsaw",
+    tags: ["visual novel"]
+  },
+  {
     title: "Lollipop!",
     platform: "steam",
     url: "https://store.steampowered.com/app/1515230/LOLLIPOP/",
