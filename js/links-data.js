@@ -33,6 +33,12 @@ var GAME_LINKS = [
     tags: ["visual novel"]
   },
   {
+    title: "Bongo Waifu",
+    platform: "steam",
+    url: "https://store.steampowered.com/app/3861430/Bongo_Waifu/",
+    tags: ["idle clicker"]
+  },
+  {
     title: "Breeders of the Nephelym",
     platform: "steam",
     url: "https://store.steampowered.com/app/1161770/Breeders_of_the_Nephelym/",
