@@ -2089,7 +2089,32 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/611790/8596a877ba1c17b31ac02460c1ae995693ba3147/header_alt_assets_0.jpg?t=1788027384",
     "featured": false
+  },
+  {
+    "title": "City Devil: Restart",
+    "developer": "",
+    "genres": [
+      "Visual Novel"
+    ],
+    "tags": [
+      "3D",
+      "Adult",
+      "Animation",
+      "Dating Sim",
+      "Erotic",
+      "harem",
+      "Hentai",
+      "Mystery"
+    ],
+    "links": {
+      "itch": "https://sabirow.itch.io/cdr",
+      "patreon": "https://www.patreon.com/sabirow",
+      "discord": "https://discord.gg/kSREGQuhht"
+    },
+    "image": "https://img.itch.zone/aW1nLzI0MDgwMDk1LnBuZw==/original/aNxR68.png",
+    "featured": false
   }
+
 
 
 
