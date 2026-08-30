@@ -1,4 +1,4 @@
-name: Add Game
+name: Add / Update Game
 
 on:
   workflow_dispatch:
