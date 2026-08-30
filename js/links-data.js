@@ -510,7 +510,7 @@ var GAME_LINKS = [
     url: "https://store.steampowered.com/app/1090900/Yes_Master/",
     tags: ["visual novel"]
   },
-  {
+    {
     "title": "Stripjong - Super Real Mahjong Venus Returns",
     "developer": "ILLUMINATION",
     "genres": [
