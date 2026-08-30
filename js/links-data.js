@@ -510,6 +510,32 @@ var GAME_LINKS = [
     url: "https://store.steampowered.com/app/1090900/Yes_Master/",
     tags: ["visual novel"]
   },
+  {
+    "title": "Stripjong - Super Real Mahjong Venus Returns",
+    "developer": "ILLUMINATION",
+    "genres": [
+      "Adventure",
+      "Casual",
+      "Simulation",
+      "Strategy"
+    ],
+    "tags": [
+      "Mahjong",
+      "Nudity",
+      "Dating Sim",
+      "3D",
+      "Anime",
+      "Sexual Content",
+      "3D Platformer"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/3718190/",
+      "website": "https://srmvr.com/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3718190/7742fe4d135e4e34c02b23a6173eab216c7fc871/header.jpg?t=1787906425",
+    "featured": false
+  }
+
   
 
 ];
