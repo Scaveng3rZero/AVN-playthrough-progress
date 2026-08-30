@@ -1919,7 +1919,33 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2365140/header.jpg?t=1688768365",
     "featured": false
+  },
+  {
+    "title": "Becoming a King",
+    "developer": "Lustration Team, TopHouse Studio",
+    "genres": [
+      "Adventure",
+      "Casual",
+      "RPG",
+      "Simulation"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Life Sim",
+      "Anime",
+      "Choices Matter",
+      "Multiple Endings",
+      "Time Management",
+      "Auto Battler"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/3597020/",
+      "website": "https://lust.so/en/game/becoming-a-king"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3597020/525ad1dfbd7825bf9c67a949acc6c037f75b293e/header.jpg?t=1781264758",
+    "featured": false
   }
+
 
 
 
