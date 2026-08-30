@@ -128,17 +128,45 @@ async function main() {
   }
 
 
-  checkDuplicate(
+ const existingIndex =
+  findExistingIndex(
     existing,
     game
   );
 
+let action =
+  "Added";
 
-  const updated =
+let updated;
+
+
+if (existingIndex >= 0) {
+
+  game =
+    mergeExistingGame(
+      existing[existingIndex],
+      game
+    );
+
+  updated =
+    replaceEntry(
+      source,
+      existingIndex,
+      game
+    );
+
+  action =
+    "Updated";
+
+} else {
+
+  updated =
     insertEntry(
       source,
       game
     );
+
+}
 
 
   /*
@@ -160,9 +188,9 @@ async function main() {
 
 
   console.log(
-    "Added: " +
-    game.title
-  );
+  action + ": " +
+  game.title
+);
 
   console.log(
     "Developer: " +
@@ -654,57 +682,53 @@ function readGames(source) {
 
 
 /* =========================
-   DUPLICATE PROTECTION
+   FIND EXISTING GAME
 ========================== */
 
-function checkDuplicate(
+function findExistingIndex(
   existing,
   game
 ) {
 
   const newUrls =
     Object.values(
-      game.links
+      game.links || {}
     )
-    .map(urlKey);
+    .map(urlKey)
+    .filter(Boolean);
 
 
-  existing.forEach(
+  return existing.findIndex(
     function (old) {
 
       const oldUrls = [];
 
 
       /*
-       * New format
+       * New-format links
        */
-
       if (
         old.links &&
-        typeof old.links ===
-          "object"
+        typeof old.links === "object"
       ) {
 
         Object.values(
           old.links
         )
-        .forEach(
-          function (url) {
+        .forEach(function (url) {
 
-            if (url) {
-              oldUrls.push(url);
-            }
-
+          if (url) {
+            oldUrls.push(url);
           }
-        );
+
+        });
 
       }
 
 
       /*
-       * Old format
+       * Old-format link
        */
-
       if (old.url) {
 
         oldUrls.push(
@@ -715,12 +739,12 @@ function checkDuplicate(
 
 
       const normalizedOldUrls =
-        oldUrls.map(
-          urlKey
-        );
+        oldUrls
+          .map(urlKey)
+          .filter(Boolean);
 
 
-      const duplicateUrl =
+      const sameUrl =
         newUrls.some(
           function (url) {
 
@@ -733,40 +757,508 @@ function checkDuplicate(
         );
 
 
-      if (duplicateUrl) {
-
-        stop(
-          "That URL is already in the library under “" +
-          old.title +
-          "”."
-        );
-
-      }
-
-
-      /*
-       * Also prevent duplicate titles.
-       */
-
-      if (
+      const sameTitle =
         key(old.title) ===
-        key(game.title)
-      ) {
+        key(game.title);
 
-        stop(
-          "A game named “" +
-          old.title +
-          "” already exists. " +
-          "No duplicate was added."
-        );
 
-      }
+      return (
+        sameUrl ||
+        sameTitle
+      );
 
     }
   );
 
 }
 
+
+/* =========================
+   MERGE EXISTING + FRESH DATA
+========================== */
+
+function mergeExistingGame(
+  old,
+  fresh
+) {
+
+  /*
+   * Preserve all existing destination
+   * links, including old-format entries.
+   */
+
+  const oldLinks = {
+    ...(old.links || {})
+  };
+
+
+  if (
+    old.platform &&
+    old.url &&
+    !oldLinks[old.platform]
+  ) {
+
+    oldLinks[old.platform] =
+      old.url;
+
+  }
+
+
+  /*
+   * New metadata goes first.
+   * Existing values are retained so
+   * manually-added genres/tags survive.
+   */
+
+  const genres =
+    unique([
+      ...(fresh.genres || []),
+      ...(old.genres || [])
+    ]);
+
+
+  const tags =
+    unique([
+      ...(fresh.tags || []),
+      ...(old.tags || [])
+    ])
+    .filter(function (tag) {
+
+      return !genres.some(
+        function (genre) {
+
+          return (
+            key(genre) ===
+            key(tag)
+          );
+
+        }
+      );
+
+    });
+
+
+  const merged =
+    compact({
+
+      title:
+        fresh.title ||
+        old.title,
+
+      developer:
+        fresh.developer ||
+        old.developer,
+
+      genres:
+        genres,
+
+      tags:
+        tags,
+
+      links: {
+        ...oldLinks,
+        ...(fresh.links || {})
+      },
+
+      /*
+       * Prefer newly retrieved artwork,
+       * but never throw away a working
+       * existing image.
+       */
+      image:
+        fresh.image ||
+        old.image ||
+        ""
+
+    });
+
+
+  /*
+   * Don't accidentally remove a game's
+   * featured status during a refresh.
+   */
+
+  merged.featured =
+    Boolean(
+      fresh.featured ||
+      old.featured
+    );
+
+
+  /*
+   * Preserve hand-written Scaveng3r data.
+   */
+
+  if (old.description) {
+
+    merged.description =
+      old.description;
+
+  }
+
+
+  if (old.watchUrl) {
+
+    merged.watchUrl =
+      old.watchUrl;
+
+  }
+
+
+  if (
+    Number.isFinite(
+      old.priority
+    ) &&
+    old.priority !== 999
+  ) {
+
+    merged.priority =
+      old.priority;
+
+  }
+
+
+  return merged;
+
+}
+
+
+/* =========================
+   REPLACE EXISTING ENTRY
+========================== */
+
+function replaceEntry(
+  source,
+  index,
+  game
+) {
+
+  const ranges =
+    getGameObjectRanges(
+      source
+    );
+
+
+  if (!ranges[index]) {
+
+    stop(
+      "Could not locate the existing game " +
+      "inside GAME_LINKS."
+    );
+
+  }
+
+
+  const range =
+    ranges[index];
+
+
+  const object =
+    JSON.stringify(
+      game,
+      null,
+      2
+    )
+    .split("\n")
+    .map(function (line) {
+
+      return "  " + line;
+
+    })
+    .join("\n");
+
+
+  return (
+    source.slice(
+      0,
+      range.start
+    )
+    +
+    object
+    +
+    source.slice(
+      range.end
+    )
+  );
+
+}
+
+
+/* =========================
+   LOCATE GAME OBJECTS
+========================== */
+
+function getGameObjectRanges(
+  source
+) {
+
+  const declaration =
+    source.indexOf(
+      "var GAME_LINKS"
+    );
+
+
+  if (declaration < 0) {
+
+    stop(
+      "GAME_LINKS declaration not found."
+    );
+
+  }
+
+
+  const arrayStart =
+    source.indexOf(
+      "[",
+      declaration
+    );
+
+
+  const marker =
+    "/* ===== Image overrides ===== */";
+
+
+  const markerPos =
+    source.indexOf(
+      marker
+    );
+
+
+  if (
+    arrayStart < 0 ||
+    markerPos < 0
+  ) {
+
+    stop(
+      "Could not locate the GAME_LINKS array."
+    );
+
+  }
+
+
+  const arrayEnd =
+    source
+      .slice(
+        0,
+        markerPos
+      )
+      .lastIndexOf("];");
+
+
+  if (arrayEnd < 0) {
+
+    stop(
+      "Could not locate the end of GAME_LINKS."
+    );
+
+  }
+
+
+  const ranges = [];
+
+  let depth = 0;
+  let objectStart = -1;
+
+  let stringChar = null;
+  let escaped = false;
+
+  let lineComment = false;
+  let blockComment = false;
+
+
+  for (
+    let i = arrayStart + 1;
+    i < arrayEnd;
+    i++
+  ) {
+
+    const char =
+      source[i];
+
+    const next =
+      source[i + 1];
+
+
+    /*
+     * Line comments
+     */
+    if (lineComment) {
+
+      if (char === "\n") {
+        lineComment = false;
+      }
+
+      continue;
+
+    }
+
+
+    /*
+     * Block comments
+     */
+    if (blockComment) {
+
+      if (
+        char === "*" &&
+        next === "/"
+      ) {
+
+        blockComment = false;
+        i++;
+
+      }
+
+      continue;
+
+    }
+
+
+    /*
+     * Quoted strings
+     */
+    if (stringChar) {
+
+      if (escaped) {
+
+        escaped = false;
+        continue;
+
+      }
+
+
+      if (char === "\\") {
+
+        escaped = true;
+        continue;
+
+      }
+
+
+      if (char === stringChar) {
+
+        stringChar = null;
+
+      }
+
+
+      continue;
+
+    }
+
+
+    /*
+     * Start comments
+     */
+    if (
+      char === "/" &&
+      next === "/"
+    ) {
+
+      lineComment = true;
+      i++;
+
+      continue;
+
+    }
+
+
+    if (
+      char === "/" &&
+      next === "*"
+    ) {
+
+      blockComment = true;
+      i++;
+
+      continue;
+
+    }
+
+
+    /*
+     * Start strings
+     */
+    if (
+      char === "\"" ||
+      char === "'" ||
+      char === "`"
+    ) {
+
+      stringChar =
+        char;
+
+      continue;
+
+    }
+
+
+    /*
+     * Track top-level game objects.
+     *
+     * Nested objects such as links: {}
+     * simply increase the depth.
+     */
+    if (char === "{") {
+
+      if (depth === 0) {
+
+        objectStart =
+          i;
+
+      }
+
+
+      depth++;
+
+      continue;
+
+    }
+
+
+    if (char === "}") {
+
+      depth--;
+
+
+      if (
+        depth === 0 &&
+        objectStart >= 0
+      ) {
+
+        ranges.push({
+
+          start:
+            objectStart,
+
+          end:
+            i + 1
+
+        });
+
+
+        objectStart =
+          -1;
+
+      }
+
+
+      if (depth < 0) {
+
+        stop(
+          "Unexpected object structure " +
+          "inside GAME_LINKS."
+        );
+
+      }
+
+    }
+
+  }
+
+
+  return ranges;
+
+}
 
 /* =========================
    INSERT INTO links-data.js
@@ -1325,14 +1817,46 @@ function urlKey(value) {
       new URL(value);
 
 
-    return (
+    const host =
       url.hostname
         .toLowerCase()
         .replace(
           /^www\./,
           ""
-        )
-      +
+        );
+
+
+    /*
+     * Steam URLs are identified by App ID.
+     * Ignore whatever title Steam puts
+     * after the App ID.
+     */
+
+    if (
+      host ===
+      "store.steampowered.com"
+    ) {
+
+      const steamMatch =
+        url.pathname.match(
+          /\/app\/(\d+)/i
+        );
+
+
+      if (steamMatch) {
+
+        return (
+          "store.steampowered.com/app/" +
+          steamMatch[1]
+        );
+
+      }
+
+    }
+
+
+    return (
+      host +
       url.pathname
         .replace(
           /\/+$/,
@@ -1340,6 +1864,7 @@ function urlKey(value) {
         )
         .toLowerCase()
     );
+
 
   } catch {
 
