@@ -23,7 +23,7 @@ var GAME_LINKS = [
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1045520/header.jpg?t=1723893770",
     "featured": false
   },
-    {
+      {
     "title": "After the Inferno",
     "developer": "Classy Lemon",
     "genres": [
