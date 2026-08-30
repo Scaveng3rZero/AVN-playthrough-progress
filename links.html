@@ -116,29 +116,12 @@
       text-decoration: none;
     }
 
-    .brandLogo__mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      border: 1px solid rgba(229,107,37,0.45);
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.08),
-          rgba(229,107,37,0.07)
-        );
-      box-shadow: 0 0 28px rgba(229,107,37,0.10);
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: #e5e5e8;
-    }
-
-    .brandLogo__mark span {
-      color: var(--orange-light);
-    }
+    .brandLogo__image {
+  width: 46px;
+  height: 46px;
+  display: block;
+  object-fit: contain;
+}
 
     .brandLogo__name {
       font-size: 17px;
@@ -582,9 +565,11 @@
     <div class="container siteHeader__inner">
 
       <a class="brandLogo" href="index.html">
-        <div class="brandLogo__mark">
-          S<span>3</span>
-        </div>
+        <img
+  class="brandLogo__image"
+  src="img/ScavLogo.png"
+  alt="Scaveng3r logo"
+>
 
         <div class="brandLogo__name">
           SCAVENG<span>3</span>R
@@ -709,9 +694,11 @@
 
       <div class="brandLogo">
 
-        <div class="brandLogo__mark">
-          S<span>3</span>
-        </div>
+        <img
+  class="brandLogo__image"
+  src="img/ScavLogo.png"
+  alt="Scaveng3r logo"
+>
 
         <div class="brandLogo__name">
           SCAVENG<span>3</span>R
