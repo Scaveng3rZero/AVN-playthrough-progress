@@ -636,30 +636,31 @@
 
         <div class="controls">
 
-          <div class="controls__top">
+  <input
+    id="gameSearch"
+    class="searchBox"
+    type="search"
+    placeholder="Search games, developers, genres or tags..."
+    autocomplete="off"
+  >
 
-            <input
-              id="gameSearch"
-              class="searchBox"
-              type="search"
-              placeholder="Search games or tags..."
-              autocomplete="off"
-            >
+  <div class="controls__filters">
 
-            <select id="platformFilter" class="selectBox">
-              <option value="all">All Platforms</option>
-            </select>
+    <select id="genreFilter" class="selectBox">
+      <option value="all">All Genres</option>
+    </select>
 
-          </div>
+    <select id="tagFilter" class="selectBox">
+      <option value="all">All Tags</option>
+    </select>
 
-          <div class="filtersLabel">
-            Genres &amp; Tags
-          </div>
+    <select id="platformFilter" class="selectBox">
+      <option value="all">All Platforms</option>
+    </select>
 
-          <div id="tagFilters" class="tagFilters"></div>
+  </div>
 
-        </div>
-
+</div>
 
         <div class="directoryBar">
 
