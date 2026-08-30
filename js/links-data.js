@@ -1870,7 +1870,33 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1333350/b2a0327ac1c3cca20f2ad7225d9b0f9a985c6a34/header.jpg?t=1787911290",
     "featured": false
+  },
+  {
+    "title": "Artemis: Book One",
+    "developer": "digi.B",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Casual",
+      "Indie"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Visual Novel",
+      "Romance",
+      "Story Rich",
+      "Choices Matter",
+      "3D",
+      "Emotional",
+      "Sci-fi"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/1775530/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1775530/header.jpg?t=1773786352",
+    "featured": true
   }
+
 
 
 
