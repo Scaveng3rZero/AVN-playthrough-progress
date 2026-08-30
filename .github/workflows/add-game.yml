@@ -1,1 +1,81 @@
+name: Add Game
 
+on:
+  workflow_dispatch:
+    inputs:
+      game_url:
+        description: "Steam or itch.io game URL"
+        required: true
+        type: string
+
+      genres:
+        description: "Optional genres, comma-separated"
+        required: false
+        type: string
+
+      tags:
+        description: "Optional tags, comma-separated"
+        required: false
+        type: string
+
+      featured:
+        description: "Feature this game?"
+        required: false
+        default: false
+        type: boolean
+
+
+permissions:
+  contents: write
+
+
+jobs:
+  add-game:
+    name: Add game to library
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Check out website
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+
+      - name: Add or update game
+        env:
+          GAME_URL: ${{ inputs.game_url }}
+          GAME_GENRES: ${{ inputs.genres }}
+          GAME_TAGS: ${{ inputs.tags }}
+          GAME_FEATURED: ${{ inputs.featured }}
+        run: node scripts/add-game.js
+
+
+      - name: Check for changes
+        id: changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes to commit."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+
+      - name: Commit updated game library
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add js/links-data.js
+          git commit -m "Add game via workflow"
+          git push origin HEAD:main
