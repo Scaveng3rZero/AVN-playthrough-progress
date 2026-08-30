@@ -2041,7 +2041,31 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3610840/292fb0be0c6b611d331a6ac3510610274bf4f778/header.jpg?t=1786988047",
     "featured": false
+  },
+  {
+    "title": "Horny Villa",
+    "developer": "GreenT",
+    "genres": [
+      "Casual",
+      "RPG",
+      "Strategy",
+      "Free To Play"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Nudity",
+      "Hentai",
+      "Dating Sim",
+      "Anime",
+      "Romance"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/2903690/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2903690/44771d8e3c41ea68ef5860322e28baac45ea1e4d/header.jpg?t=1787807158",
+    "featured": false
   }
+
 
 
 
