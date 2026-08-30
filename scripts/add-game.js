@@ -385,7 +385,15 @@ async function fromSteam(url) {
       ).slice(0, 8),
 
 
-    links: links
+    links: links,
+
+image:
+  (
+    data &&
+    data.header_image
+  )
+    ? data.header_image
+    : ""
 
   });
 
