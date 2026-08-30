@@ -866,9 +866,17 @@ function mergeExistingGame(
        * existing image.
        */
       image:
+  (
+    old.image &&
+    old.image.startsWith("img/") &&
+    old.image !== "img/default.jpg"
+  )
+    ? old.image
+    : (
         fresh.image ||
         old.image ||
         ""
+      )
 
     });
 
