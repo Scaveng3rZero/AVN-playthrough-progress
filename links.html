@@ -713,339 +713,719 @@
 
   <script src="js/links-data.js"></script>
 
-  <script>
-    (function () {
+ <script>
+  (function () {
 
-      var grid = document.getElementById("gameGrid");
-      var search = document.getElementById("gameSearch");
-      var platformSelect = document.getElementById("platformFilter");
-      var filtersWrap = document.getElementById("tagFilters");
-      var count = document.getElementById("resultCount");
-      var clearButton = document.getElementById("clearFilters");
-      var emptyState = document.getElementById("emptyState");
+    var grid = document.getElementById("gameGrid");
+    var search = document.getElementById("gameSearch");
+    var platformSelect = document.getElementById("platformFilter");
+    var filtersWrap = document.getElementById("tagFilters");
+    var count = document.getElementById("resultCount");
+    var clearButton = document.getElementById("clearFilters");
+    var emptyState = document.getElementById("emptyState");
 
-      document.getElementById("year").textContent =
-        new Date().getFullYear();
-
-
-      if (typeof GAME_LINKS === "undefined") {
-        count.textContent = "Game library unavailable.";
-        return;
-      }
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
 
-      var activeTag = "all";
+    if (typeof GAME_LINKS === "undefined") {
+      count.textContent = "Game library unavailable.";
+      return;
+    }
 
 
-      function platformName(platform) {
-
-        if (platform === "steam") return "Steam";
-        if (platform === "itch") return "itch.io";
-        if (platform === "patreon") return "Patreon";
-        if (platform === "dev") return "Developer Site";
-
-        return platform || "Other";
-      }
+    var activeTag = "all";
 
 
-      function getAllTags() {
+    /* =========================
+       PLATFORM NAMES
+    ========================== */
 
-        var tags = [];
+    function platformName(platform) {
 
-        GAME_LINKS.forEach(function (game) {
+      var names = {
+        steam: "Steam",
+        itch: "itch.io",
+        patreon: "Patreon",
+        subscribestar: "SubscribeStar",
+        dev: "Developer Site",
+        website: "Official Site",
+        discord: "Discord",
+        youtube: "YouTube"
+      };
 
-          (game.tags || []).forEach(function (tag) {
-
-            var cleanTag = String(tag).trim().toLowerCase();
-
-            if (
-              cleanTag &&
-              tags.indexOf(cleanTag) === -1
-            ) {
-              tags.push(cleanTag);
-            }
-
-          });
-
-        });
-
-        return tags.sort();
-      }
+      return names[platform] || platform || "Other";
+    }
 
 
-      function getPlatforms() {
+    /* =========================
+       LINK NORMALIZER
 
-        var platforms = [];
+       Supports BOTH:
 
-        GAME_LINKS.forEach(function (game) {
+       OLD:
+       platform: "steam",
+       url: "..."
+
+       NEW:
+       links: {
+         steam: "...",
+         itch: "...",
+         website: "..."
+       }
+    ========================== */
+
+    function getGameLinks(game) {
+
+      var links = [];
+
+
+      if (
+        game.links &&
+        typeof game.links === "object"
+      ) {
+
+        Object.keys(game.links).forEach(function (platform) {
+
+          var url = game.links[platform];
 
           if (
-            game.platform &&
-            platforms.indexOf(game.platform) === -1
+            typeof url === "string" &&
+            url.trim()
           ) {
-            platforms.push(game.platform);
+
+            links.push({
+              platform: platform,
+              url: url.trim()
+            });
+
           }
 
         });
 
-        return platforms.sort();
       }
 
 
-      function buildPlatformOptions() {
+      /*
+       * Keep supporting the old format while
+       * we gradually convert the database.
+       */
 
-        getPlatforms().forEach(function (platform) {
+      if (game.platform && game.url) {
 
-          var option = document.createElement("option");
+        var alreadyExists =
+          links.some(function (link) {
+            return link.url === game.url;
+          });
 
-          option.value = platform;
-          option.textContent = platformName(platform);
 
-          platformSelect.appendChild(option);
+        if (!alreadyExists) {
+
+          links.push({
+            platform: game.platform,
+            url: game.url
+          });
+
+        }
+
+      }
+
+
+      return links;
+
+    }
+
+
+    /* =========================
+       GENRES + TAGS
+    ========================== */
+
+    function getGameCategories(game) {
+
+      var categories = [];
+
+
+      function addItems(items) {
+
+        if (!Array.isArray(items)) return;
+
+
+        items.forEach(function (item) {
+
+          var clean =
+            String(item).trim().toLowerCase();
+
+
+          if (
+            clean &&
+            categories.indexOf(clean) === -1
+          ) {
+
+            categories.push(clean);
+
+          }
 
         });
 
       }
 
 
-      function buildTagFilters() {
-
-        filtersWrap.innerHTML = "";
-
-        var allButton = document.createElement("button");
-
-        allButton.type = "button";
-        allButton.className = "filterButton is-active";
-        allButton.textContent = "All";
-        allButton.dataset.tag = "all";
-
-        filtersWrap.appendChild(allButton);
+      addItems(game.genres);
+      addItems(game.tags);
 
 
-        getAllTags().forEach(function (tag) {
+      return categories;
 
-          var button = document.createElement("button");
-
-          button.type = "button";
-          button.className = "filterButton";
-          button.textContent = tag;
-          button.dataset.tag = tag;
-
-          filtersWrap.appendChild(button);
-
-        });
+    }
 
 
-        filtersWrap.addEventListener("click", function (event) {
+    function getAllTags() {
 
-          var button = event.target.closest(".filterButton");
+      var tags = [];
+
+
+      GAME_LINKS.forEach(function (game) {
+
+        getGameCategories(game)
+          .forEach(function (tag) {
+
+            if (tags.indexOf(tag) === -1) {
+              tags.push(tag);
+            }
+
+          });
+
+      });
+
+
+      return tags.sort();
+
+    }
+
+
+    /* =========================
+       PLATFORMS
+    ========================== */
+
+    function getPlatforms() {
+
+      var platforms = [];
+
+
+      GAME_LINKS.forEach(function (game) {
+
+        getGameLinks(game)
+          .forEach(function (link) {
+
+            if (
+              link.platform &&
+              platforms.indexOf(link.platform) === -1
+            ) {
+
+              platforms.push(link.platform);
+
+            }
+
+          });
+
+      });
+
+
+      return platforms.sort();
+
+    }
+
+
+    function buildPlatformOptions() {
+
+      getPlatforms().forEach(function (platform) {
+
+        var option =
+          document.createElement("option");
+
+
+        option.value = platform;
+        option.textContent =
+          platformName(platform);
+
+
+        platformSelect.appendChild(option);
+
+      });
+
+    }
+
+
+    /* =========================
+       TAG FILTER BUTTONS
+    ========================== */
+
+    function buildTagFilters() {
+
+      filtersWrap.innerHTML = "";
+
+
+      var allButton =
+        document.createElement("button");
+
+
+      allButton.type = "button";
+      allButton.className =
+        "filterButton is-active";
+
+      allButton.textContent = "All";
+      allButton.dataset.tag = "all";
+
+
+      filtersWrap.appendChild(allButton);
+
+
+      getAllTags().forEach(function (tag) {
+
+        var button =
+          document.createElement("button");
+
+
+        button.type = "button";
+        button.className =
+          "filterButton";
+
+        button.textContent = tag;
+        button.dataset.tag = tag;
+
+
+        filtersWrap.appendChild(button);
+
+      });
+
+
+      filtersWrap.addEventListener(
+        "click",
+        function (event) {
+
+          var button =
+            event.target.closest(".filterButton");
+
 
           if (!button) return;
 
-          activeTag = button.dataset.tag;
 
-          var buttons =
-            filtersWrap.querySelectorAll(".filterButton");
+          activeTag =
+            button.dataset.tag;
 
-          buttons.forEach(function (item) {
-            item.classList.remove("is-active");
-          });
 
-          button.classList.add("is-active");
+          filtersWrap
+            .querySelectorAll(".filterButton")
+            .forEach(function (item) {
+
+              item.classList.remove(
+                "is-active"
+              );
+
+            });
+
+
+          button.classList.add(
+            "is-active"
+          );
+
 
           renderGames();
 
+        }
+      );
+
+    }
+
+
+    /* =========================
+       FILTER MATCHING
+    ========================== */
+
+    function gameMatches(game) {
+
+      var searchText =
+        (search.value || "")
+          .trim()
+          .toLowerCase();
+
+
+      var selectedPlatform =
+        platformSelect.value;
+
+
+      var categories =
+        getGameCategories(game);
+
+
+      var links =
+        getGameLinks(game);
+
+
+      var platforms =
+        links.map(function (link) {
+          return link.platform;
         });
 
-      }
+
+      var searchableText = [
+
+        game.title || "",
+
+        game.developer || "",
+
+        categories.join(" "),
+
+        platforms.join(" ")
+
+      ]
+      .join(" ")
+      .toLowerCase();
 
 
-      function gameMatches(game) {
-
-        var searchText =
-          (search.value || "").trim().toLowerCase();
-
-        var selectedPlatform =
-          platformSelect.value;
+      var matchesSearch =
+        !searchText ||
+        searchableText.indexOf(searchText) !== -1;
 
 
-        var gameTags = (game.tags || []).map(function (tag) {
-          return String(tag).toLowerCase();
-        });
+      var matchesPlatform =
+        selectedPlatform === "all" ||
+        platforms.indexOf(selectedPlatform) !== -1;
 
 
-        var searchableText = [
-          game.title || "",
-          game.platform || "",
-          gameTags.join(" ")
-        ]
-        .join(" ")
-        .toLowerCase();
+      var matchesTag =
+        activeTag === "all" ||
+        categories.indexOf(activeTag) !== -1;
 
 
-        var matchesSearch =
-          !searchText ||
-          searchableText.indexOf(searchText) !== -1;
+      return (
+        matchesSearch &&
+        matchesPlatform &&
+        matchesTag
+      );
+
+    }
 
 
-        var matchesPlatform =
-          selectedPlatform === "all" ||
-          game.platform === selectedPlatform;
+    /* =========================
+       BUTTON TEXT
+    ========================== */
+
+    function linkButtonText(platform) {
+
+      var labels = {
+        steam: "View on Steam",
+        itch: "View on itch.io",
+        patreon: "View Patreon",
+        subscribestar: "View SubscribeStar",
+        website: "Official Site",
+        dev: "Developer Site",
+        discord: "Join Discord",
+        youtube: "Watch on YouTube"
+      };
 
 
-        var matchesTag =
-          activeTag === "all" ||
-          gameTags.indexOf(activeTag) !== -1;
+      return (
+        labels[platform] ||
+        "Visit Game Page"
+      );
+
+    }
 
 
-        return (
-          matchesSearch &&
-          matchesPlatform &&
-          matchesTag
+    /* =========================
+       CREATE GAME CARD
+    ========================== */
+
+    function createGameCard(game) {
+
+      var card =
+        document.createElement("article");
+
+      card.className =
+        "gameCard";
+
+
+      var links =
+        getGameLinks(game);
+
+
+      /*
+       * IMAGE
+       */
+
+      var imageWrap =
+        document.createElement("div");
+
+      imageWrap.className =
+        "gameCard__imageWrap";
+
+
+      var image =
+        document.createElement("img");
+
+      image.className =
+        "gameCard__image";
+
+      image.src =
+        game.image ||
+        "img/default.jpg";
+
+      image.alt =
+        game.title ||
+        "Game artwork";
+
+      image.loading = "lazy";
+
+
+      image.onerror = function () {
+
+        this.onerror = null;
+
+        this.src =
+          "img/default.jpg";
+
+      };
+
+
+      imageWrap.appendChild(image);
+
+
+      /*
+       * PLATFORM BADGE
+       */
+
+      if (links.length) {
+
+        var platform =
+          document.createElement("span");
+
+
+        platform.className =
+          "platformBadge";
+
+
+        if (links.length === 1) {
+
+          platform.textContent =
+            platformName(
+              links[0].platform
+            );
+
+        } else {
+
+          platform.textContent =
+            links.length + " Links";
+
+        }
+
+
+        imageWrap.appendChild(
+          platform
         );
 
       }
 
 
-      function createGameCard(game) {
+      /*
+       * CARD BODY
+       */
 
-        var card = document.createElement("article");
-        card.className = "gameCard";
+      var body =
+        document.createElement("div");
 
-
-        var imageWrap = document.createElement("div");
-        imageWrap.className = "gameCard__imageWrap";
-
-
-        var image = document.createElement("img");
-        image.className = "gameCard__image";
-        image.src = game.image || "img/default.jpg";
-        image.alt = game.title || "Game artwork";
-        image.loading = "lazy";
+      body.className =
+        "gameCard__body";
 
 
-        image.onerror = function () {
-          this.onerror = null;
-          this.src = "img/default.jpg";
-        };
+      var title =
+        document.createElement("h2");
+
+      title.className =
+        "gameCard__title";
+
+      title.textContent =
+        game.title;
 
 
-        var platform = document.createElement("span");
-        platform.className = "platformBadge";
-        platform.textContent =
-          platformName(game.platform);
+      body.appendChild(title);
 
 
-        imageWrap.appendChild(image);
-        imageWrap.appendChild(platform);
+      /*
+       * TAGS + GENRES
+       */
+
+      var categories =
+        getGameCategories(game);
 
 
-        var body = document.createElement("div");
-        body.className = "gameCard__body";
+      if (categories.length) {
+
+        var tags =
+          document.createElement("div");
+
+        tags.className =
+          "gameCard__tags";
 
 
-        var title = document.createElement("h2");
-        title.className = "gameCard__title";
-        title.textContent = game.title;
+        categories.forEach(
+          function (tag) {
 
+            var chip =
+              document.createElement("span");
 
-        body.appendChild(title);
+            chip.className =
+              "gameTag";
 
+            chip.textContent =
+              tag;
 
-        if (game.tags && game.tags.length) {
-
-          var tags = document.createElement("div");
-          tags.className = "gameCard__tags";
-
-
-          game.tags.forEach(function (tag) {
-
-            var chip = document.createElement("span");
-            chip.className = "gameTag";
-            chip.textContent = tag;
 
             tags.appendChild(chip);
+
+          }
+        );
+
+
+        body.appendChild(tags);
+
+      }
+
+
+      /*
+       * MULTIPLE DESTINATION LINKS
+       */
+
+      if (links.length) {
+
+        var linksWrap =
+          document.createElement("div");
+
+        linksWrap.className =
+          "gameCard__links";
+
+
+        links.forEach(function (gameLink) {
+
+          var link =
+            document.createElement("a");
+
+
+          link.className =
+            "gameCard__link";
+
+          link.href =
+            gameLink.url;
+
+          link.target =
+            "_blank";
+
+          link.rel =
+            "noopener noreferrer";
+
+          link.textContent =
+            linkButtonText(
+              gameLink.platform
+            );
+
+
+          linksWrap.appendChild(link);
+
+        });
+
+
+        body.appendChild(
+          linksWrap
+        );
+
+      }
+
+
+      card.appendChild(
+        imageWrap
+      );
+
+      card.appendChild(
+        body
+      );
+
+
+      return card;
+
+    }
+
+
+    /* =========================
+       RENDER
+    ========================== */
+
+    function renderGames() {
+
+      grid.innerHTML = "";
+
+
+      var filtered =
+        GAME_LINKS
+          .filter(gameMatches)
+          .sort(function (a, b) {
+
+            return (
+              a.title || ""
+            ).localeCompare(
+              b.title || ""
+            );
 
           });
 
 
-          body.appendChild(tags);
+      filtered.forEach(
+        function (game) {
+
+          grid.appendChild(
+            createGameCard(game)
+          );
 
         }
+      );
 
 
-        var link = document.createElement("a");
-
-        link.className = "gameCard__link";
-        link.href = game.url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-
-        link.textContent =
-          game.platform === "steam"
-            ? "View on Steam"
-            : game.platform === "itch"
-            ? "View on itch.io"
-            : game.platform === "patreon"
-            ? "View Patreon"
-            : "Visit Game Page";
+      count.innerHTML =
+        "<strong>" +
+        filtered.length +
+        "</strong> " +
+        (
+          filtered.length === 1
+            ? "game"
+            : "games"
+        );
 
 
-        body.appendChild(link);
+      emptyState.style.display =
+        filtered.length
+          ? "none"
+          : "block";
 
-        card.appendChild(imageWrap);
-        card.appendChild(body);
-
-        return card;
-
-      }
+    }
 
 
-      function renderGames() {
+    /* =========================
+       CLEAR FILTERS
+    ========================== */
 
-        grid.innerHTML = "";
+    function clearFilters() {
 
+      search.value = "";
 
-        var filtered =
-          GAME_LINKS
-            .filter(gameMatches)
-            .sort(function (a, b) {
+      platformSelect.value =
+        "all";
 
-              return (a.title || "")
-                .localeCompare(b.title || "");
-
-            });
-
-
-        filtered.forEach(function (game) {
-          grid.appendChild(createGameCard(game));
-        });
+      activeTag =
+        "all";
 
 
-        count.innerHTML =
-          "<strong>" +
-          filtered.length +
-          "</strong> " +
-          (filtered.length === 1 ? "game" : "games");
-
-
-        emptyState.style.display =
-          filtered.length ? "none" : "block";
-
-      }
-
-
-      function clearFilters() {
-
-        search.value = "";
-        platformSelect.value = "all";
-        activeTag = "all";
-
-
-        var buttons =
-          filtersWrap.querySelectorAll(".filterButton");
-
-        buttons.forEach(function (button) {
+      filtersWrap
+        .querySelectorAll(".filterButton")
+        .forEach(function (button) {
 
           button.classList.toggle(
             "is-active",
@@ -1055,83 +1435,101 @@
         });
 
 
-        history.replaceState(
-          null,
-          "",
-          window.location.pathname
+      history.replaceState(
+        null,
+        "",
+        window.location.pathname
+      );
+
+
+      renderGames();
+
+    }
+
+
+    /* =========================
+       URL FILTER
+       links.html?tag=rpg
+    ========================== */
+
+    function readUrlFilter() {
+
+      var params =
+        new URLSearchParams(
+          window.location.search
         );
 
 
-        renderGames();
-
-      }
-
-
-      function readUrlFilter() {
-
-        var params =
-          new URLSearchParams(window.location.search);
-
-        var tag =
-          (params.get("tag") || "").toLowerCase();
+      var tag =
+        (
+          params.get("tag") || ""
+        ).toLowerCase();
 
 
-        if (!tag) return;
+      if (!tag) return;
 
 
-        var matchingButton =
-          filtersWrap.querySelector(
-            '[data-tag="' +
-            CSS.escape(tag) +
-            '"]'
+      var matchingButton =
+        filtersWrap.querySelector(
+          '[data-tag="' +
+          CSS.escape(tag) +
+          '"]'
+        );
+
+
+      if (!matchingButton) return;
+
+
+      activeTag = tag;
+
+
+      filtersWrap
+        .querySelectorAll(".filterButton")
+        .forEach(function (button) {
+
+          button.classList.toggle(
+            "is-active",
+            button === matchingButton
           );
 
+        });
 
-        if (!matchingButton) return;
-
-
-        activeTag = tag;
+    }
 
 
-        filtersWrap
-          .querySelectorAll(".filterButton")
-          .forEach(function (button) {
+    /* =========================
+       EVENTS
+    ========================== */
 
-            button.classList.toggle(
-              "is-active",
-              button === matchingButton
-            );
-
-          });
-
-      }
+    search.addEventListener(
+      "input",
+      renderGames
+    );
 
 
-      search.addEventListener(
-        "input",
-        renderGames
-      );
+    platformSelect.addEventListener(
+      "change",
+      renderGames
+    );
 
 
-      platformSelect.addEventListener(
-        "change",
-        renderGames
-      );
+    clearButton.addEventListener(
+      "click",
+      clearFilters
+    );
 
 
-      clearButton.addEventListener(
-        "click",
-        clearFilters
-      );
+    /* =========================
+       START
+    ========================== */
 
+    buildPlatformOptions();
+    buildTagFilters();
+    readUrlFilter();
+    renderGames();
 
-      buildPlatformOptions();
-      buildTagFilters();
-      readUrlFilter();
-      renderGames();
-
-    })();
-  </script>
+  })();
+</script>
 
 </body>
 </html>
