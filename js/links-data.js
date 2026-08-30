@@ -1944,7 +1944,32 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3597020/525ad1dfbd7825bf9c67a949acc6c037f75b293e/header.jpg?t=1781264758",
     "featured": false
+  },
+  {
+    "title": "College Bound - Episode 1",
+    "developer": "FOZ",
+    "genres": [
+      "Casual",
+      "Indie",
+      "Free To Play"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Nudity",
+      "Dating Sim",
+      "Visual Novel",
+      "2.5D",
+      "Nonlinear",
+      "Story Rich"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/1630080/",
+      "website": "https://www.collegeboundgame.com"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1630080/header.jpg?t=1765997533",
+    "featured": false
   }
+
 
 
 
