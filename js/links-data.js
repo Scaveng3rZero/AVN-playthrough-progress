@@ -1822,7 +1822,31 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3236900/bd206e513d968f71e5c8d6b8ac2c2a79a3accc71/header.jpg?t=1786804921",
     "featured": true
+  },
+  {
+    "title": "Aeons Echo",
+    "developer": "Aeons Studio",
+    "genres": [
+      "Action",
+      "Casual",
+      "RPG",
+      "Free To Play"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Hentai",
+      "Nudity",
+      "Singleplayer",
+      "Female Protagonist",
+      "Dating Sim"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/2832330/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2832330/62c0a82e96fe3e3dd839cb31a3c2ce102df6ea3e/header.jpg?t=1787731956",
+    "featured": false
   }
+
 
 
   
