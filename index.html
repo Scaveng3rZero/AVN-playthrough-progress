@@ -2,493 +2,1006 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Scaveng3r VN Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scaveng3r | Adult & Mature Game Discovery</title>
+
+  <meta
+    name="description"
+    content="Scaveng3r is your hub for discovering adult games, visual novels, mature indie games, and the Scaveng3r gaming community."
+  >
+
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    .sectionHeader--split {
+    :root {
+      --bg: #08080b;
+      --bg-soft: #0e0e13;
+      --panel: rgba(255, 255, 255, 0.045);
+      --panel-hover: rgba(255, 255, 255, 0.075);
+      --border: rgba(255, 255, 255, 0.10);
+      --border-strong: rgba(255, 255, 255, 0.16);
+
+      --text: #f4f4f6;
+      --muted: #a5a5af;
+      --silver: #d5d5da;
+
+      --pink: #d34f87;
+      --pink-light: #ef73aa;
+      --pink-dark: #842d54;
+
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family:
+        Inter,
+        Arial,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          900px 600px at 85% 5%,
+          rgba(211, 79, 135, 0.12),
+          transparent 65%
+        ),
+        radial-gradient(
+          700px 500px at 5% 35%,
+          rgba(255, 255, 255, 0.04),
+          transparent 70%
+        ),
+        #08080b;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .siteHeader {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 8, 11, 0.90);
+      backdrop-filter: blur(18px);
+    }
+
+    .siteHeader__inner {
+      min-height: 76px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 24px;
     }
 
-    .sectionHeader__text {
-      max-width: 760px;
+    .brandLogo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
     }
 
-    .sectionKicker {
-      margin: 0 0 6px;
-      font-size: 12px;
-      letter-spacing: 0.14em;
+    .brandLogo__mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(211, 79, 135, 0.45);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.08),
+          rgba(211,79,135,0.07)
+        );
+      box-shadow: 0 0 28px rgba(211,79,135,0.10);
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #e5e5e8;
+    }
+
+    .brandLogo__mark span {
+      color: var(--pink-light);
+    }
+
+    .brandLogo__name {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(155, 232, 178, 0.88);
     }
 
-    .sectionAction {
+    .brandLogo__name span {
+      color: var(--pink-light);
+    }
+
+    .siteNav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+    }
+
+    .siteNav__link {
+      padding: 10px 13px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition:
+        color 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .siteNav__link:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .siteNav__link--accent {
+      margin-left: 5px;
+      color: #fff;
+      border: 1px solid rgba(211,79,135,0.35);
+      background: rgba(211,79,135,0.10);
+    }
+
+    .siteNav__link--accent:hover {
+      border-color: rgba(239,115,170,0.55);
+      background: rgba(211,79,135,0.18);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      align-items: center;
+      gap: 70px;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--pink-light);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero__eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--pink);
+    }
+
+    .hero h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      line-height: 0.93;
+      letter-spacing: -0.055em;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--pink-light);
+    }
+
+    .hero__copy {
+      max-width: 650px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .hero__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
-      padding: 10px 14px;
+      min-height: 50px;
+      padding: 0 22px;
       border-radius: 12px;
       text-decoration: none;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button--primary {
+      border: 1px solid var(--pink);
+      background: var(--pink);
       color: #fff;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.05);
-      transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease;
     }
 
-    .sectionAction:hover {
-      transform: translateY(-1px);
-      border-color: rgba(155,232,178,0.35);
-      background: rgba(155,232,178,0.08);
+    .button--primary:hover {
+      background: var(--pink-light);
+      border-color: var(--pink-light);
     }
 
-    .featuredShelf {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+    .button--secondary {
+      color: #fff;
+      border: 1px solid var(--border-strong);
+      background: rgba(255,255,255,0.04);
     }
 
-    .storeCard {
+    .button--secondary:hover {
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* S3 hero emblem */
+
+    .heroMarkWrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .heroMark {
       position: relative;
+      width: min(330px, 80vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(211,79,135,0.45);
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          rgba(255,255,255,0.08),
+          rgba(255,255,255,0.015) 55%,
+          rgba(211,79,135,0.06)
+        );
+      box-shadow:
+        0 0 0 7px rgba(211,79,135,0.025),
+        0 28px 80px rgba(0,0,0,0.45),
+        0 0 80px rgba(211,79,135,0.08);
+    }
+
+    .heroMark::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .heroMark__letters {
+      font-size: clamp(5rem, 10vw, 8rem);
+      font-weight: 900;
+      letter-spacing: -0.12em;
+      transform: translateX(-5%);
+      color: #d7d7dc;
+      text-shadow: 0 6px 22px rgba(0,0,0,0.5);
+    }
+
+    .heroMark__letters span {
+      color: var(--pink);
+    }
+
+    .heroMark__label {
+      position: absolute;
+      bottom: 58px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    .section {
+      padding: 78px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .sectionHeading {
+      max-width: 700px;
+      margin-bottom: 34px;
+    }
+
+    .sectionHeading__kicker {
+      margin: 0 0 10px;
+      color: var(--pink-light);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .sectionHeading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.035em;
+    }
+
+    .sectionHeading p {
+      margin: 13px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* Discovery */
+
+    .discoveryGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .discoveryCard {
+      min-height: 150px;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      min-height: 100%;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      color: inherit;
-      transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+      justify-content: flex-end;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      text-decoration: none;
+      transition:
+        transform 0.16s ease,
+        background 0.16s ease,
+        border-color 0.16s ease;
     }
 
-    .storeCard:hover {
+    .discoveryCard:hover {
       transform: translateY(-4px);
-      border-color: rgba(155,232,178,0.35);
-      background: rgba(155,232,178,0.08);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.24);
+      border-color: rgba(211,79,135,0.35);
+      background: rgba(211,79,135,0.07);
     }
 
-    .storeCard__media {
+    .discoveryCard__number {
+      margin-bottom: auto;
+      color: rgba(255,255,255,0.25);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+    }
+
+    .discoveryCard strong {
+      font-size: 18px;
+    }
+
+    .discoveryCard small {
+      margin-top: 6px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .browseAll {
+      margin-top: 22px;
+    }
+
+    /* Community */
+
+    .communityGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .communityCard {
       position: relative;
-      aspect-ratio: 16 / 9;
       overflow: hidden;
-      background: #111;
+      min-height: 290px;
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--panel);
     }
 
-    .storeCard__media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.2s ease;
-    }
-
-    .storeCard:hover .storeCard__media img {
-      transform: scale(1.03);
-    }
-
-    .storeCard__badgeBar {
+    .communityCard::after {
+      content: "";
       position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
+      width: 190px;
+      height: 190px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: rgba(211,79,135,0.07);
+      filter: blur(3px);
+    }
+
+    .communityCard__label {
+      color: var(--pink-light);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .communityCard h3 {
+      margin: 18px 0 10px;
+      font-size: 2rem;
+    }
+
+    .communityCard p {
+      max-width: 500px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .communityCard .button {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    /* Footer */
+
+    .siteFooter {
+      padding: 34px 0 45px;
+      border-top: 1px solid var(--border);
+    }
+
+    .siteFooter__top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      pointer-events: none;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    .storeCard__badgeBar .badge {
-      backdrop-filter: blur(6px);
-      background: rgba(11,12,15,0.62);
-      color: rgba(255,255,255,0.92);
-    }
-
-    .storeCard__body {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 16px;
-      flex: 1 1 auto;
-    }
-
-    .storeCard__title {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.3;
-    }
-
-    .storeCard__desc {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.5;
-      opacity: 0.86;
-    }
-
-    .storeCard__meta {
+    .socialLinks {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
 
-    .storeCard__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: auto;
-      padding-top: 4px;
-    }
-
-    .storeBtn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 9px 12px;
-      border-radius: 10px;
+    .socialLinks a {
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: var(--muted);
       text-decoration: none;
-      font-weight: 700;
       font-size: 13px;
-      transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease;
+      font-weight: 600;
     }
 
-    .storeBtn:hover {
-      transform: translateY(-1px);
-    }
-
-    .storeBtn--primary {
+    .socialLinks a:hover {
       color: #fff;
-      border: 1px solid rgba(120,180,255,0.35);
-      background: rgba(120,180,255,0.14);
-    }
-
-    .storeBtn--primary:hover {
-      border-color: rgba(120,180,255,0.50);
-      background: rgba(120,180,255,0.20);
-    }
-
-    .storeBtn--ghost {
-      color: rgba(255,255,255,0.92);
-      border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.05);
     }
 
-    .storeBtn--ghost:hover {
-      border-color: rgba(155,232,178,0.35);
-      background: rgba(155,232,178,0.08);
+    .ageNotice {
+      margin-top: 26px;
+      color: rgba(255,255,255,0.38);
+      font-size: 11px;
+      line-height: 1.55;
     }
 
-    .featuredEmpty {
-      padding: 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.05);
-      font-size: 14px;
-      line-height: 1.5;
-      opacity: 0.9;
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .heroMarkWrap {
+        order: -1;
+      }
+
+      .heroMark {
+        width: 240px;
+      }
+
+      .heroMark__label {
+        bottom: 39px;
+      }
+
+      .discoveryGrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 720px) {
-      .sectionHeader--split {
-        align-items: stretch;
+      .container {
+        padding-left: 18px;
+        padding-right: 18px;
       }
 
-      .sectionAction {
+      .siteHeader__inner {
+        min-height: 68px;
+      }
+
+      .brandLogo__name {
+        font-size: 14px;
+      }
+
+      .siteNav__link {
+        display: none;
+      }
+
+      .siteNav__link--accent {
+        display: inline-flex;
+        margin-left: 0;
+      }
+
+      .hero {
+        padding-top: 50px;
+        padding-bottom: 60px;
+      }
+
+      .communityGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .communityCard {
+        min-height: 250px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero h1 {
+        font-size: 3.15rem;
+      }
+
+      .hero__buttons {
+        flex-direction: column;
+      }
+
+      .button {
         width: 100%;
+      }
+
+      .discoveryGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .discoveryCard {
+        min-height: 125px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <header class="header">
-      <div class="brand">
-        <img class="icon" src="img/ScavIcon.png" alt="Scaveng3r channel icon">
-        <div class="titles">
-          <h1>Scaveng3r VN Hub</h1>
-          <p>Featured series, new uploads, upcoming games, and community updates.</p>
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="siteHeader">
+    <div class="container siteHeader__inner">
+
+      <a class="brandLogo" href="index.html" aria-label="Scaveng3r home">
+        <div class="brandLogo__mark">
+          S<span>3</span>
         </div>
-      </div>
 
-      <div class="coverWrap" aria-label="Channel cover">
-        <img src="img/ScavBanner.jpg" alt="Scaveng3r channel banner">
-        <div class="coverOverlay"></div>
-      </div>
-    </header>
+        <div class="brandLogo__name">
+          SCAVENG<span>3</span>R
+        </div>
+      </a>
 
-    <nav class="siteNav" aria-label="Primary">
-  <a class="siteNav__link" href="index.html">Home</a>
-  <a class="siteNav__link" href="links.html">Game Links</a>
-  <a class="siteNav__link" href="recommend.html">Recommend</a>
-  <a class="siteNav__link" href="about.html">About</a>
-</nav>
+      <nav class="siteNav" aria-label="Main navigation">
+        <a class="siteNav__link" href="links.html">
+          Games
+        </a>
 
-    <section class="homeHero">
-      <div class="homeHero__text">
-        <h2>Welcome to the channel hub</h2>
-        <p>
-          Follow current playthroughs, discover upcoming visual novels and games,
-          and keep up with what’s new on the channel.
+        <a
+          class="siteNav__link"
+          href="https://www.youtube.com/channel/UCth-7Xp5hLYSs1FNnBO5jeQ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          YouTube
+        </a>
+
+        <a
+          class="siteNav__link"
+          href="https://www.patreon.com/scaveng3r"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Patreon
+        </a>
+
+        <a
+          class="siteNav__link siteNav__link--accent"
+          href="https://discord.gg/XzeJR492qN"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Join Discord
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="container hero">
+
+      <div class="hero__content">
+
+        <div class="hero__eyebrow">
+          Scaveng3r Gaming
+        </div>
+
+        <h1>
+          Adult &amp; Mature
+          <span>Game Discovery.</span>
+        </h1>
+
+        <p class="hero__copy">
+          Discover adult games, visual novels, mature indies, and other
+          games worth checking out. Scaveng3r brings the games, videos,
+          and community together in one place.
         </p>
-       <div class="homeHero__buttons">
-  <a class="btn" href="links.html">Browse Game Links</a>
-  <a class="btn btn--ghost" href="recommend.html">Recommend a Game</a>
-</div>
-      </div>
-    </section>
 
-    <section class="homeSection" aria-labelledby="featured-store-title">
-      <div class="sectionHeader sectionHeader--split">
-        <div class="sectionHeader__text">
-          <p class="sectionKicker">Featured Picks</p>
-          <h2 id="featured-store-title">Featured Games &amp; Visual Novels</h2>
-          <p>
-            Browse a rotating shelf of games featured on the channel.
-            These cards auto-fill from your game data and link directly to their store or download pages.
-          </p>
+        <div class="hero__buttons">
+
+          <a class="button button--primary" href="links.html">
+            Explore Games
+          </a>
+
+          <a
+            class="button button--secondary"
+            href="https://discord.gg/XzeJR492qN"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Join Discord
+          </a>
+
+        </div>
+      </div>
+
+
+      <div class="heroMarkWrap" aria-hidden="true">
+
+        <div class="heroMark">
+
+          <div class="heroMark__letters">
+            S<span>3</span>
+          </div>
+
+          <div class="heroMark__label">
+            Scaveng3r
+          </div>
+
         </div>
 
-        <a class="sectionAction" href="links.html">Browse all game links</a>
       </div>
 
-      <div id="featuredShelf" class="featuredShelf" aria-live="polite">
-        <div class="featuredEmpty">Loading featured titles...</div>
-      </div>
     </section>
 
-    <section class="homeSection">
-      <div class="sectionHeader">
-        <h2>New on the Channel</h2>
-        <p>Recently started, recently updated, or newly added series.</p>
+
+    <!-- =========================
+         DISCOVER
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="sectionHeading">
+
+          <p class="sectionHeading__kicker">
+            Discover
+          </p>
+
+          <h2>
+            Find something worth playing.
+          </h2>
+
+          <p>
+            Browse the Scaveng3r game library and find official storefronts,
+            developer pages, and other places to get the games.
+          </p>
+
+        </div>
+
+
+        <div class="discoveryGrid">
+
+          <a class="discoveryCard" href="links.html">
+            <span class="discoveryCard__number">01</span>
+            <strong>Adult Games</strong>
+            <small>
+              Games built specifically for mature audiences.
+            </small>
+          </a>
+
+
+          <a class="discoveryCard" href="links.html">
+            <span class="discoveryCard__number">02</span>
+            <strong>Visual Novels</strong>
+            <small>
+              Story-driven games and interactive fiction.
+            </small>
+          </a>
+
+
+          <a class="discoveryCard" href="links.html">
+            <span class="discoveryCard__number">03</span>
+            <strong>Mature Games</strong>
+            <small>
+              Mainstream and indie games with mature themes.
+            </small>
+          </a>
+
+
+          <a class="discoveryCard" href="links.html">
+            <span class="discoveryCard__number">04</span>
+            <strong>Indie Games</strong>
+            <small>
+              Interesting releases from smaller developers.
+            </small>
+          </a>
+
+        </div>
+
+
+        <div class="browseAll">
+
+          <a class="button button--secondary" href="links.html">
+            Browse All Games
+          </a>
+
+        </div>
+
       </div>
 
-      <div class="miniGrid">
-        <article class="miniCard">
-          <h3>
-            <a href="https://www.youtube.com/watch?v=vg1wYxkyQ30" target="_blank" rel="noopener noreferrer">
-              Newest Upload
-            </a>
-          </h3>
+    </section>
 
-          <div class="videoEmbed">
-            <iframe
-              src="https://www.youtube.com/embed/vg1wYxkyQ30"
-              title="Newest Upload"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+
+    <!-- =========================
+         COMMUNITY
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="sectionHeading">
+
+          <p class="sectionHeading__kicker">
+            Community
+          </p>
+
+          <h2>
+            More than a YouTube channel.
+          </h2>
+
+          <p>
+            Follow the content wherever you prefer, support Scaveng3r
+            directly, or jump into the community.
+          </p>
+
+        </div>
+
+
+        <div class="communityGrid">
+
+          <article class="communityCard">
+
+            <div class="communityCard__label">
+              Support
+            </div>
+
+            <h3>Patreon</h3>
+
+            <p>
+              Support Scaveng3r directly and get additional posts,
+              game discoveries, community input, behind-the-scenes
+              updates, and supporter content.
+            </p>
+
+            <a
+              class="button button--secondary"
+              href="https://www.patreon.com/scaveng3r"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Patreon
+            </a>
+
+          </article>
+
+
+          <article class="communityCard">
+
+            <div class="communityCard__label">
+              Connect
+            </div>
+
+            <h3>Discord</h3>
+
+            <p>
+              Join the 18+ Scaveng3r gaming community. Talk games,
+              find people to play with, share discoveries, and keep
+              up with what's happening.
+            </p>
+
+            <a
+              class="button button--primary"
+              href="https://discord.gg/XzeJR492qN"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join Discord
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="siteFooter">
+
+    <div class="container">
+
+      <div class="siteFooter__top">
+
+        <a class="brandLogo" href="index.html">
+
+          <div class="brandLogo__mark">
+            S<span>3</span>
           </div>
 
-          <p>Fresh drop — latest video on the channel.</p>
-        </article>
-
-        <article class="miniCard">
-          <h3>
-            <a href="https://www.youtube.com/watch?v=C7WmdP-AuuI&list=PLwtKkIkmXeFzJsqNxgO5HcNE-zOiQiX0t&index=20" target="_blank" rel="noopener noreferrer">
-              Newest Series
-            </a>
-          </h3>
-
-          <div class="videoEmbed">
-            <iframe
-              src="https://www.youtube.com/embed/C7WmdP-AuuI"
-              title="Newest Series"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+          <div class="brandLogo__name">
+            SCAVENG<span>3</span>R
           </div>
 
-          <p>New series just hit the channel — jump in from the start.</p>
-        </article>
+        </a>
 
-        <article class="miniCard">
-          <h3>Latest Site Update</h3>
-          <p>I've added the new VN, Darker to the links page.</p>
-        </article>
+
+        <div class="socialLinks">
+
+          <a
+            href="https://www.youtube.com/channel/UCth-7Xp5hLYSs1FNnBO5jeQ"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            YouTube
+          </a>
+
+          <a
+            href="https://twitch.tv/scaveng3r"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twitch
+          </a>
+
+          <a
+            href="https://x.com/realscaveng3r"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X
+          </a>
+
+          <a
+            href="https://www.patreon.com/scaveng3r"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Patreon
+          </a>
+
+          <a
+            href="https://discord.gg/XzeJR492qN"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Discord
+          </a>
+
+        </div>
+
       </div>
-    </section>
 
-    <section class="homeSection">
-      <div class="sectionHeader">
-        <h2>Upcoming / Coming Soon</h2>
-        <p>Games and visual novels that may appear next.</p>
-      </div>
 
-      <div class="miniGrid">
-        <article class="miniCard">
-          <h3>Community Pick</h3>
-          <p>A future game selected by patrons or the community.</p>
-        </article>
+      <p class="ageNotice">
+        Scaveng3r covers games and topics intended for mature audiences.
+        Community spaces are 18+.
+        <br>
+        © <span id="year"></span> Scaveng3r.
+      </p>
 
-        <article class="miniCard">
-          <h3>Planned Series Return</h3>
-          <p>Use this space for a returning VN or delayed continuation.</p>
-        </article>
+    </div>
 
-        <article class="miniCard">
-          <h3>Future First Look</h3>
-          <p>Spotlight a game you’re considering covering next.</p>
-        </article>
-      </div>
-    </section>
+  </footer>
 
-    <section class="homeSection">
-      <div class="sectionHeader">
-        <h2>Quick Links</h2>
-      </div>
-
-      <div class="quickLinks">
-        <a class="quickLink" href="links.html">Game Links</a>
-        <a class="quickLink" href="recommend.html">Recommend a Game</a>
-        <a class="quickLink" href="about.html">About the Channel</a>
-      </div>
-    </section>
-
-  </div>
-
-  <script src="js/links-data.js"></script>
 
   <script>
-    const DEFAULT_FEATURED_IMAGE = "img/default.jpg";
-
-    function getImageForItem(item) {
-      if (typeof item.image === "string" && item.image.trim()) return item.image;
-      return DEFAULT_FEATURED_IMAGE;
-    }
-
-    function getDescriptionForItem(item) {
-      return (
-        item.description ||
-        "Featured on the channel — check out the game page and see what this title is about."
-      );
-    }
-
-    function getPlatformLabel(platform) {
-      const value = String(platform || "").toLowerCase();
-
-      if (value === "steam") return "Steam";
-      if (value === "itch") return "itch.io";
-      if (value === "dev") return "Dev Site";
-
-      return "Game Page";
-    }
-
-    function getPlatformBadgeClass(platform) {
-      const value = String(platform || "").toLowerCase();
-
-      if (value === "steam") return "badge badge--steam";
-      if (value === "itch") return "badge badge--itch";
-      if (value === "dev") return "badge badge--dev";
-
-      return "badge";
-    }
-
-    function getPrimaryButtonLabel(platform) {
-      const value = String(platform || "").toLowerCase();
-
-      if (value === "steam") return "View on Steam";
-      if (value === "itch") return "View on itch.io";
-      if (value === "dev") return "Visit Dev Site";
-
-      return "View Game Page";
-    }
-
-    function buildStoreCard(item) {
-      const image = getImageForItem(item);
-      const description = getDescriptionForItem(item);
-      const watchUrl = item.watchUrl || "";
-      const platformLabel = getPlatformLabel(item.platform);
-      const platformBadgeClass = getPlatformBadgeClass(item.platform);
-      const primaryButtonLabel = getPrimaryButtonLabel(item.platform);
-
-      const card = document.createElement("article");
-      card.className = "storeCard";
-
-      card.innerHTML = `
-        <div class="storeCard__media">
-          <img src="${image}" alt="${item.title} cover art" loading="lazy">
-          <div class="storeCard__badgeBar">
-            <span class="${platformBadgeClass}">${platformLabel}</span>
-            <span class="badge">Featured</span>
-          </div>
-        </div>
-
-        <div class="storeCard__body">
-          <h3 class="storeCard__title">${item.title}</h3>
-
-          <div class="storeCard__meta">
-            <span class="${platformBadgeClass}">${platformLabel}</span>
-          </div>
-
-          <p class="storeCard__desc">${description}</p>
-
-          <div class="storeCard__actions">
-            <a class="storeBtn storeBtn--primary" href="${item.url}" target="_blank" rel="noopener noreferrer">
-              ${primaryButtonLabel}
-            </a>
-            ${
-              watchUrl
-                ? `<a class="storeBtn storeBtn--ghost" href="${watchUrl}" target="_blank" rel="noopener noreferrer">Watch on Channel</a>`
-                : `<a class="storeBtn storeBtn--ghost" href="links.html">More Links</a>`
-            }
-          </div>
-        </div>
-      `;
-
-      return card;
-    }
-
-    function renderFeaturedShelf() {
-      const shelf = document.getElementById("featuredShelf");
-      if (!shelf) return;
-
-      const gameLinks = Array.isArray(window.GAME_LINKS) ? window.GAME_LINKS : [];
-
-      const featuredItems = gameLinks.filter(item =>
-        item &&
-        item.title &&
-        item.url &&
-        item.featured === true
-      );
-
-      const fallbackItems = gameLinks.filter(item =>
-        item &&
-        item.title &&
-        item.url
-      );
-
-      const itemsToShow = (featuredItems.length ? featuredItems : fallbackItems).slice(0, 6);
-
-      shelf.innerHTML = "";
-
-      if (!itemsToShow.length) {
-        shelf.innerHTML = `
-          <div class="featuredEmpty">
-            No featured titles were found in <code>GAME_LINKS</code> yet.
-          </div>
-        `;
-        return;
-      }
-
-      itemsToShow.forEach(item => {
-        shelf.appendChild(buildStoreCard(item));
-      });
-    }
-
-    renderFeaturedShelf();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
   </script>
+
 </body>
 </html>
