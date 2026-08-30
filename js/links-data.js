@@ -2064,7 +2064,33 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2903690/44771d8e3c41ea68ef5860322e28baac45ea1e4d/header.jpg?t=1787807158",
     "featured": false
+  },
+  {
+    "title": "House Party",
+    "developer": "Eek! Games, LLC",
+    "genres": [
+      "Adventure",
+      "Casual",
+      "Indie",
+      "RPG",
+      "Simulation"
+    ],
+    "tags": [
+      "Nudity",
+      "Sandbox",
+      "Choices Matter",
+      "Story Rich",
+      "Comedy",
+      "Sexual Content"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/611790/",
+      "website": "https://housepartygame.com"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/611790/8596a877ba1c17b31ac02460c1ae995693ba3147/header_alt_assets_0.jpg?t=1788027384",
+    "featured": false
   }
+
 
 
 
