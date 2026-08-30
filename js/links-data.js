@@ -2016,7 +2016,29 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2676180/header.jpg?t=1779345863",
     "featured": true
+  },
+  {
+    "title": "Gagged Love",
+    "developer": "Jonny Obviously",
+    "genres": [
+      "Adventure",
+      "Casual"
+    ],
+    "tags": [
+      "Hentai",
+      "Sexual Content",
+      "Anime",
+      "Nudity",
+      "Visual Novel",
+      "Cute"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/3610840/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3610840/292fb0be0c6b611d331a6ac3510610274bf4f778/header.jpg?t=1786988047",
+    "featured": false
   }
+
 
 
 
