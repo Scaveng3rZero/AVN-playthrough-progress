@@ -122,16 +122,38 @@ var GAME_LINKS = [
     url: "https://store.steampowered.com/app/2176560/Dreamland/",
     tags: ["visual novel"]
   },
-  {
-    title: "Eternum",
-    platform: "itch",
-    url: "https://caribdis.itch.io/eternum",
-    tags: ["visual novel"],
-    featured: true,
-    priority: 3,
-    description: "Fan-favorite visual novel with memorable characters and strong channel demand.",
-    watchUrl: "https://www.youtube.com/results?search_query=scaveng3r+eternum"
+ {
+  title: "Eternum",
+
+  developer: "Caribdis",
+
+  genres: [
+    "Visual Novel"
+  ],
+
+  tags: [
+    "adult",
+    "mystery",
+    "romance",
+    "3D"
+  ],
+
+  links: {
+    itch: "https://caribdis.itch.io/eternum",
+    patreon: "https://www.patreon.com/onceinalifetime",
+    subscribestar: "https://subscribestar.adult/caribdis"
   },
+
+  featured: true,
+
+  priority: 3,
+
+  description:
+    "Fan-favorite visual novel with memorable characters and strong channel demand.",
+
+  watchUrl:
+    "https://www.youtube.com/results?search_query=scaveng3r+eternum"
+},
   {
     title: "Femboy Futa House",
     platform: "steam",
@@ -522,50 +544,256 @@ function getSteamAppId(url) {
   return match ? match[1] : null;
 }
 
+
 function getDefaultImage() {
   return "img/default.jpg";
 }
 
-function getAutoImage(item) {
-  if (!item) return getDefaultImage();
 
+/*
+ * Finds the Steam URL regardless of whether
+ * the game uses the OLD or NEW data format.
+ */
+function getSteamUrl(item) {
+
+  if (!item) return null;
+
+
+  /*
+   * NEW FORMAT
+   *
+   * links: {
+   *   steam: "..."
+   * }
+   */
+  if (
+    item.links &&
+    typeof item.links === "object" &&
+    item.links.steam
+  ) {
+    return item.links.steam;
+  }
+
+
+  /*
+   * OLD FORMAT
+   *
+   * platform: "steam",
+   * url: "..."
+   */
+  if (
+    item.platform === "steam" &&
+    item.url
+  ) {
+    return item.url;
+  }
+
+
+  return null;
+}
+
+
+function getAutoImage(item) {
+
+  if (!item) {
+    return getDefaultImage();
+  }
+
+
+  /*
+   * First use one of our manually supplied
+   * images if the game has one.
+   */
   if (GAME_IMAGE_OVERRIDES[item.title]) {
     return GAME_IMAGE_OVERRIDES[item.title];
   }
 
-  if (item.platform === "steam") {
-    var appId = getSteamAppId(item.url);
+
+  /*
+   * Otherwise automatically grab the
+   * Steam header when a Steam URL exists.
+   */
+  var steamUrl =
+    getSteamUrl(item);
+
+
+  if (steamUrl) {
+
+    var appId =
+      getSteamAppId(steamUrl);
+
+
     if (appId) {
-      return "https://cdn.cloudflare.steamstatic.com/steam/apps/" + appId + "/header.jpg";
+
+      return (
+        "https://cdn.cloudflare.steamstatic.com/" +
+        "steam/apps/" +
+        appId +
+        "/header.jpg"
+      );
+
     }
+
   }
+
 
   return getDefaultImage();
 }
 
-function normalizeTags(tags) {
-  if (!Array.isArray(tags)) return [];
 
-  return tags
-    .flatMap(function(tag) {
-      return String(tag).split(",");
+/*
+ * Cleans arrays such as:
+ *
+ * tags: ["rpg", "horror"]
+ *
+ * or:
+ *
+ * tags: ["rpg, horror"]
+ */
+function normalizeArray(items) {
+
+  if (!Array.isArray(items)) {
+    return [];
+  }
+
+
+  return items
+    .flatMap(function (item) {
+
+      return String(item)
+        .split(",");
+
     })
-    .map(function(tag) {
-      return tag.trim();
+
+    .map(function (item) {
+
+      return item.trim();
+
     })
+
     .filter(Boolean);
+
 }
 
-GAME_LINKS = GAME_LINKS.map(function(item) {
+
+/*
+ * Clean the new links object.
+ *
+ * links: {
+ *   steam: "...",
+ *   itch: "...",
+ *   patreon: "..."
+ * }
+ */
+function normalizeLinks(links) {
+
+  var cleaned = {};
+
+
+  if (
+    !links ||
+    typeof links !== "object"
+  ) {
+    return cleaned;
+  }
+
+
+  Object.keys(links)
+    .forEach(function (platform) {
+
+      var url = links[platform];
+
+
+      if (
+        typeof url === "string" &&
+        url.trim()
+      ) {
+
+        cleaned[platform] =
+          url.trim();
+
+      }
+
+    });
+
+
+  return cleaned;
+}
+
+
+/*
+ * Normalize the database while preserving
+ * BOTH old and new game formats.
+ */
+GAME_LINKS = GAME_LINKS.map(function (item) {
+
   return {
-    title: item.title,
-    platform: item.platform,
-    url: item.url,
-    tags: normalizeTags(item.tags),
-    image: item.image || getAutoImage(item),
-    description: item.description || "",
-    watchUrl: item.watchUrl || "",
-    featured: Boolean(item.featured),
-    priority: Number.isFinite(item.priority) ? item.priority : 999
+
+    /*
+     * BASIC INFO
+     */
+    title:
+      item.title || "",
+
+    developer:
+      item.developer || "",
+
+
+    /*
+     * NEW CATEGORY SYSTEM
+     */
+    genres:
+      normalizeArray(item.genres),
+
+    tags:
+      normalizeArray(item.tags),
+
+
+    /*
+     * NEW MULTI-LINK SYSTEM
+     */
+    links:
+      normalizeLinks(item.links),
+
+
+    /*
+     * OLD LINK FORMAT
+     *
+     * Keep these temporarily so every
+     * existing entry keeps working.
+     */
+    platform:
+      item.platform || "",
+
+    url:
+      item.url || "",
+
+
+    /*
+     * ARTWORK
+     */
+    image:
+      item.image ||
+      getAutoImage(item),
+
+
+    /*
+     * LEGACY / OPTIONAL DATA
+     */
+    description:
+      item.description || "",
+
+    watchUrl:
+      item.watchUrl || "",
+
+    featured:
+      Boolean(item.featured),
+
+    priority:
+      Number.isFinite(item.priority)
+        ? item.priority
+        : 999
+
   };
+
 });
