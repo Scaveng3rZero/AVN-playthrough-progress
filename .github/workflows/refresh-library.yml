@@ -1,0 +1,53 @@
+name: Refresh Game Library
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-library:
+    name: Refresh all game metadata
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Check out website
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+
+      - name: Refresh game library
+        run: node scripts/refresh-library.js
+
+
+      - name: Check for changes
+        id: changes
+        shell: bash
+        run: |
+          if git diff --quiet js/links-data.js; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No library changes found."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+
+      - name: Commit refreshed library
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add js/links-data.js
+          git commit -m "Refresh game library metadata"
+          git push origin HEAD:main
