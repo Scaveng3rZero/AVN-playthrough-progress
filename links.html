@@ -2,84 +2,1130 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Game Links (18+) | VN Playthrough Progress</title>
+  <title>Games | Scaveng3r</title>
 
-  <!-- SEO -->
-  <meta name="description"
-        content="Curated 18+ visual novel and adult game store links including Steam, itch.io, and developer pages." />
+  <meta
+    name="description"
+    content="Browse adult games, visual novels, mature games, RPGs, indie games and more curated by Scaveng3r."
+  >
 
-  <!-- OpenGraph (Discord / Patreon / Social Preview) -->
-  <meta property="og:title" content="Game Links (18+) | VN Playthrough Progress">
-  <meta property="og:description"
-        content="Curated 18+ visual novel and adult game store links including Steam, itch.io, and developer pages.">
-  <meta property="og:type" content="website">
-  <!-- If/when you have a live domain, replace with full URL -->
-  <meta property="og:url" content="links.html">
-  <!-- Optional: add a real image file later, or delete this line -->
-  <meta property="og:image" content="img/preview.jpg">
-
-  <!-- External CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    :root {
+      --bg: #08090b;
+      --bg-soft: #0e1013;
+
+      --panel: rgba(255, 255, 255, 0.045);
+      --panel-hover: rgba(255, 255, 255, 0.075);
+
+      --border: rgba(255, 255, 255, 0.10);
+      --border-strong: rgba(255, 255, 255, 0.17);
+
+      --text: #f3f3f3;
+      --muted: #9da3aa;
+      --silver: #c9ccd1;
+
+      --orange: #e56b25;
+      --orange-light: #ff8338;
+      --orange-dark: #9c4319;
+
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family:
+        Inter,
+        Arial,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          900px 550px at 90% 0%,
+          rgba(229, 107, 37, 0.10),
+          transparent 65%
+        ),
+        #08090b;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .siteHeader {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 9, 11, 0.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .siteHeader__inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brandLogo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brandLogo__mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(229,107,37,0.45);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.08),
+          rgba(229,107,37,0.07)
+        );
+      box-shadow: 0 0 28px rgba(229,107,37,0.10);
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #e5e5e8;
+    }
+
+    .brandLogo__mark span {
+      color: var(--orange-light);
+    }
+
+    .brandLogo__name {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brandLogo__name span {
+      color: var(--orange-light);
+    }
+
+    .siteNav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .siteNav__link {
+      padding: 10px 13px;
+      border-radius: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition:
+        color 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .siteNav__link:hover,
+    .siteNav__link--active {
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .siteNav__link--accent {
+      margin-left: 5px;
+      color: #fff;
+      border: 1px solid rgba(229,107,37,0.35);
+      background: rgba(229,107,37,0.10);
+    }
+
+    .siteNav__link--accent:hover {
+      border-color: rgba(255,131,56,0.55);
+      background: rgba(229,107,37,0.18);
+    }
+
+    /* =========================
+       PAGE HEADER
+    ========================== */
+
+    .pageHero {
+      padding: 78px 0 48px;
+    }
+
+    .pageHero__eyebrow {
+      margin: 0 0 12px;
+      color: var(--orange-light);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .pageHero h1 {
+      margin: 0;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .pageHero p {
+      max-width: 690px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       CONTROLS
+    ========================== */
+
+    .directory {
+      padding-bottom: 90px;
+    }
+
+    .controls {
+      position: relative;
+      z-index: 5;
+      margin-bottom: 30px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .controls__top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      gap: 12px;
+    }
+
+    .searchBox,
+    .selectBox {
+      width: 100%;
+      min-height: 50px;
+      padding: 0 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      outline: none;
+      color: var(--text);
+      background: #101216;
+    }
+
+    .searchBox::placeholder {
+      color: #737982;
+    }
+
+    .searchBox:focus,
+    .selectBox:focus {
+      border-color: rgba(229,107,37,0.75);
+      box-shadow: 0 0 0 3px rgba(229,107,37,0.10);
+    }
+
+    .selectBox option {
+      color: #fff;
+      background: #101216;
+    }
+
+    .filtersLabel {
+      margin-top: 18px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .tagFilters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filterButton {
+      min-height: 36px;
+      padding: 0 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--muted);
+      background: rgba(255,255,255,0.025);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: capitalize;
+      transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .filterButton:hover {
+      color: #fff;
+      border-color: rgba(229,107,37,0.35);
+    }
+
+    .filterButton.is-active {
+      color: #fff;
+      border-color: var(--orange);
+      background: var(--orange);
+    }
+
+    /* =========================
+       RESULTS
+    ========================== */
+
+    .directoryBar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .resultCount strong {
+      color: var(--text);
+    }
+
+    .clearButton {
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+      color: var(--orange-light);
+      background: transparent;
+      font-weight: 700;
+    }
+
+    .clearButton:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       GAME GRID
+    ========================== */
+
+    .gameGrid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .gameCard {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      transition:
+        transform 0.16s ease,
+        background 0.16s ease,
+        border-color 0.16s ease;
+    }
+
+    .gameCard:hover {
+      transform: translateY(-4px);
+      border-color: rgba(229,107,37,0.32);
+      background: var(--panel-hover);
+    }
+
+    .gameCard__imageWrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 460 / 215;
+      background: #111318;
+    }
+
+    .gameCard__image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+
+    .gameCard:hover .gameCard__image {
+      transform: scale(1.035);
+    }
+
+    .platformBadge {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      padding: 6px 9px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 8px;
+      color: #fff;
+      background: rgba(8,9,11,0.86);
+      backdrop-filter: blur(8px);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .gameCard__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 17px;
+    }
+
+    .gameCard__title {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .gameCard__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 13px 0 18px;
+    }
+
+    .gameTag {
+      padding: 5px 8px;
+      border-radius: 7px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.055);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+
+    .gameCard__link {
+      width: 100%;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .gameCard__link:hover {
+      border-color: var(--orange);
+      background: rgba(229,107,37,0.12);
+    }
+
+    .emptyState {
+      display: none;
+      padding: 60px 20px;
+      border: 1px dashed var(--border-strong);
+      border-radius: 18px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    .siteFooter {
+      padding: 34px 0 45px;
+      border-top: 1px solid var(--border);
+    }
+
+    .siteFooter__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footerText {
+      color: rgba(255,255,255,0.38);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 1000px) {
+      .gameGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 36px, 1180px);
+      }
+
+      .siteNav__link {
+        display: none;
+      }
+
+      .siteNav__link--accent {
+        display: inline-flex;
+      }
+
+      .pageHero {
+        padding-top: 55px;
+      }
+
+      .controls__top {
+        grid-template-columns: 1fr;
+      }
+
+      .gameGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brandLogo__name {
+        font-size: 14px;
+      }
+
+      .pageHero h1 {
+        font-size: 3.2rem;
+      }
+
+      .gameGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .gameCard__title {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <!-- Header (matches index.html) -->
-    <div class="header">
-      <div class="brand">
-        <img class="icon" src="img/ScavIcon.png" alt="Scav icon">
-        <div class="titles">
-          <h1>Game Links (18+)</h1>
-          <p>Curated VN and adult game store links (Steam / itch.io / developer pages).</p>
+  <header class="siteHeader">
+    <div class="container siteHeader__inner">
+
+      <a class="brandLogo" href="index.html">
+        <div class="brandLogo__mark">
+          S<span>3</span>
         </div>
+
+        <div class="brandLogo__name">
+          SCAVENG<span>3</span>R
+        </div>
+      </a>
+
+      <nav class="siteNav" aria-label="Main navigation">
+        <a class="siteNav__link" href="index.html">Home</a>
+        <a class="siteNav__link siteNav__link--active" href="links.html">Games</a>
+
+        <a
+          class="siteNav__link"
+          href="https://www.youtube.com/channel/UCth-7Xp5hLYSs1FNnBO5jeQ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          YouTube
+        </a>
+
+        <a
+          class="siteNav__link"
+          href="https://www.patreon.com/scaveng3r"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Patreon
+        </a>
+
+        <a
+          class="siteNav__link siteNav__link--accent"
+          href="https://discord.gg/XzeJR492qN"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Join Discord
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="pageHero">
+      <div class="container">
+
+        <p class="pageHero__eyebrow">
+          Scaveng3r Game Library
+        </p>
+
+        <h1>Find Your Next Game.</h1>
+
+        <p>
+          Browse games featured, played, discovered, or collected by
+          Scaveng3r. Use the search and filters to narrow the library,
+          then go directly to the game's storefront or developer page.
+        </p>
+
+      </div>
+    </section>
+
+
+    <section class="directory">
+      <div class="container">
+
+        <div class="controls">
+
+          <div class="controls__top">
+
+            <input
+              id="gameSearch"
+              class="searchBox"
+              type="search"
+              placeholder="Search games or tags..."
+              autocomplete="off"
+            >
+
+            <select id="platformFilter" class="selectBox">
+              <option value="all">All Platforms</option>
+            </select>
+
+          </div>
+
+          <div class="filtersLabel">
+            Genres &amp; Tags
+          </div>
+
+          <div id="tagFilters" class="tagFilters"></div>
+
+        </div>
+
+
+        <div class="directoryBar">
+
+          <div id="resultCount" class="resultCount"></div>
+
+          <button id="clearFilters" class="clearButton" type="button">
+            Clear filters
+          </button>
+
+        </div>
+
+
+        <div id="gameGrid" class="gameGrid"></div>
+
+
+        <div id="emptyState" class="emptyState">
+          No games match those filters.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="siteFooter">
+
+    <div class="container siteFooter__inner">
+
+      <div class="brandLogo">
+
+        <div class="brandLogo__mark">
+          S<span>3</span>
+        </div>
+
+        <div class="brandLogo__name">
+          SCAVENG<span>3</span>R
+        </div>
+
       </div>
 
-      <div class="coverWrap" aria-label="Channel cover">
-        <img src="img/ScavBanner.jpg" alt="Channel cover">
-        <div class="coverOverlay"></div>
+      <div class="footerText">
+        18+ mature gaming community.<br>
+        © <span id="year"></span> Scaveng3r
       </div>
+
     </div>
 
-    <!-- Nav (matches recommended approach) -->
-    <nav class="siteNav" aria-label="Primary">
-  <a class="siteNav__link" href="index.html">Home</a>
-  <a class="siteNav__link" href="links.html">Game Links</a>
-  <a class="siteNav__link" href="recommend.html">Recommend</a>
-  <a class="siteNav__link" href="about.html">About</a>
-</nav>
+  </footer>
 
-    <!-- Intro -->
-    <div class="intro">
-      Browse and search game pages below. Links open in a new tab.
-    </div>
 
-    <!-- Search -->
-    <div class="intro">
-      <label class="srOnly" for="linkSearch">Search links</label>
-      <input id="linkSearch" class="input" type="search"
-             placeholder="Search games, devs, or platforms...">
-    </div>
-
-    <!-- Link Library -->
-    <div id="linkLibrary">
-
-    <div class="linkGrid" id="allLinks"></div>
-      
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p>© <span id="year"></span> Scaveng3r</p>
-    </footer>
-
-  </div>
-
-  <!-- External JS -->
   <script src="js/links-data.js"></script>
-<script src="js/script.js"></script>
+
+  <script>
+    (function () {
+
+      var grid = document.getElementById("gameGrid");
+      var search = document.getElementById("gameSearch");
+      var platformSelect = document.getElementById("platformFilter");
+      var filtersWrap = document.getElementById("tagFilters");
+      var count = document.getElementById("resultCount");
+      var clearButton = document.getElementById("clearFilters");
+      var emptyState = document.getElementById("emptyState");
+
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+      if (typeof GAME_LINKS === "undefined") {
+        count.textContent = "Game library unavailable.";
+        return;
+      }
+
+
+      var activeTag = "all";
+
+
+      function platformName(platform) {
+
+        if (platform === "steam") return "Steam";
+        if (platform === "itch") return "itch.io";
+        if (platform === "patreon") return "Patreon";
+        if (platform === "dev") return "Developer Site";
+
+        return platform || "Other";
+      }
+
+
+      function getAllTags() {
+
+        var tags = [];
+
+        GAME_LINKS.forEach(function (game) {
+
+          (game.tags || []).forEach(function (tag) {
+
+            var cleanTag = String(tag).trim().toLowerCase();
+
+            if (
+              cleanTag &&
+              tags.indexOf(cleanTag) === -1
+            ) {
+              tags.push(cleanTag);
+            }
+
+          });
+
+        });
+
+        return tags.sort();
+      }
+
+
+      function getPlatforms() {
+
+        var platforms = [];
+
+        GAME_LINKS.forEach(function (game) {
+
+          if (
+            game.platform &&
+            platforms.indexOf(game.platform) === -1
+          ) {
+            platforms.push(game.platform);
+          }
+
+        });
+
+        return platforms.sort();
+      }
+
+
+      function buildPlatformOptions() {
+
+        getPlatforms().forEach(function (platform) {
+
+          var option = document.createElement("option");
+
+          option.value = platform;
+          option.textContent = platformName(platform);
+
+          platformSelect.appendChild(option);
+
+        });
+
+      }
+
+
+      function buildTagFilters() {
+
+        filtersWrap.innerHTML = "";
+
+        var allButton = document.createElement("button");
+
+        allButton.type = "button";
+        allButton.className = "filterButton is-active";
+        allButton.textContent = "All";
+        allButton.dataset.tag = "all";
+
+        filtersWrap.appendChild(allButton);
+
+
+        getAllTags().forEach(function (tag) {
+
+          var button = document.createElement("button");
+
+          button.type = "button";
+          button.className = "filterButton";
+          button.textContent = tag;
+          button.dataset.tag = tag;
+
+          filtersWrap.appendChild(button);
+
+        });
+
+
+        filtersWrap.addEventListener("click", function (event) {
+
+          var button = event.target.closest(".filterButton");
+
+          if (!button) return;
+
+          activeTag = button.dataset.tag;
+
+          var buttons =
+            filtersWrap.querySelectorAll(".filterButton");
+
+          buttons.forEach(function (item) {
+            item.classList.remove("is-active");
+          });
+
+          button.classList.add("is-active");
+
+          renderGames();
+
+        });
+
+      }
+
+
+      function gameMatches(game) {
+
+        var searchText =
+          (search.value || "").trim().toLowerCase();
+
+        var selectedPlatform =
+          platformSelect.value;
+
+
+        var gameTags = (game.tags || []).map(function (tag) {
+          return String(tag).toLowerCase();
+        });
+
+
+        var searchableText = [
+          game.title || "",
+          game.platform || "",
+          gameTags.join(" ")
+        ]
+        .join(" ")
+        .toLowerCase();
+
+
+        var matchesSearch =
+          !searchText ||
+          searchableText.indexOf(searchText) !== -1;
+
+
+        var matchesPlatform =
+          selectedPlatform === "all" ||
+          game.platform === selectedPlatform;
+
+
+        var matchesTag =
+          activeTag === "all" ||
+          gameTags.indexOf(activeTag) !== -1;
+
+
+        return (
+          matchesSearch &&
+          matchesPlatform &&
+          matchesTag
+        );
+
+      }
+
+
+      function createGameCard(game) {
+
+        var card = document.createElement("article");
+        card.className = "gameCard";
+
+
+        var imageWrap = document.createElement("div");
+        imageWrap.className = "gameCard__imageWrap";
+
+
+        var image = document.createElement("img");
+        image.className = "gameCard__image";
+        image.src = game.image || "img/default.jpg";
+        image.alt = game.title || "Game artwork";
+        image.loading = "lazy";
+
+
+        image.onerror = function () {
+          this.onerror = null;
+          this.src = "img/default.jpg";
+        };
+
+
+        var platform = document.createElement("span");
+        platform.className = "platformBadge";
+        platform.textContent =
+          platformName(game.platform);
+
+
+        imageWrap.appendChild(image);
+        imageWrap.appendChild(platform);
+
+
+        var body = document.createElement("div");
+        body.className = "gameCard__body";
+
+
+        var title = document.createElement("h2");
+        title.className = "gameCard__title";
+        title.textContent = game.title;
+
+
+        body.appendChild(title);
+
+
+        if (game.tags && game.tags.length) {
+
+          var tags = document.createElement("div");
+          tags.className = "gameCard__tags";
+
+
+          game.tags.forEach(function (tag) {
+
+            var chip = document.createElement("span");
+            chip.className = "gameTag";
+            chip.textContent = tag;
+
+            tags.appendChild(chip);
+
+          });
+
+
+          body.appendChild(tags);
+
+        }
+
+
+        var link = document.createElement("a");
+
+        link.className = "gameCard__link";
+        link.href = game.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        link.textContent =
+          game.platform === "steam"
+            ? "View on Steam"
+            : game.platform === "itch"
+            ? "View on itch.io"
+            : game.platform === "patreon"
+            ? "View Patreon"
+            : "Visit Game Page";
+
+
+        body.appendChild(link);
+
+        card.appendChild(imageWrap);
+        card.appendChild(body);
+
+        return card;
+
+      }
+
+
+      function renderGames() {
+
+        grid.innerHTML = "";
+
+
+        var filtered =
+          GAME_LINKS
+            .filter(gameMatches)
+            .sort(function (a, b) {
+
+              return (a.title || "")
+                .localeCompare(b.title || "");
+
+            });
+
+
+        filtered.forEach(function (game) {
+          grid.appendChild(createGameCard(game));
+        });
+
+
+        count.innerHTML =
+          "<strong>" +
+          filtered.length +
+          "</strong> " +
+          (filtered.length === 1 ? "game" : "games");
+
+
+        emptyState.style.display =
+          filtered.length ? "none" : "block";
+
+      }
+
+
+      function clearFilters() {
+
+        search.value = "";
+        platformSelect.value = "all";
+        activeTag = "all";
+
+
+        var buttons =
+          filtersWrap.querySelectorAll(".filterButton");
+
+        buttons.forEach(function (button) {
+
+          button.classList.toggle(
+            "is-active",
+            button.dataset.tag === "all"
+          );
+
+        });
+
+
+        history.replaceState(
+          null,
+          "",
+          window.location.pathname
+        );
+
+
+        renderGames();
+
+      }
+
+
+      function readUrlFilter() {
+
+        var params =
+          new URLSearchParams(window.location.search);
+
+        var tag =
+          (params.get("tag") || "").toLowerCase();
+
+
+        if (!tag) return;
+
+
+        var matchingButton =
+          filtersWrap.querySelector(
+            '[data-tag="' +
+            CSS.escape(tag) +
+            '"]'
+          );
+
+
+        if (!matchingButton) return;
+
+
+        activeTag = tag;
+
+
+        filtersWrap
+          .querySelectorAll(".filterButton")
+          .forEach(function (button) {
+
+            button.classList.toggle(
+              "is-active",
+              button === matchingButton
+            );
+
+          });
+
+      }
+
+
+      search.addEventListener(
+        "input",
+        renderGames
+      );
+
+
+      platformSelect.addEventListener(
+        "change",
+        renderGames
+      );
+
+
+      clearButton.addEventListener(
+        "click",
+        clearFilters
+      );
+
+
+      buildPlatformOptions();
+      buildTagFilters();
+      readUrlFilter();
+      renderGames();
+
+    })();
+  </script>
 
 </body>
 </html>
