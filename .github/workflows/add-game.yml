@@ -31,7 +31,7 @@ permissions:
 
 jobs:
   add-game:
-    name: Add game to library
+    name: Add or update game
     runs-on: ubuntu-latest
 
     steps:
@@ -77,5 +77,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add js/links-data.js
-          git commit -m "Add game via workflow"
+          git commit -m "Add or update game via workflow"
           git push origin HEAD:main
