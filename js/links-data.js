@@ -1845,7 +1845,33 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2832330/62c0a82e96fe3e3dd839cb31a3c2ce102df6ea3e/header.jpg?t=1787731956",
     "featured": false
+  },
+  {
+    "title": "Angel Legion",
+    "developer": "Shanghai SilverMoon Network Technology Co.Ltd",
+    "genres": [
+      "Adventure",
+      "RPG",
+      "Strategy",
+      "Free To Play"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Nudity",
+      "Hentai",
+      "Female Protagonist",
+      "3D",
+      "Anime",
+      "Character Customization"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/1333350/",
+      "website": "https://www.taptap.com/app/157506"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1333350/b2a0327ac1c3cca20f2ad7225d9b0f9a985c6a34/header.jpg?t=1787911290",
+    "featured": false
   }
+
 
 
 
