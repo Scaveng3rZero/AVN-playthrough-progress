@@ -1895,7 +1895,32 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1775530/header.jpg?t=1773786352",
     "featured": true
+  },
+  {
+    "title": "The Artist",
+    "developer": "Grotslot",
+    "genres": [
+      "Casual",
+      "Indie",
+      "Early Access"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Visual Novel",
+      "Story Rich",
+      "Nudity",
+      "Stylized",
+      "Choices Matter",
+      "Multiple Endings",
+      "Emotional"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/2365140/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2365140/header.jpg?t=1688768365",
+    "featured": false
   }
+
 
 
 
