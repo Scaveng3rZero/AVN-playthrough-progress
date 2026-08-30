@@ -1992,7 +1992,32 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1724190/header.jpg?t=1777041251",
     "featured": false
+  },
+  {
+    "title": "Fog of War: Book One",
+    "developer": "Story Machine Studios",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Indie"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Nudity",
+      "Visual Novel",
+      "Story Rich",
+      "Dating Sim",
+      "Choices Matter",
+      "Futuristic",
+      "3D"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/2676180/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2676180/header.jpg?t=1779345863",
+    "featured": true
   }
+
 
 
 
