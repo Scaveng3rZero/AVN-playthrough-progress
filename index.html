@@ -15,22 +15,25 @@
 
   <style>
     :root {
-      --bg: #08080b;
-      --bg-soft: #0e0e13;
-      --panel: rgba(255, 255, 255, 0.045);
-      --panel-hover: rgba(255, 255, 255, 0.075);
-      --border: rgba(255, 255, 255, 0.10);
-      --border-strong: rgba(255, 255, 255, 0.16);
+  --bg: #08090b;
+  --bg-soft: #0e1013;
 
-      --text: #f4f4f6;
-      --muted: #a5a5af;
-      --silver: #d5d5da;
+  --panel: rgba(255, 255, 255, 0.045);
+  --panel-hover: rgba(255, 255, 255, 0.075);
 
-      --pink: #d34f87;
-      --pink-light: #ef73aa;
-      --pink-dark: #842d54;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.17);
 
-      --radius: 20px;
+  --text: #f3f3f3;
+  --muted: #9da3aa;
+  --silver: #c9ccd1;
+
+  --orange: #e56b25;
+  --orange-light: #ff8338;
+  --orange-dark: #9c4319;
+
+  --radius: 20px;
+}
     }
 
     * {
@@ -125,9 +128,9 @@
         linear-gradient(
           145deg,
           rgba(255,255,255,0.08),
-          rgba(211,79,135,0.07)
+          rgba(229,107,37,0.07)
         );
-      box-shadow: 0 0 28px rgba(211,79,135,0.10);
+      box-shadow: 0 0 28px rgba(229,107,37,0.10);
       font-size: 17px;
       font-weight: 900;
       letter-spacing: -2px;
@@ -135,7 +138,7 @@
     }
 
     .brandLogo__mark span {
-      color: var(--pink-light);
+      color: var(--orange-light);
     }
 
     .brandLogo__name {
@@ -146,7 +149,7 @@
     }
 
     .brandLogo__name span {
-      color: var(--pink-light);
+      color: var(--orange);
     }
 
     .siteNav {
@@ -179,13 +182,13 @@
     .siteNav__link--accent {
       margin-left: 5px;
       color: #fff;
-      border: 1px solid rgba(211,79,135,0.35);
-      background: rgba(211,79,135,0.10);
+      border: 1px solid rgba(229,107,37,0.35);
+      background: rgba(229,107,37,0.10);
     }
 
     .siteNav__link--accent:hover {
-      border-color: rgba(239,115,170,0.55);
-      background: rgba(211,79,135,0.18);
+      border-color: rgba(255,131,56,0.55);
+      background: rgba(229,107,37,0.18);
     }
 
     /* =========================
@@ -207,7 +210,7 @@
       align-items: center;
       gap: 9px;
       margin-bottom: 18px;
-      color: var(--pink-light);
+      color: var(--orange);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.18em;
@@ -218,7 +221,7 @@
       content: "";
       width: 28px;
       height: 1px;
-      background: var(--pink);
+      background: var(--orange);
     }
 
     .hero h1 {
@@ -231,7 +234,7 @@
 
     .hero h1 span {
       display: block;
-      color: var(--pink-light);
+      color: var(--orange);
     }
 
     .hero__copy {
@@ -272,14 +275,14 @@
     }
 
     .button--primary {
-      border: 1px solid var(--pink);
-      background: var(--pink);
+      border: 1px solid var(--orange);
+      background: var(--orange);
       color: #fff;
     }
 
     .button--primary:hover {
-      background: var(--pink-light);
-      border-color: var(--pink-light);
+      background: var(--orange);
+      border-color: var(--orange);
     }
 
     .button--secondary {
@@ -308,18 +311,18 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      border: 1px solid rgba(211,79,135,0.45);
+      border: 1px solid rgba(229,107,37,0.45);
       background:
         radial-gradient(
           circle at 50% 40%,
           rgba(255,255,255,0.08),
           rgba(255,255,255,0.015) 55%,
-          rgba(211,79,135,0.06)
+          rgba(229,107,37,0.06)
         );
       box-shadow:
-        0 0 0 7px rgba(211,79,135,0.025),
+        0 0 0 7px rgba(229,107,37,0.025),
         0 28px 80px rgba(0,0,0,0.45),
-        0 0 80px rgba(211,79,135,0.08);
+        0 0 80px rgba(229,107,37,0.08);
     }
 
     .heroMark::before {
@@ -372,7 +375,7 @@
 
     .sectionHeading__kicker {
       margin: 0 0 10px;
-      color: var(--pink-light);
+      color: var(--orange);
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.18em;
@@ -417,8 +420,8 @@
 
     .discoveryCard:hover {
       transform: translateY(-4px);
-      border-color: rgba(211,79,135,0.35);
-      background: rgba(211,79,135,0.07);
+      border-color: rgba(229,107,37,0.35);
+      background: rgba(229,107,37,0.07);
     }
 
     .discoveryCard__number {
@@ -470,12 +473,12 @@
       right: -70px;
       top: -70px;
       border-radius: 50%;
-      background: rgba(211,79,135,0.07);
+      background: rgba(229,107,37,0.07);
       filter: blur(3px);
     }
 
     .communityCard__label {
-      color: var(--pink-light);
+      color: var(--orange);
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.16em;
