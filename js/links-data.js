@@ -1798,7 +1798,32 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3718190/7742fe4d135e4e34c02b23a6173eab216c7fc871/header.jpg?t=1787906425",
     "featured": false
+  },
+  {
+    "title": "Rebirth Pub",
+    "developer": "Seikou Soft.",
+    "genres": [
+      "Adventure",
+      "RPG",
+      "Simulation"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Nudity",
+      "Hentai",
+      "Shop Keeper",
+      "Roguelite",
+      "Dating Sim",
+      "Visual Novel",
+      "Character Customization"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/3236900/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3236900/bd206e513d968f71e5c8d6b8ac2c2a79a3accc71/header.jpg?t=1786804921",
+    "featured": true
   }
+
 
   
 
