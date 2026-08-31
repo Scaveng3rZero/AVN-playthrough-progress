@@ -955,24 +955,6 @@ var GAME_LINKS = [
     "featured": false
   },
     {
-    "title": "Lovely Craft",
-    "developer": "",
-    "genres": [
-      "Simulation"
-    ],
-    "tags": [
-      "simulator"
-    ],
-    "links": {
-      "itch": "https://hellocrime.itch.io/lovelycraft"
-    },
-    "image": "img/games/lovely-craft.jpg",
-    "featured": true,
-    "description": "Adult Minecraft parody with a weird, memorable hook and strong novelty factor.",
-    "watchUrl": "https://www.youtube.com/results?search_query=scaveng3r+lovely+craft+piston+trap",
-    "priority": 5
-  },
-    {
     "title": "Love Sucks: Night One",
     "developer": "Art Witch Studios",
     "genres": [
@@ -1355,7 +1337,7 @@ var GAME_LINKS = [
       "subscribestar": "https://subscribestar.adult/theaesthetik"
     },
     "image": "img/games/parasite-echo.png",
-    "featured": true,
+    "featured": false,
     "description": "Stylish survival horror project with a darker tone than the usual channel lineup.",
     "watchUrl": "https://www.youtube.com/results?search_query=scaveng3r+parasite+echo",
     "priority": 4
