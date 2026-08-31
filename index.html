@@ -383,6 +383,104 @@
       margin-top: 22px;
     }
 
+    /* Featured Games */
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.featuredCard {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  transition:
+    transform 0.16s ease,
+    background 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.featuredCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(229,107,37,0.30);
+  background: var(--panel-hover);
+}
+
+.featuredCard__imageWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 460 / 215;
+  background: #111318;
+}
+
+.featuredCard__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.featuredCard__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 8px;
+  border: 1px solid rgba(229,107,37,0.45);
+  border-radius: 7px;
+  color: var(--orange-light);
+  background: rgba(8,9,11,0.88);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.featuredCard__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+}
+
+.featuredCard__title {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.featuredCard__developer {
+  margin: 6px 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.featuredCard__link {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.featuredCard__link:hover {
+  border-color: var(--orange);
+  background: rgba(229,107,37,0.10);
+}
+
     /* Community */
 
     .communityGrid {
@@ -504,6 +602,11 @@
       .discoveryGrid {
         grid-template-columns: repeat(2, 1fr);
       }
+      
+      .featuredGrid {
+       grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      
     }
 
     @media (max-width: 720px) {
@@ -563,6 +666,10 @@
       .discoveryCard {
         min-height: 125px;
       }
+
+      .featuredGrid {
+  grid-template-columns: 1fr;
+}
     }
   </style>
 </head>
@@ -757,6 +864,39 @@
 
     </section>
 
+    <!-- =========================
+     FEATURED GAMES
+========================== -->
+
+<section class="section" id="featuredGamesSection">
+
+  <div class="container">
+
+    <div class="sectionHeading">
+
+      <p class="sectionHeading__kicker">
+        Featured
+      </p>
+
+      <h2>
+        Games worth a closer look.
+      </h2>
+
+      <p>
+        A few games currently highlighted by Scaveng3r.
+      </p>
+
+    </div>
+
+    <div
+      id="featuredGames"
+      class="featuredGrid"
+    ></div>
+
+  </div>
+
+</section>
+
 
     <!-- =========================
          COMMUNITY
@@ -929,11 +1069,325 @@
 
   </footer>
 
+  <script src="js/links-data.js"></script>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+(function () {
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+  var featuredGrid =
+    document.getElementById("featuredGames");
+
+
+  var featuredSection =
+    document.getElementById("featuredGamesSection");
+
+
+  if (
+    typeof GAME_LINKS === "undefined" ||
+    !featuredGrid
+  ) {
+    return;
+  }
+
+
+  function getGameLinks(game) {
+
+    var links = [];
+
+
+    if (
+      game.links &&
+      typeof game.links === "object"
+    ) {
+
+      Object.keys(game.links)
+        .forEach(function (platform) {
+
+          var url =
+            game.links[platform];
+
+
+          if (
+            typeof url === "string" &&
+            url.trim()
+          ) {
+
+            links.push({
+              platform: platform,
+              url: url.trim()
+            });
+
+          }
+
+        });
+
+    }
+
+
+    /*
+     * Old-format compatibility.
+     */
+
+    if (
+      game.platform &&
+      game.url
+    ) {
+
+      links.push({
+        platform: game.platform,
+        url: game.url
+      });
+
+    }
+
+
+    return links;
+
+  }
+
+
+  function getPrimaryLink(game) {
+
+    var links =
+      getGameLinks(game);
+
+
+    var preferred =
+      [
+        "steam",
+        "itch",
+        "website",
+        "dev",
+        "patreon",
+        "subscribestar"
+      ];
+
+
+    for (
+      var i = 0;
+      i < preferred.length;
+      i++
+    ) {
+
+      var match =
+        links.find(function (link) {
+
+          return (
+            link.platform ===
+            preferred[i]
+          );
+
+        });
+
+
+      if (match) {
+        return match.url;
+      }
+
+    }
+
+
+    return links.length
+      ? links[0].url
+      : "links.html";
+
+  }
+
+
+  function createFeaturedCard(game) {
+
+    var card =
+      document.createElement("article");
+
+    card.className =
+      "featuredCard";
+
+
+    var imageWrap =
+      document.createElement("div");
+
+    imageWrap.className =
+      "featuredCard__imageWrap";
+
+
+    var image =
+      document.createElement("img");
+
+    image.className =
+      "featuredCard__image";
+
+    image.src =
+      game.image ||
+      "img/default.jpg";
+
+    image.alt =
+      game.title || "Game artwork";
+
+    image.loading =
+      "lazy";
+
+
+    image.onerror =
+      function () {
+
+        this.onerror = null;
+        this.src = "img/default.jpg";
+
+      };
+
+
+    var badge =
+      document.createElement("span");
+
+    badge.className =
+      "featuredCard__badge";
+
+    badge.textContent =
+      "Featured";
+
+
+    imageWrap.appendChild(image);
+    imageWrap.appendChild(badge);
+
+
+    var body =
+      document.createElement("div");
+
+    body.className =
+      "featuredCard__body";
+
+
+    var title =
+      document.createElement("h3");
+
+    title.className =
+      "featuredCard__title";
+
+    title.textContent =
+      game.title;
+
+
+    body.appendChild(title);
+
+
+    if (
+      game.developer &&
+      String(game.developer).trim()
+    ) {
+
+      var developer =
+        document.createElement("p");
+
+      developer.className =
+        "featuredCard__developer";
+
+      developer.textContent =
+        game.developer;
+
+      body.appendChild(developer);
+
+    }
+
+
+    var link =
+      document.createElement("a");
+
+    link.className =
+      "featuredCard__link";
+
+    link.href =
+      getPrimaryLink(game);
+
+    link.target =
+      "_blank";
+
+    link.rel =
+      "noopener noreferrer";
+
+    link.textContent =
+      "View Game";
+
+
+    body.appendChild(link);
+
+    card.appendChild(imageWrap);
+    card.appendChild(body);
+
+
+    return card;
+
+  }
+
+
+  var featured =
+    GAME_LINKS
+      .filter(function (game) {
+
+        return (
+          game.featured === true
+        );
+
+      })
+      .sort(function (a, b) {
+
+        var priorityA =
+          Number.isFinite(a.priority)
+            ? a.priority
+            : 999;
+
+        var priorityB =
+          Number.isFinite(b.priority)
+            ? b.priority
+            : 999;
+
+
+        if (
+          priorityA !== priorityB
+        ) {
+
+          return (
+            priorityA -
+            priorityB
+          );
+
+        }
+
+
+        return (
+          a.title || ""
+        )
+        .localeCompare(
+          b.title || ""
+        );
+
+      })
+      .slice(0, 6);
+
+
+  if (!featured.length) {
+
+    featuredSection.style.display =
+      "none";
+
+    return;
+
+  }
+
+
+  featured.forEach(function (game) {
+
+    featuredGrid.appendChild(
+      createFeaturedCard(game)
+    );
+
+  });
+
+})();
+</script>
 
 </body>
 </html>
