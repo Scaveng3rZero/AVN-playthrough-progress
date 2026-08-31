@@ -399,6 +399,22 @@
       text-transform: uppercase;
     }
 
+    .featuredBadge {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  padding: 6px 9px;
+  border: 1px solid rgba(229,107,37,0.45);
+  border-radius: 8px;
+  color: var(--orange-light);
+  background: rgba(8,9,11,0.88);
+  backdrop-filter: blur(8px);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
     .gameCard__body {
       flex: 1;
       display: flex;
@@ -1382,7 +1398,28 @@
       image
     );
 
+if (game.featured === true) {
 
+  var featuredBadge =
+    document.createElement(
+      "span"
+    );
+
+
+  featuredBadge.className =
+    "featuredBadge";
+
+
+  featuredBadge.textContent =
+    "Featured";
+
+
+  imageWrap.appendChild(
+    featuredBadge
+  );
+
+}
+    
     /* PLATFORM BADGE */
 
     if (links.length) {
