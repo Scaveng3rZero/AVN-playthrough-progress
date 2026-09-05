@@ -2119,7 +2119,31 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3856980/cabaea0fba3008e7868f18155f2e19361c112b98/header.jpg?t=1788267706",
     "featured": false
+  },
+  {
+    "title": "Claws of Soria: Escape the Succubus Night",
+    "developer": "Byakko MeiMei",
+    "genres": [
+      "Action",
+      "Indie"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Action Roguelike",
+      "Top-Down Shooter",
+      "Bullet Hell",
+      "Twin Stick Shooter",
+      "Hack and Slash",
+      "2D",
+      "Top-Down"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/4054650/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4054650/7092279fd90f10ec69cfd7c720735e2ce1073398/header.jpg?t=1788336027",
+    "featured": false
   }
+
 
 
 
