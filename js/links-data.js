@@ -2164,7 +2164,33 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4217280/cd970d2f995420d2fe89f91771da8fba59ed7fad/header.jpg?t=1788447625",
     "featured": false
+  },
+  {
+    "title": "Sex-Pop Demon Hunters",
+    "developer": "Sweet Buns Games",
+    "genres": [
+      "Adventure",
+      "Casual",
+      "Indie",
+      "Simulation"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Hentai",
+      "Rhythm",
+      "Nudity",
+      "Cartoon",
+      "Rock Music",
+      "Electronic Music",
+      "Multiple Endings"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/4355490/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4355490/d9c51c3fdd447daec9b0ab5b92d691f9a8d4a1f2/header.jpg?t=1788534732",
+    "featured": false
   }
+
 
 
 
