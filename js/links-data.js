@@ -2235,7 +2235,34 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4341260/e64200a57f8c7df06e9fefef9ffa1a8639fe2107/header.jpg?t=1787819002",
     "featured": true
+  },
+  {
+    "title": "Chrono Ecstasy",
+    "developer": "",
+    "genres": [
+      "Visual Novel",
+      "Role Playing",
+      "Simulation"
+    ],
+    "tags": [
+      "2D",
+      "Adult",
+      "Anime",
+      "Erotic",
+      "Hentai",
+      "NSFW",
+      "Porn",
+      "Romance"
+    ],
+    "links": {
+      "itch": "https://pigeon2play.itch.io/chrono-ecstasy",
+      "patreon": "https://www.patreon.com/c/Pigeon2Play",
+      "subscribestar": "https://subscribestar.adult/pigeon2play"
+    },
+    "image": "https://img.itch.zone/aW1nLzE4MTQ2MzU1LnBuZw==/original/%2FNTBnJ.png",
+    "featured": false
   }
+
 
 
 
