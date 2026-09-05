@@ -2211,7 +2211,32 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3711590/6c43bd55695a3e5d5796996f668a6a6c10cf31a0/header.jpg?t=1783375187",
     "featured": false
+  },
+  {
+    "title": "WebCam: Behind The Screen",
+    "developer": "Cream Corp.",
+    "genres": [
+      "Casual",
+      "Indie",
+      "RPG",
+      "Simulation"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Nudity",
+      "3D",
+      "Hentai",
+      "First-Person",
+      "Choose Your Own Adventure",
+      "Sandbox"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/4341260/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4341260/e64200a57f8c7df06e9fefef9ffa1a8639fe2107/header.jpg?t=1787819002",
+    "featured": true
   }
+
 
 
 
