@@ -2142,7 +2142,30 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4054650/7092279fd90f10ec69cfd7c720735e2ce1073398/header.jpg?t=1788336027",
     "featured": false
+  },
+  {
+    "title": "Reclaim the Fame",
+    "developer": "Vertex Bunny",
+    "genres": [
+      "Adventure",
+      "Indie",
+      "RPG"
+    ],
+    "tags": [
+      "Visual Novel",
+      "Female Protagonist",
+      "Sexual Content",
+      "Choose Your Own Adventure",
+      "Story Rich",
+      "Comedy"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/4217280/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4217280/cd970d2f995420d2fe89f91771da8fba59ed7fad/header.jpg?t=1788447625",
+    "featured": false
   }
+
 
 
 
