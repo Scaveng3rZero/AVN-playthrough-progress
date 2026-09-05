@@ -2095,7 +2095,30 @@ var GAME_LINKS = [
     },
     "image": "https://img.itch.zone/aW1nLzI0MDgwMDk1LnBuZw==/original/aNxR68.png",
     "featured": false
+  },
+  {
+    "title": "Milky Rush-Two Paths",
+    "developer": "snappixgames",
+    "genres": [
+      "Action",
+      "Casual",
+      "Indie",
+      "Strategy"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Nudity",
+      "Hentai",
+      "Anime",
+      "Roguelike"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/3856980/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3856980/cabaea0fba3008e7868f18155f2e19361c112b98/header.jpg?t=1788267706",
+    "featured": false
   }
+
 
 
 
