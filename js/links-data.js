@@ -1049,8 +1049,8 @@ var GAME_LINKS = [
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1695680/header.jpg?t=1725037039",
     "featured": false
   },
-    {
-    "title": "Lust Academy - Season 1",
+      {
+    "title": "LA: Streets of Sorcery",
     "developer": "Bear in the Night",
     "genres": [
       "Adventure",
@@ -1061,17 +1061,19 @@ var GAME_LINKS = [
       "Sexual Content",
       "Nudity",
       "Visual Novel",
+      "Realistic",
       "Dating Sim",
-      "LGBTQ+",
-      "Romance",
       "Choices Matter",
+      "Romance",
+      "Singleplayer",
+      "LGBTQ+",
       "Story Rich"
     ],
     "links": {
-      "steam": "https://store.steampowered.com/app/1846920/",
+      "steam": "https://store.steampowered.com/app/3913950/",
       "website": "http://lust-academy.com/"
     },
-    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1846920/header.jpg?t=1785173061",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3913950/da077b8823b9ccbaf436c40fb25dc080072ecdd4/header_alt_assets_1.jpg?t=1788357601",
     "featured": false
   },
         {
