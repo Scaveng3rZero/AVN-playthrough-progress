@@ -2189,7 +2189,30 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4355490/d9c51c3fdd447daec9b0ab5b92d691f9a8d4a1f2/header.jpg?t=1788534732",
     "featured": false
+  },
+  {
+    "title": "Train45",
+    "developer": "Elniko",
+    "genres": [
+      "Casual",
+      "Indie"
+    ],
+    "tags": [
+      "Sexual Content",
+      "Pixel Graphics",
+      "Hentai",
+      "Nudity",
+      "Visual Novel",
+      "Puzzle",
+      "2D Platformer"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/3711590/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3711590/6c43bd55695a3e5d5796996f668a6a6c10cf31a0/header.jpg?t=1783375187",
+    "featured": false
   }
+
 
 
 
