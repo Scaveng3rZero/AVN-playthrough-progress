@@ -2262,7 +2262,7 @@ var GAME_LINKS = [
     "image": "https://img.itch.zone/aW1nLzE4MTQ2MzU1LnBuZw==/original/%2FNTBnJ.png",
     "featured": false
   },
-  {
+    {
     "title": "Risky Business",
     "developer": "Nouliz",
     "genres": [
