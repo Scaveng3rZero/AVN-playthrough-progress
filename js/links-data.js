@@ -2261,7 +2261,34 @@ var GAME_LINKS = [
     },
     "image": "https://img.itch.zone/aW1nLzE4MTQ2MzU1LnBuZw==/original/%2FNTBnJ.png",
     "featured": false
+  },
+  {
+    "title": "Risky Business",
+    "developer": "Nouliz",
+    "genres": [
+      "Adventure",
+      "Casual",
+      "Indie",
+      "Simulation",
+      "Free To Play"
+    ],
+    "tags": [
+      "Incremental",
+      "Artificial Intelligence",
+      "Romance",
+      "Point & Click",
+      "Arcade",
+      "Dating Sim",
+      "2D",
+      "Cute"
+    ],
+    "links": {
+      "steam": "https://store.steampowered.com/app/4147190/"
+    },
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4147190/89aaf02dd370968e73c08a9bf6651ca33de6d2a1/header.jpg?t=1788369677",
+    "featured": false
   }
+
 
 
 
