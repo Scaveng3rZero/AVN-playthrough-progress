@@ -21,7 +21,7 @@ var GAME_LINKS = [
       "steam": "https://store.steampowered.com/app/1045520/"
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1045520/header.jpg?t=1723893770",
-    "featured": false
+    "featured": true
   },
       {
     "title": "After the Inferno",
@@ -483,7 +483,7 @@ var GAME_LINKS = [
       "discord": "https://discord.gg/caribdisgames"
     },
     "image": "img/games/eternum.png",
-    "featured": true,
+    "featured": false,
     "description": "Fan-favorite visual novel with memorable characters and strong channel demand.",
     "watchUrl": "https://www.youtube.com/results?search_query=scaveng3r+eternum",
     "priority": 3
@@ -604,7 +604,7 @@ var GAME_LINKS = [
       "steam": "https://store.steampowered.com/app/3478650/"
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3478650/22216e1940a7a11129d0e421d099751db710ac80/header.jpg?t=1765821149",
-    "featured": true,
+    "featured": false,
     "description": "Story-heavy campus visual novel and one of the main ongoing channel series.",
     "watchUrl": "https://www.youtube.com/results?search_query=scaveng3r+fresh+women+season+2",
     "priority": 1
@@ -1882,7 +1882,7 @@ var GAME_LINKS = [
       "steam": "https://store.steampowered.com/app/1775530/"
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1775530/header.jpg?t=1773786352",
-    "featured": true
+    "featured": false
   },
   {
     "title": "The Artist",
