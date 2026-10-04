@@ -2287,7 +2287,32 @@ var GAME_LINKS = [
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4147190/89aaf02dd370968e73c08a9bf6651ca33de6d2a1/header.jpg?t=1788369677",
     "featured": false
+  },
+  {
+    "title": "Elden Rod",
+    "developer": "",
+    "genres": [
+      "Visual Novel"
+    ],
+    "tags": [
+      "Adult",
+      "big-tits",
+      "elden-ring",
+      "Eroge",
+      "Hand-drawn",
+      "Hentai",
+      "No AI",
+      "NSFW"
+    ],
+    "links": {
+      "itch": "https://gobaky.itch.io/elden-rod",
+      "discord": "https://discord.com/invite/C24RP5Wcnd",
+      "patreon": "https://www.patreon.com/Gobaky"
+    },
+    "image": "https://img.itch.zone/aW1nLzMwMjc1NTAzLnBuZw==/original/jqFPqJ.png",
+    "featured": false
   }
+
 
 
 
