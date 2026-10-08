@@ -21,7 +21,7 @@ var GAME_LINKS = [
       "steam": "https://store.steampowered.com/app/1045520/"
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1045520/header.jpg?t=1723893770",
-    "featured": true
+    "featured": false
   },
       {
     "title": "After the Inferno",
@@ -2003,7 +2003,7 @@ var GAME_LINKS = [
       "steam": "https://store.steampowered.com/app/2676180/"
     },
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2676180/header.jpg?t=1779345863",
-    "featured": true
+    "featured": false
   },
   {
     "title": "Gagged Love",
