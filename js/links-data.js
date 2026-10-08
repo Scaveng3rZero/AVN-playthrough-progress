@@ -2311,7 +2311,31 @@ var GAME_LINKS = [
     },
     "image": "https://img.itch.zone/aW1nLzMwMjc1NTAzLnBuZw==/original/jqFPqJ.png",
     "featured": false
+  },
+  {
+    "title": "Roshutsu | 露出",
+    "developer": "",
+    "genres": [
+      "Adventure"
+    ],
+    "tags": [
+      "3D",
+      "Adult",
+      "Anime",
+      "Eroge",
+      "Erotic",
+      "exhibitionism",
+      "Female Protagonist",
+      "Non violent"
+    ],
+    "links": {
+      "itch": "https://barebottomgames.itch.io/roshutsu",
+      "discord": "https://discord.gg/aJ6nysmWBY"
+    },
+    "image": "https://img.itch.zone/aW1nLzYxMDkxMTcucG5n/original/wPogFh.png",
+    "featured": false
   }
+
 
 
 
