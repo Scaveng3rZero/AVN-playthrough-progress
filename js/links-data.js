@@ -408,7 +408,7 @@ var GAME_LINKS = [
       "discord": "https://discord.gg/gKV5mzqHSJ"
     },
     "image": "img/games/deluded.jpg",
-    "featured": false
+    "featured": true
   },
     {
     "title": "Devious Demigods (18+)",
@@ -652,7 +652,7 @@ var GAME_LINKS = [
       "patreon": "https://www.patreon.com/extra_life"
     },
     "image": "img/games/goodbye-eternity.png",
-    "featured": false
+    "featured": true
   },
     {
     "title": "GRAY",
