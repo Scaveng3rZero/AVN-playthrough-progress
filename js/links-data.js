@@ -2334,7 +2334,32 @@ var GAME_LINKS = [
     },
     "image": "https://img.itch.zone/aW1nLzYxMDkxMTcucG5n/original/wPogFh.png",
     "featured": false
+  },
+  {
+    "title": "Succubus Island",
+    "developer": "",
+    "genres": [
+      "Visual Novel"
+    ],
+    "tags": [
+      "2D",
+      "Adult",
+      "Anime",
+      "Dark Fantasy",
+      "Eroge",
+      "Point & Click",
+      "Porn",
+      "Romance"
+    ],
+    "links": {
+      "itch": "https://succubusisland.itch.io/succubusisland",
+      "patreon": "https://www.patreon.com/cw/SuccubusIsland",
+      "discord": "https://discord.gg/AyCDfdFjZ"
+    },
+    "image": "https://img.itch.zone/aW1nLzE3NDkyMjg3LmpwZw==/original/9WerC8.jpg",
+    "featured": false
   }
+
 
 
 
